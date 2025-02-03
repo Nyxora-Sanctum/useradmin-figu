@@ -52,11 +52,11 @@ class GridDatatable {
                     formatter: (cell, row) => {
                          return h('div', { className: 'flex gap-2' }, [  // Wrap buttons in a div for layout
                               h('button', {
-                                   className: 'py-2 px-4 border rounded-md text-white bg-blue-600',
+                                   className: 'btn btn-outline-primary',
                                    onClick: () => completeTransaction(row.cells[1].data),
                               }, 'Complete'),
                               h('button', {
-                                   className: 'py-2 px-4 border rounded-md text-white bg-red-600',
+                                   className: 'btn btn-outline-warning',
                                    onClick: () => declineTransaction(row.cells[1].data),
                               }, 'Decline'),
                          ]);

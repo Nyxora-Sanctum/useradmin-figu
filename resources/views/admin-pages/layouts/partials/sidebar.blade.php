@@ -31,23 +31,12 @@
                <li class="menu-title">User Management</li>
 
                <li class="nav-item">
-                    <a class="nav-link menu-arrow" href="#sidebarUser" data-bs-toggle="collapse" role="button"
-                         aria-expanded="false" aria-controls="sidebarUser">
+                    <a class="nav-link" href="{{ route('second', ['user-management', 'manage-user']) }}">
                          <span class="nav-icon">
                               <iconify-icon icon="mingcute:chart-bar-line"></iconify-icon>
                          </span>
-                         <span class="nav-text"> Manage User Data </span>
+                         <span class="nav-text"> Account Management </span>
                     </a>
-                    <div class="collapse" id="sidebarUser">
-                         <ul class="nav sub-navbar-nav">
-                              <li class="sub-nav-item">
-                                   <a class="sub-nav-link" href="{{ route('second', ['user-management', 'manage-user']) }}">Profile</a>
-                              </li>
-                              <li class="sub-nav-item">
-                                   <a class="sub-nav-link" href="{{ route('second', ['user-management', 'manage-inventory']) }}">Inventory</a>
-                              </li>
-                         </ul>
-                    </div>
                </li>
 
                <li class="nav-item">

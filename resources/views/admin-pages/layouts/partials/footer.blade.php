@@ -4,7 +4,7 @@
             <div class="col-12 text-center">
                 <script>
                     document.write(new Date().getFullYear())
-                </script> &copy; Darkone by StackBros.
+                </script> &copy; Figu.
             </div>
         </div>
     </div>

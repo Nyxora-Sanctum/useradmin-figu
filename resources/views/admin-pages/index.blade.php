@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('layouts.partials/page-title', ['title' => 'Darkone', 'subtitle' => 'Dashboard'])
+@include('layouts.partials/page-title', ['title' => 'Figu', 'subtitle' => 'Dashboard'])
 
 <div class="row">
     <!-- Card 1 -->

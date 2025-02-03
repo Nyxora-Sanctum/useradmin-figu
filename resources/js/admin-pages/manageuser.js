@@ -38,7 +38,7 @@ GridjsTableInit() {
                     console.log('Row ID from first cell:', rowId); // Log the row ID from first cell
                     const updatedUrl = manageUserUrl.replace('id-from-table', rowId);
                     return h('a', {
-                        className: 'py-2 mb-4 px-4 border rounded-md text-white bg-blue-600',
+                        className: 'btn btn-outline-warning',
                         href: updatedUrl,  // Use the updated URL
                     }, 'Edit');
                 },

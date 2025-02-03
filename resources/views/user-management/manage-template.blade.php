@@ -35,13 +35,21 @@
                 </div>
 
                 <div class="mb-3">
-                    <button class="btn btn-primary" type="submit">Submit form</button>
+                    <button class="btn btn-primary" type="submit">Create Template</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<div class="row" id="template-list">
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">All Template</h5>
+    </div>
+    <div class="card-body">
+        <div class="row" id="template-list"></div>
+    </div>
+</div>
+
 
 </div>
 @endsection

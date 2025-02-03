@@ -20,6 +20,17 @@
     </div>
 </div>
 
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Inventory</h5>
+        <p class="text-muted mb-0">
+        </p>
+    </div>
+    <div class="card-body">
+        <p class="text-muted mb-0">Please select one of the user</p>
+    </div>
+</div>
+
 
 <script>
     const manageUserUrl = "{{ route('fourth', ['user-management', 'table-editor', 'user-table-editor', 'id-from-table']) }}";
