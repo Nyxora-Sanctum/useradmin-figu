@@ -19,6 +19,7 @@
     "@tailwindcss/vite": "^4.0.3",
     "apexcharts": "^3.44.2",
     "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
     "countup.js": "^2.3.2",
     "dropzone": "^5.9.0",
     "flatpickr": "^4.6.13",

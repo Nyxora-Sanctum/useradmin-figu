@@ -26,7 +26,12 @@
         <p class="text-muted mb-0">
         </p>
     </div>
-    <div class="card-body">
+    <div class="card-body" id="inventory-table">
+        <div id="table-search" class="inventory-table"></div>
+        <p class="text-muted mb-0">Please select one of the user</p>
+    </div>
+    <div class="card-body" id="inventory-table">
+        <div id="table-search" class="used-table"></div>
         <p class="text-muted mb-0">Please select one of the user</p>
     </div>
 </div>
