@@ -45,7 +45,7 @@ class GridDatatable {
                     console.log(data_key);
                     console.log(data_value);
 
-                    if (document.getElementById("table-search")) {
+                    if (document.getElementById("table-search-invoices")) {
                          new Grid({
                               columns: data_key,
                               pagination: {
@@ -53,7 +53,7 @@ class GridDatatable {
                               },
                               search: true,
                               data: data_value,
-                         }).render(document.getElementById("table-search"));
+                         }).render(document.getElementById("table-search-invoices"));
                     }
                });
           });

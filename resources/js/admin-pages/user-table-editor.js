@@ -1,37 +1,30 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const endpoint = import.meta.env.VITE_DATABASE_ENDPOINT; // Ensure this endpoint is correctly set
-    const access_token = localStorage.getItem('access_token'); // Get token from localStorage
+    const endpoint = import.meta.env.VITE_DATABASE_ENDPOINT;
+    const access_token = localStorage.getItem('access_token');
 
-    // Check if the access_token is available
     if (!access_token) {
         console.error('No access token found.');
         return;
     }
 
-    // Extract the ID from the URL path
     const pathSegments = window.location.pathname.split('/');
-    const id = pathSegments[pathSegments.length - 1]; // Get the last segment of the path
+    const id = pathSegments[pathSegments.length - 1];
 
-    // Check if ID is found in the URL
     if (!id || isNaN(id)) {
         console.error('No valid ID found in URL path');
         return;
     }
 
     try {
-        // Fetch user data to populate the form
         const response = await fetch(`${endpoint}/api/admin/data/accounts/get/${id}`, {
             method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${access_token}`,
-            },
+            headers: { 'Authorization': `Bearer ${access_token}` },
         });
 
         if (response.ok) {
             const userData = await response.json();
             console.log('User Data:', userData);
-            
-            // Fill in the form with the fetched data
+
             const form = document.querySelector('#userForm');
             Object.keys(userData).forEach(key => {
                 const input = form.querySelector(`[name=${key}]`);
@@ -48,40 +41,44 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-
 const submitButton = document.querySelector('#submit');
-submitButton.addEventListener('click', submitForm);
+submitButton.addEventListener('click', confirmSubmission);
 
-async function submitForm(){
-   const endpoint = import.meta.env.VITE_DATABASE_ENDPOINT; // Ensure this endpoint is correctly set
-    const access_token = localStorage.getItem('access_token'); // Get token from localStorage
+function confirmSubmission() {
+    const confirmationModal = confirm("Are you sure you want to save changes?");
+    if (confirmationModal) {
+        submitForm();
+    }
+}
 
-    // Check if the access_token is available
+async function submitForm() {
+    const endpoint = import.meta.env.VITE_DATABASE_ENDPOINT;
+    const access_token = localStorage.getItem('access_token');
+
     if (!access_token) {
         console.error('No access token found.');
-        return; // Stop the form submission if no access token
+        return;
     }
 
-    // Extract the ID from the URL path
     const pathSegments = window.location.pathname.split('/');
-    const id = pathSegments[pathSegments.length - 1]; // Get the last segment of the path
+    const id = pathSegments[pathSegments.length - 1];
 
-    // Check if ID is found in the URL
     if (!id || isNaN(id)) {
         console.error('No valid ID found in URL path');
         return;
     }
 
-    // Send the PATCH request
     try {
         const form = document.querySelector('#userForm');
-        const formData = new FormData(form); // Create FormData from the form
-        console.log('Form Data:', formData);
-
-        // Optionally, you can convert FormData to an object for easier inspection
+        const formData = new FormData(form);
         const formDataObject = Object.fromEntries(formData.entries());
+
         console.log('Form Data Object:', formDataObject);
-        
+
+        setTimeout(() => {
+            showModal("Updating...", "Please wait while we process your request.", "bx bx-loader-alt bx-spin", "bg-warning", false, true);
+        }, 300);
+
         const response = await fetch(`${endpoint}/api/admin/accounts/update/${id}`, {
             method: 'PATCH',
             body: JSON.stringify(formDataObject),
@@ -93,18 +90,61 @@ async function submitForm(){
 
         if (response.ok) {
             console.log('User information saved successfully');
-            window.location.href = managementRoute;
-            // You can show a success message or redirect the user here
-            // Example:
-            // window.location.href = '/success-page';
+            showModal("Well Done!", "User information updated successfully.", "bx bx-check-double", "bg-info", true, false, () => {
+                window.location.href = managementRoute;
+            });
         } else {
-            // Handle different types of errors
             const errorData = await response.json();
             console.error('Failed to save user information:', errorData.message || 'Unknown error');
-            // You can display the error to the user
+            showModal("Update Failed!", errorData.message || "Something went wrong.", "bx bx-error", "bg-danger", false, false);
         }
     } catch (error) {
         console.error('Error during request:', error);
-        // You can display a general error message to the user
+        showModal("Update Failed!", "An unexpected error occurred. Please try again.", "bx bx-error", "bg-danger", false, false);
     }
+}
+
+function showModal(title, message, iconClass, bgColor, redirect, disableInteraction, callback) {
+    const existingModal = document.getElementById("dynamicModal");
+    if (existingModal) existingModal.remove();
+
+    const modal = document.createElement("div");
+    modal.id = "dynamicModal";
+    modal.className = "modal fade";
+    modal.setAttribute("tabindex", "-1");
+    modal.setAttribute("role", "dialog");
+    modal.setAttribute("aria-hidden", "true");
+
+    modal.innerHTML = `
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content modal-filled ${bgColor}">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <i class="${iconClass} display-6 mt-0 text-white"></i>
+                        <h4 class="mt-3 text-white">${title}</h4>
+                        <p class="mt-3 text-white">${message}</p>
+                        <button type="button" id="modalContinueBtn" class="btn btn-light mt-3" data-bs-dismiss="modal">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+    const bootstrapModal = new bootstrap.Modal(modal);
+
+    if (disableInteraction) {
+        modal.querySelector(".modal-content").classList.add("disabled-modal");
+        modal.querySelector("#modalContinueBtn").style.display = "none";
+    }
+
+    bootstrapModal.show();
+
+    document.getElementById("modalContinueBtn").addEventListener("click", () => {
+        bootstrapModal.hide();
+        setTimeout(() => {
+            modal.remove();
+            if (callback) callback();
+        }, 500);
+    });
 }

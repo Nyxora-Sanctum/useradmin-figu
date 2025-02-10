@@ -28,35 +28,24 @@
                     </a>
                </li>
 
-               <li class="menu-title">User Management</li>
+               <li class="menu-title">Management</li>
 
                <li class="nav-item">
                     <a class="nav-link" href="{{ route('second', ['user-management', 'manage-user']) }}">
                          <span class="nav-icon">
                               <iconify-icon icon="mingcute:chart-bar-line"></iconify-icon>
                          </span>
-                         <span class="nav-text"> Account Management </span>
+                         <span class="nav-text"> Manage Accounts </span>
                     </a>
                </li>
 
                <li class="nav-item">
-                    <a class="nav-link menu-arrow" href="#sidebarTransactions" data-bs-toggle="collapse" role="button"
-                         aria-expanded="false" aria-controls="sidebarTransactions">
+                    <a class="nav-link" href="{{ route('second', ['user-management', 'manage-transaction']) }}">
                          <span class="nav-icon">
-                              <iconify-icon icon="mingcute:box-line"></iconify-icon>
+                              <iconify-icon icon="mingcute:chart-bar-line"></iconify-icon>
                          </span>
-                         <span class="nav-text"> Manage Transaction </span>
+                         <span class="nav-text"> Manage Transactions </span>
                     </a>
-                    <div class="collapse" id="sidebarTransactions">
-                         <ul class="nav sub-navbar-nav">
-                              <li class="sub-nav-item">
-                                   <a class="sub-nav-link" href="{{ route('second', ['user-management', 'manage-transaction']) }}">Transactions</a>
-                              </li>
-                              <li class="sub-nav-item">
-                                   <a class="sub-nav-link" href="{{ route('second', ['user-management', 'manage-invoices']) }}">Invoices</a>
-                              </li>
-                         </ul>
-                    </div>
                </li>
 
                <li class="nav-item">
@@ -64,7 +53,16 @@
                          <span class="nav-icon">
                               <iconify-icon icon="mingcute:chart-bar-line"></iconify-icon>
                          </span>
-                         <span class="nav-text"> Manage Template </span>
+                         <span class="nav-text"> Manage Templates </span>
+                    </a>
+               </li>
+
+               <li class="nav-item">
+                    <a class="nav-link" href="{{ route('second', ['admin-pages', 'ai-config']) }}">
+                         <span class="nav-icon">
+                              <iconify-icon icon="mingcute:chart-bar-line"></iconify-icon>
+                         </span>
+                         <span class="nav-text"> Manage AI Config </span>
                     </a>
                </li>
 
