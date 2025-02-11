@@ -18,9 +18,10 @@ class CheckRole
         $currentPath = $request->path();
 
         // Prevent redirection loop by allowing access to login page
-        if ($currentPath === 'login' || $currentPath === 'register') {
+        if ($currentPath === 'login' || $currentPath === 'register' || $currentPath === '/') {
             return $next($request);
         }
+        log::info('Current path: ' . $currentPath);
 
         // Enforce "admin" role if route contains "admin-pages"
         if (str_contains($currentPath, 'admin-pages')) {
