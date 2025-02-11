@@ -41,11 +41,15 @@
 
                               <div class="dropdown-divider my-1"></div>
 
-                              <a class="dropdown-item text-danger" href="{{ route ('second' , ['auth','signin']) }}">
-                                   <iconify-icon icon="solar:logout-3-outline"
-                                        class="align-middle me-2 fs-18"></iconify-icon><span
-                                        class="align-middle">Logout</span>
-                              </a>
+                         <a class="dropdown-item text-danger" href="#"
+                              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                              <iconify-icon icon="solar:logout-3-outline" class="align-middle me-2 fs-18"></iconify-icon>
+                              <span class="align-middle">Logout</span>
+                         </a>
+
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              @csrf
+                         </form>
                          </div>
                     </div>
                </div>

@@ -1,12 +1,12 @@
 <div class="app-sidebar">
      <!-- Sidebar Logo -->
      <div class="logo-box">
-          <a href="{{ route('any', 'index') }}" class="logo-dark">
+          <a href="{{ route('anyAdmin', 'index') }}" class="logo-dark">
                <img src="/images/logo-sm.png" class="logo-sm" alt="logo sm">
                <img src="/images/logo-dark.png" class="logo-lg" alt="logo dark">
           </a>
 
-          <a href="{{ route('any', 'index') }}" class="logo-light">
+          <a href="{{ route('anyAdmin', 'index') }}" class="logo-light">
                <img src="/images/logo-sm.png" class="logo-sm" alt="logo sm">
                <img src="/images/logo-light.png" class="logo-lg" alt="logo light">
           </a>
@@ -19,7 +19,7 @@
                <li class="menu-title">Menu...</li>
 
                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('any', 'index') }}
+                    <a class="nav-link" href="{{ route('anyAdmin', 'index') }}
 ">
                          <span class="nav-icon">
                               <iconify-icon icon="mingcute:home-3-line"></iconify-icon>
@@ -40,16 +40,16 @@
                     <div class="collapse" id="sidebarAuthentication">
                          <ul class="nav sub-navbar-nav">
                               <li class="sub-nav-item">
-                                   <a class="sub-nav-link" href="{{ route ('second' , ['auth','signin']) }}">Sign In</a>
+                                   <a class="sub-nav-link" href="{{ route ('secondAdmin' , ['auth','signin']) }}">Sign In</a>
                               </li>
                               <li class="sub-nav-item">
-                                   <a class="sub-nav-link" href="{{ route ('second' , ['auth','signup']) }}">Sign Up</a>
+                                   <a class="sub-nav-link" href="{{ route ('secondAdmin' , ['auth','signup']) }}">Sign Up</a>
                               </li>
                               <li class="sub-nav-item">
-                                   <a class="sub-nav-link" href="{{ route ('second' , ['auth','password']) }}">Reset Password</a>
+                                   <a class="sub-nav-link" href="{{ route ('secondAdmin' , ['auth','password']) }}">Reset Password</a>
                               </li>
                               <li class="sub-nav-item">
-                                   <a class="sub-nav-link" href="{{ route ('second' , ['auth','lock-screen']) }}">Lock Screen</a>
+                                   <a class="sub-nav-link" href="{{ route ('secondAdmin' , ['auth','lock-screen']) }}">Lock Screen</a>
                               </li>
                          </ul>
                     </div>

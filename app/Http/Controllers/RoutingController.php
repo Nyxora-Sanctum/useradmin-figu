@@ -4,22 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Auth\AuthController;
 
 class RoutingController extends Controller
 {
     public function index(Request $request)
     {
-        return redirect('admin-pages.index');
+        return view('user-pages.index');
     }
 
-    public function login(Request $request)
+    public function indexAdmin(Request $request)
     {
-        return view('login');
+        return view('admin-pages.index');
     }
 
-    public function register(Request $request)
+    public function login(AuthController $authController, Request $request)
     {
-        return view('register');
+        return $authController->loginView($request);
+    }
+
+    public function register(AuthController $authController, Request $request)
+    {
+        return $authController->registerView($request);
     }
 
     /**
@@ -29,7 +35,7 @@ class RoutingController extends Controller
      */
     public function root(Request $request, $first)
     {
-        return view($first);
+        return view('user-pages.' . $first);
     }
 
     /**
@@ -37,7 +43,7 @@ class RoutingController extends Controller
      */
     public function secondLevel(Request $request, $first, $second)
     {
-        return view($first . '.' . $second);
+        return view('user-pages.' .$first . '.' . $second);
     }
 
     /**
@@ -45,7 +51,7 @@ class RoutingController extends Controller
      */
     public function thirdLevel(Request $request, $first, $second, $third)
     {
-        return view($first . '.' . $second . '.' . $third);
+        return view('user-pages.' .$first . '.' . $second . '.' . $third);
     }
 
     /**
@@ -54,6 +60,36 @@ class RoutingController extends Controller
     public function fourthLevel(Request $request, $first, $second, $third, $id)
     {
         // Use the $id parameter to perform operations on the table
-        return view($first . '.' . $second . '.' . $third, ['id' => $id]);
+        return view('user-pages.' .$first . '.' . $second . '.' . $third, $id);
+    }
+
+    public function rootAdmin(Request $request, $first)
+    {
+        return view('admin-pages.'.$first);
+    }
+
+    /**
+     * second level route
+     */
+    public function secondLevelAdmin(Request $request, $first, $second)
+    {
+        return view('admin-pages.' . $first . '.' . $second);
+    }
+
+    /**
+     * third level route
+     */
+    public function thirdLevelAdmin(Request $request, $first, $second, $third)
+    {
+        return view('admin-pages.' . $first . '.' . $second . '.' . $third);
+    }
+
+    /**
+     * fourth level route
+     */
+    public function fourthLevelAdmin(Request $request, $first, $second, $third, $id)
+    {
+        // Use the $id parameter to perform operations on the table
+        return view('admin-pages.' . $first . '.' . $second . '.' . $third, ['id' => $id]);
     }
 }

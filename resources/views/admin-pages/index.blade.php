@@ -17,7 +17,7 @@
 
                     <div class="col-6">
                         <div class="ms-auto avatar-md bg-soft-primary rounded">
-                            <iconify-icon icon="solar:globus-outline"
+                            <iconify-icon icon="solar:users-group-two-rounded-broken"
                                 class="fs-32 avatar-title text-primary"></iconify-icon>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
 
                     <div class="col-6">
                         <div class="ms-auto avatar-md bg-soft-primary rounded">
-                            <iconify-icon icon="solar:users-group-two-rounded-broken"
+                            <iconify-icon icon="solar:globus-outline"
                                 class="fs-32 avatar-title text-primary"></iconify-icon>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h4 class="card-title mb-0">New Accounts</h4>
-                <a href="{{ route('second', ['user-management', 'manage-user']) }}" class="btn btn-sm btn-light">
+                <a href="{{ route('secondAdmin', ['user-management', 'manage-user']) }}" class="btn btn-sm btn-light">
                     View All
                 </a>
             </div>
@@ -133,7 +133,7 @@
                     Recent Transactions
                 </h4>
 
-                <a href="{{ route('second', ['user-management', 'manage-transaction']) }}" class="btn btn-sm btn-light">
+                <a href="{{ route('secondAdmin', ['user-management', 'manage-transaction']) }}" class="btn btn-sm btn-light">
                     View All
                 </a>
             </div>

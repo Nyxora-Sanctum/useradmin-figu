@@ -42,7 +42,7 @@
 </div>
 
 <script>
-    const managementRoute = '{{ route('second', ['user-management', 'manage-template']) }}';
+    const managementRoute = '{{ route('secondAdmin', ['user-management', 'manage-template']) }}';
 </script>
 
 @endsection

@@ -57,7 +57,7 @@
 
 @section('scripts')
 <script>
-    const manageUserUrl = "{{ route('fourth', ['user-management', 'table-editor', 'user-table-editor', 'id-from-table']) }}";
+    const manageUserUrl = "{{ route('fourthAdmin', ['user-management', 'table-editor', 'user-table-editor', 'id-from-table']) }}";
 </script>
 
 @endsection

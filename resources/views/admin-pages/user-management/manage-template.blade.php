@@ -56,7 +56,7 @@
 
 @section('scripts')
 <script>
-    const editTemplateURL = "{{ route('fourth', ['user-management', 'table-editor', 'template-table-editor', 'id-from-table']) }}";
+    const editTemplateURL = "{{ route('fourthAdmin', ['user-management', 'table-editor', 'template-table-editor', 'id-from-table']) }}";
 </script>
 @vite(['resources/js/admin-pages/managetemplate.js'])
 @endsection

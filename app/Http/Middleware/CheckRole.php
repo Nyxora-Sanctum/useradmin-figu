@@ -18,7 +18,7 @@ class CheckRole
         $currentPath = $request->path();
 
         // Prevent redirection loop by allowing access to login page
-        if ($currentPath === 'login') {
+        if ($currentPath === 'login' || $currentPath === 'register') {
             return $next($request);
         }
 
@@ -31,11 +31,11 @@ class CheckRole
         $apiEndpoint = env('VITE_DATABASE_ENDPOINT') . '/api/auth/check';
 
         // Retrieve Bearer token from HttpOnly cookie
-        $token = $request->cookie('token');
+        $token = $request->cookie('bearer_token');
 
         if (empty($token)) {
             Log::warning('Unauthorized access attempt. No token provided.');
-            return Redirect::to('/login');
+            return redirect()->route('login'); // ✅ Redirect using named route
         }
 
         try {
@@ -52,26 +52,25 @@ class CheckRole
 
             if ($response->getStatusCode() !== 200 || (isset($data['message']) && $data['message'] === 'Unauthenticated.')) {
                 Log::warning('User is unauthenticated.');
-                return Redirect::to('/login');
+                return redirect()->route('login'); // ✅ Redirect using named route
             }
 
             if (!isset($data['user'])) {
                 Log::warning('No user data found in response.');
-                return Redirect::to('/login');
+                return redirect()->route('login'); // ✅ Redirect using named route
             }
 
             $request->merge(['authUser' => $data['user']]);
 
             if ($role && $role !== 'guest' && $data['user']['role'] !== $role) {
                 Log::warning("User does not have required role: {$role}");
-                return Redirect::to('/login');
+                return redirect()->route('login'); // ✅ Redirect using named route
             }
         } catch (\Exception $e) {
             Log::error('Error in CheckRole middleware: ' . $e->getMessage());
-            return Redirect::to('/login');
+            return redirect()->route('login'); // ✅ Redirect using named route
         }
 
         return $next($request);
     }
-
 }
