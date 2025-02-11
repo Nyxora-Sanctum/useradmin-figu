@@ -6,12 +6,6 @@ use App\Http\Middleware\CheckRole;
 use App\Http\Controllers\Auth\AuthController;
 
 // ✅ Do NOT apply middleware to login route!
-Route::get('/', [RoutingController::class, 'index'])->name('root');
-Route::get('/login', [RoutingController::class, 'login'])->name('login')->middleware(CheckRole::class . ':guest');
-Route::post('/login', [AuthController::class, 'login'])->name('login')->middleware(CheckRole::class . ':guest');
-Route::get('/register', [RoutingController::class, 'register'])->name('register')->middleware(CheckRole::class . ':guest');
-Route::post('/register', [AuthController::class, 'register'])->name('register')->middleware(CheckRole::class . ':guest');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // ✅ Group admin routes inside middleware
 Route::middleware([CheckRole::class . ':admin'])->group(function () {
@@ -30,6 +24,12 @@ Route::middleware([CheckRole::class . ':user'])->group(function () {
     Route::get('{first}/{second}/{third}/{id}', [RoutingController::class, 'fourthLevel'])->name('fourth');
 });
 
+Route::get('/', [RoutingController::class, 'index'])->name('root');
+Route::get('/login', [RoutingController::class, 'login'])->name('login')->middleware(CheckRole::class . ':guest');
+Route::post('/login', [AuthController::class, 'login'])->name('login')->middleware(CheckRole::class . ':guest');
+Route::get('/register', [RoutingController::class, 'register'])->name('register')->middleware(CheckRole::class . ':guest');
+Route::post('/register', [AuthController::class, 'register'])->name('register')->middleware(CheckRole::class . ':guest');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Route::get('', [RoutingController::class, 'index'])->name('root');
 
 
