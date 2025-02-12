@@ -10,30 +10,33 @@
     <title> FIGURER </title>
 
     <!--=====FAV ICON=======-->
-    <link rel="shortcut icon" href="resources/views/user-pages/public/frontend/assets/images/logo/fav-logo.png">
+    <link rel="shortcut icon" href="{{ asset('public/images/logo/fav-logo.png') }}">
+
 
     <!--=====CSS=======-->
     @yield('css')
 
-    @vite([
-       'resources/views/user-pages/public/frontend/assets/css/plugins/bootstrap.min.css',
-       'resources/views/user-pages/public/frontend/assets/css/plugins/swiper.bundle.css',
-       'resources/views/user-pages/public/frontend/assets/css/plugins/fontawesome.css',
-       'resources/views/user-pages/public/frontend/assets/css/plugins/mobile.css',
-       'resources/views/user-pages/public/frontend/assets/css/plugins/magnific-popup.css',
-       'resources/views/user-pages/public/frontend/assets/css/plugins/slick-slider.css',
-       'resources/views/user-pages/public/frontend/assets/css/plugins/owlcarousel.min.css',
-       'resources/views/user-pages/public/frontend/assets/css/plugins/aos.css',
-       'resources/views/user-pages/public/frontend/assets/css/typography.css',
-       'resources/views/user-pages/public/frontend/assets/css/master.css'
-    ])
+    @vite(
+       'resources/views/user-pages/public-user/css/plugins/bootstrap.min.css',
+     'resources\views\user-pages\public-user\css\plugins\swiper.bundle.css',
+     'resources\views\user-pages\public-user\css\plugins\fontawesome.css',
+     'resources\views\user-pages\public-user\css\plugins\mobile.css',
+     'resources\views\user-pages\public-user\css\plugins\magnific-popup.css',
+     'resources\views\user-pages\public-user\css\plugins\slick-slider.css',
+     'resources\views\user-pages\public-user\css\plugins\owlcarousel.min.css',
+     'resources\views\user-pages\public-user\css\plugins\aos.css',
+     'resources\views\user-pages\public-user\css\typography.css',
+     'resources\views\user-pages\public-user\css\master.css'
+    )
 
     <!--=====JQUERY=======-->
-    @vite(['resources/user-pages/public/frontend/assets/js/plugins/jquery-3-6-0.min.js'])
+
+    @vite([
+        'resources\views\user-pages\public-user\js\plugins\jquery-3-6-0.min.js',
+        'resources\views\user-pages\public-user\js\plugins\swiper.bundle.js' 
+    ])
+
 </head>
-
-    @vite(['resources/user-pages/public/frontend/assets/js/plugins/swiper-bundle.min.js'])
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var swiper = new Swiper(".mySwiper", {
@@ -45,8 +48,6 @@
         });
     });
 </script>
-
-
 <body>
     <!--===== PRELOADER STARTS =======-->
     <div id="preloader">
@@ -72,8 +73,8 @@
                     <div class="col-lg-12">
                         <div class="header-elements">
                             <div class="site-logo">
-                                <a href="index.html"><img src="resources/views/user-pages/public/frontend/assets/images/logo/logo1.png"
-                                        alt=""></a>
+                                <a href="{{ url('/index') }}"><img src="{{ asset('images/logo/logo1.png') }}"
+                                        alt="">
                             </div>
                             <div class="main-menu">
                                 <ul>
@@ -99,7 +100,8 @@
             <div class="col-12">
                 <div class="mobile-header-elements">
                     <div class="mobile-logo">
-                        <a href="index.html"><img src="resources/views/user-pages/public/frontend/assets/images/logo/logo1.png" alt=""></a>
+                        <a href="{{ url('/index') }}"><img src=" {{ asset('assets/images/logo/logo1.png') }}"
+                                alt=""></a>
                     </div>
                     <div class="mobile-nav-icon dots-menu">
                         <i class="fa-solid fa-bars"></i>
@@ -112,7 +114,7 @@
     <div class="mobile-sidebar mobile-sidebar2">
         <div class="logosicon-area">
             <div class="logos">
-                <img src="resources/views/user-pages/public/frontend/assets/images/logo/logo1.png" alt="">
+                <img src=" {{ asset('assets/images/logo/logo1.png') }}" alt="">
             </div>
             <div class="menu-close">
                 <i class="fa-solid fa-xmark"></i>
@@ -169,16 +171,14 @@
                                 <ul>
                                     <li>
                                         <a data-bs-toggle="tooltip" title="Linked in" href="#"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="1em"
-                                                viewBox="0 0 320 512">
+                                                xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
                                                 <path
                                                     d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
                                             </svg></a>
                                     </li>
                                     <li>
                                         <a data-bs-toggle="tooltip" title="Facebook" href="#"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="1em"
-                                                viewBox="0 0 448 512">
+                                                xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                                                 <path
                                                     d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
                                             </svg></a>
@@ -211,7 +211,7 @@
 
     <!--===== WELCOME STARTS =======-->
     <div class="welcome2-section-area"
-        style="background-image: url(resources/views/user-pages/public/frontend/assets/images/background/header2-bg.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
+        style="background-image: url(public\images\user\background\header2-bg.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7">
@@ -232,11 +232,12 @@
                 <div class="col-lg-5">
                     <div class="header-images-area">
                         <div class="header-elements1 reveal">
-                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/haeder2-img1.png" alt="">
+                            <img src="{{ asset('assets/images/all-images/haeder2-img1.png')}}"
+                                alt="">                    
                         </div>
                         <div class="header-elements2" data-aos="zoom-out" data-aos-duration="1000">
-                            <img src="resources/views/user-pages/public/frontend/assets/images/elements/header2-elements.png" alt=""
-                                class="aniamtion-key-3">
+                            <img src="{{ asset('assets/images/elements/header2-elements.png')}}"
+                                alt="" class="aniamtion-key-3">
                         </div>
                     </div>
                 </div>
@@ -296,7 +297,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="process-images reveal">
-                        <img src="resources/views/user-pages/public/frontend/assets/images/all-images/process-img1.png" alt="">
+                        <img src="{{ asset('assets/images/all-images/process-img1.png')}}"
+                            alt="">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -311,10 +313,10 @@
                     </div>
                 </div>
                 <div class="process-section2">
-                    <img src="resources/views/user-pages/public/frontend/assets/images/elements/process-elements1.png" alt=""
-                        class="process-elements1 d-lg-block d-none">
-                    <img src="resources/views/user-pages/public/frontend/assets/images/elements/process-elements2.png" alt=""
-                        class="process-elements2 d-lg-block d-none">
+                    <img src="{{ asset('assets/images/elements/process-elements1.png')}}"
+                        alt="" class="process-elements1 d-lg-block d-none">
+                    <img src="{{ asset('assets/images/elements/process-elements2.png')}}"
+                        alt="" class="process-elements2 d-lg-block d-none">
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="process-images-content heading4">
@@ -329,7 +331,8 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="process-images reveal">
-                                <img src="resources/views/user-pages/public/frontend/assets/images/all-images/process-img2.png" alt="">
+                                <img src="{{ asset('assets/images/all-images/process-img2.png')}}"
+                                    alt="">
                             </div>
                         </div>
                     </div>
@@ -338,7 +341,8 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="process-images reveal">
-                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/process-img3.png" alt="">
+                            <img src="{{ asset('assets/images/all-images/process-img3.png')}}"
+                                alt="">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -359,7 +363,7 @@
 
     <!--===== SERVICE AREA STARTS =======-->
     <div class="service2-section-area sp3"
-        style="background-image: url(resources/views/user-pages/public/frontend/assets/images/background/footer-bg2.png); background-repeat: no-repeat; background-size: cover;">
+        style="background-image: url(public\images\user\background\footer-bg2.png); background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 m-auto">
@@ -379,7 +383,8 @@
                             <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-duration="1200">
                                 <div class="service2-box-area text-center">
                                     <div class="service2-icon">
-                                        <img src="resources/views/user-pages/public/frontend/assets/images/icons/service2-icon1.svg" alt="">
+                                        <img src="{{ asset('assets/images/icons/service2-icon1.svg')}}"
+                                            alt="">
                                     </div>
                                     <div class="service2-content">
                                         <a href="features.html">Professional CV in Minutes</a>
@@ -394,7 +399,8 @@
                             <div class="col-lg-4 col-md-6" data-aos="fade-down" data-aos-duration="1200">
                                 <div class="service2-box-area text-center">
                                     <div class="service2-icon1">
-                                        <img src="resources/views/user-pages/public/frontend/assets/images/icons/service2-icon2.svg" alt="">
+                                        <img src="{{ asset('assets/images/icons/service2-icon2.svg')}}"
+                                            alt="">
                                     </div>
                                     <div class="service2-content">
                                         <a href="features.html">Modern & ATS-Friendly Template</a>
@@ -409,7 +415,8 @@
                             <div class="col-lg-4 col-md-6" data-aos="fade-left" data-aos-duration="1200">
                                 <div class="service2-box-area text-center">
                                     <div class="service2-icon2">
-                                        <img src="resources/views/user-pages/public/frontend/assets/images/icons/service2-icon3.svg" alt="">
+                                        <img src="{{  asset('assets/images/icons/service2-icon3.svg')}}"
+                                            alt="">z
                                     </div>
                                     <div class="service2-content">
                                         <a href="features.html">Access Anytime & Anywhere</a>
@@ -463,56 +470,56 @@
                                     aria-labelledby="v-pills-all-tab">
                                     <div class="tab-carousel-section owl-carousel">
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img1.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img1.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img2.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img2.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img3.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img3.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img4.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img4.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img1.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img1.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img2.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img2.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img3.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img3.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img4.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img4.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
@@ -524,56 +531,56 @@
                                     aria-labelledby="v-pills-Free-tab">
                                     <div class="tab-carousel-section owl-carousel">
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img1.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img1.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img2.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img2.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img3.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img3.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img4.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img4.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img1.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img1.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img2.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img2.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img3.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img3.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img4.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img4.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
@@ -585,56 +592,56 @@
                                     aria-labelledby="v-pills-Premium-tab">
                                     <div class="tab-carousel-section owl-carousel">
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img1.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img1.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img2.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img2.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img3.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img3.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img4.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img4.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img1.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img1.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img2.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img2.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img3.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img3.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="resources/views/user-pages/public/frontend/assets/images/all-images/templete-img4.png"
+                                            <img src="{{ asset('assets/images/all-images/templete-img4.png')}}"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
@@ -652,14 +659,15 @@
     <!--===== TEMPLETE AREA ENDS =======-->
     <!--===== FOOTER AREA STARTS =======-->
     <div class="footer2-section-area"
-        style="background-image: url(resources/views/user-pages/public/frontend/assets/images/background/bg1.png); background-repeat: no-repeat; background-size: cover; background-position: center;">
+        style="background-image: url(public\images\user\background\bg1.png); background-repeat: no-repeat; background-size: cover; background-position: center;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 m-auto">
                     <div class="footer-header heading2 text-center sp8">
                         <h2 data-aos="fade-up" data-aos-duration="1000">Figurer CV AI</h2>
                         <span data-aos="fade-up" data-aos-duration="1200">
-                            <img src="resources/views/user-pages/public/frontend/assets/images/icons/star-icon1.svg" alt="">Start now and
+                            <img src="{{ asset('assets/images/icons/star-icon1.svg')}}"
+                                alt="">Start now and
                             achieve your dream career!</span>
                         <div class="div text-center" data-aos="fade-up" data-aos-duration="1400">
                             <a href="contact.html" class="header-btn2">Get Started Now </a>
@@ -671,7 +679,8 @@
                         <div class="row">
                             <div class="col-lg-2 col-md-6 col-12">
                                 <div class="footer-auhtor-area">
-                                    <img src="resources/views/user-pages/public/frontend/assets/images/logo/logo2.png" alt="">
+                                    <img src="{{ asset('assets/images/logo/logo2.png')}}"
+                                        alt="">
                                 </div>
                             </div>
 
@@ -723,23 +732,19 @@
     <!--===== FOOTER ENDS =======-->
 
     <!--=====JS=======-->
-    @vite([
-       'resources/views/user-pages/public/frontend/assets/js/plugins/bootstrap.min.js',
-       'resources/views/user-pages/public/frontend/assets/js/plugins/swiper.bundle.js',
-       'resources/views/user-pages/public/frontend/assets/js/plugins/mobilemenu.js',
-       'resources/views/user-pages/public/frontend/assets/js/plugins/slick-slider.js',
-       'resources/views/user-pages/public/frontend/assets/js/plugins/owlcarousel.min.js',
-       'resources/views/user-pages/public/frontend/assets/js/plugins/counter.js',
-       'resources/views/user-pages/public/frontend/assets/js/plugins/waypoints.js',
-       'resources/views/user-pages/public/frontend/assets/js/plugins/aos.js',
-       'resources/views/user-pages/public/frontend/assets/js/plugins/gsap.min.js',
-       'resources/views/user-pages/public/frontend/assets/js/plugins/magnific-popup.js',
-       'resources/views/user-pages/public/frontend/assets/js/plugins/ScrollTrigger.min.js',
-       'resources/views/user-pages/public/frontend/assets/js/main.js'
-    ])
+
+    @vite(
+        'resources\views\user-pages\public-user\js\plugins\bootstrap.min.js', 
+        'resources\views\user-pages\public-user\js\plugins\mobilemenu.js',
+        'resources\views\user-pages\public-user\js\plugins\owlcarousel.min.js',
+        'resources\views\user-pages\public-user\js\plugins\counter.js',
+        'resources\views\user-pages\public-user\js\plugins\waypoints.js', 
+        'resources\views\user-pages\public-user\js\plugins\aos.js', 
+        'resources\views\user-pages\public-user\js\plugins\magnific-popup.js', 
+        'resources\views\user-pages\public-user\js\plugins\ScrollTrigger.min.js', 
+        'resources\views\user-pages\public-user\js\main.js'
+    )
 
 </body>
 
 </html>
-
-

@@ -10,22 +10,26 @@
     <title>Figurer || Log In</title>
 
     <!--=====FAV ICON=======-->
-    <link rel="shortcut icon" href="frontend/assets/images/logo/fav-logo.png">
+    <img src= "{{ asset('resources/views/user-pages/public/frontend/assets/images/logo/fav-logo.png') }}" alt="logo">
 
     <!--=====CSS=======-->
-    <link rel="stylesheet" href="frontend/assets/css/plugins/bootstrap.min.css">
-    <link rel="stylesheet" href="frontend/assets/css/plugins/swiper.bundle.css">
-    <link rel="stylesheet" href="frontend/assets/css/plugins/fontawesome.css">
-    <link rel="stylesheet" href="frontend/assets/css/plugins/mobile.css">
-    <link rel="stylesheet" href="frontend/assets/css/plugins/magnific-popup.css">
-    <link rel="stylesheet" href="frontend/assets/css/plugins/slick-slider.css">
-    <link rel="stylesheet" href="frontend/assets/css/plugins/owlcarousel.min.css">
-    <link rel="stylesheet" href="frontend/assets/css/plugins/aos.css">
-    <link rel="stylesheet" href="frontend/assets/css/typography.css">
-    <link rel="stylesheet" href="frontend/assets/css/master.css">
+    @yield('css')
+
+    @vite([
+       'resources/views/user-pages/public/frontend/assets/css/plugins/bootstrap.min.css',
+       'resources/views/user-pages/public/frontend/assets/css/plugins/swiper.bundle.css',
+       'resources/views/user-pages/public/frontend/assets/css/plugins/fontawesome.css',
+       'resources/views/user-pages/public/frontend/assets/css/plugins/mobile.css',
+       'resources/views/user-pages/public/frontend/assets/css/plugins/magnific-popup.css',
+       'resources/views/user-pages/public/frontend/assets/css/plugins/slick-slider.css',
+       'resources/views/user-pages/public/frontend/assets/css/plugins/owlcarousel.min.css',
+       'resources/views/user-pages/public/frontend/assets/css/plugins/aos.css',
+       'resources/views/user-pages/public/frontend/assets/css/typography.css',
+       'resources/views/user-pages/public/frontend/assets/css/master.css'
+    ])
 
     <!--=====JQUERY=======-->
-    <script src="frontend/assets/js/plugins/jquery-3-6-0.min.js"></script>
+    @vite(['resources/user-pages/public/frontend/assets/js/plugins/jquery-3-6-0.min.js'])
 </head>
 
 <body>
@@ -51,7 +55,7 @@
             <div class="col-12">
                 <div class="mobile-header-elements">
                     <div class="mobile-logo">
-                        <a href="index.html"><img src="frontend/assets/images/logo/logo1.png" alt=""></a>
+                        <a href="index.html"><img src="resources/views/user-pages/public/frontend/assets/images/logo/logo1.png" alt=""></a>
                     </div>
                     <div class="mobile-nav-icon dots-menu">
                         <i class="fa-solid fa-bars"></i>
@@ -64,7 +68,7 @@
     <div class="mobile-sidebar mobile-sidebar2">
         <div class="logosicon-area">
             <div class="logos">
-                <img src="frontend/assets/images/logo/logo1.png" alt="">
+                <img src="'resources/views/user-pages/public/frontend/assets/images/logo/logo1.png" alt="">
             </div>
             <div class="menu-close">
                 <i class="fa-solid fa-xmark"></i>
@@ -163,12 +167,12 @@
 
     <!--===== WELCOME STARTS =======-->
     <div class="about-welcome-section-area login"
-        style="background-image: url(frontend/assets/images/background/emailbg.png); background-repeat: no-repeat; background-size: cover;">
+        style="background-image: url('resources/views/user-pages/public/frontend/assets/images/background/emailbg.png); background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 m-auto">
                     <div class="about-welcome-header text-center heading3">
-                        <a href="index.html"><img src="frontend/assets/images/logo/logo4.png" alt=""
+                        <a href="index.html"><img src="'resources/views/user-pages/public/frontend/assets/images/logo/logo4.png" alt=""
                                 class="logo4"></a>
                         <div class="space16"></div>
                         <a href="{{ url('/index') }}">Home <i class="fa-solid fa-angle-right"></i> <span>Login</span></a>
@@ -192,7 +196,7 @@
                         </div>
                         <div class="space32"></div>
                         <div class="input-area">
-                            <a href="signup.html" class="header-btn2">Log In</a>
+                            <a href="{{ url('/index') }}"class="header-btn2">Log In</a>
                         </div>
                         <div class="space32"></div>
                         <div class="sign-text">
@@ -210,18 +214,20 @@
     <!--===== WELCOME ENDS =======-->
 
     <!--=====JS=======-->
-    <script src="frontend/assets/js/plugins/bootstrap.min.js"></script>
-    <script src="frontend/assets/js/plugins/swiper.bundle.js"></script>
-    <script src="frontend/assets/js/plugins/mobilemenu.js"></script>
-    <script src="frontend/assets/js/plugins/slick-slider.js"></script>
-    <script src="frontend/assets/js/plugins/owlcarousel.min.js"></script>
-    <script src="frontend/assets/js/plugins/counter.js"></script>
-    <script src="frontend/assets/js/plugins/waypoints.js"></script>
-    <script src="frontend/assets/js/plugins/aos.js"></script>
-    <script src="frontend/assets/js/plugins/gsap.min.js"></script>
-    <script src="frontend/assets/js/plugins/magnific-popup.js"></script>
-    <script src="frontend/assets/js/plugins/ScrollTrigger.min.js"></script>
-    <script src="frontend/assets/js/main.js"></script>
+    @vite([
+       'resources/views/user-pages/public/frontend/assets/js/plugins/bootstrap.min.js',
+       'resources/views/user-pages/public/frontend/assets/js/plugins/swiper.bundle.js',
+       'resources/views/user-pages/public/frontend/assets/js/plugins/mobilemenu.js',
+       'resources/views/user-pages/public/frontend/assets/js/plugins/slick-slider.js',
+       'resources/views/user-pages/public/frontend/assets/js/plugins/owlcarousel.min.js',
+       'resources/views/user-pages/public/frontend/assets/js/plugins/counter.js',
+       'resources/views/user-pages/public/frontend/assets/js/plugins/waypoints.js',
+       'resources/views/user-pages/public/frontend/assets/js/plugins/aos.js',
+       'resources/views/user-pages/public/frontend/assets/js/plugins/gsap.min.js',
+       'resources/views/user-pages/public/frontend/assets/js/plugins/magnific-popup.js',
+       'resources/views/user-pages/public/frontend/assets/js/plugins/ScrollTrigger.min.js',
+       'resources/views/user-pages/public/frontend/assets/js/main.js'
+    ])
 </body>
 
 </html>

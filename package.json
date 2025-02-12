@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.3",
+    "aos": "^2.3.4",
     "apexcharts": "^3.44.2",
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
