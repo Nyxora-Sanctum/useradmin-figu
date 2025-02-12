@@ -224,7 +224,7 @@
                         <p data-aos="fade-up" data-aos-duration="1000">"Welcome to Figurer AI - The Smart Platform for
                             Creating Professional CV.</p>
                         <div data-aos="fade-up" data-aos-duration="1200">
-                            <a href="contact.html" class="header-btn2">Get Started </a>
+                            <a href="#" class="header-btn2">Get Started </a>
                             <a href="features.html" class="header-btn3">Explore Features</a>
                         </div>
                     </div>
