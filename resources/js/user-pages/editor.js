@@ -25,8 +25,8 @@ document.getElementById('submit-button').addEventListener('click', (event) => {
         headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': csrfToken,
+            'Authorization': localStorage.getItem('access_token'),
         },
-        credentials: 'include',
         body: JSON.stringify({ prompt: document.querySelector('#editor-form textarea').value }),
     })
     .then(response => response.json())
