@@ -74,7 +74,7 @@
                     <div class="col-lg-12">
                         <div class="header-elements">
                             <div class="site-logo">
-                                <a href="{{ url('/index') }}"><img src="public/images/user/logo/logo1.png"
+                                <a href="{{ url('/index') }}"><img src="images/user/logo/logo1.png"
                                         alt="">
                             </div>
                             <div class="main-menu">
@@ -101,7 +101,7 @@
             <div class="col-12">
                 <div class="mobile-header-elements">
                     <div class="mobile-logo">
-                        <a href="{{ url('/index') }}"><img src=" public/images/user/logo/logo1.png"
+                        <a href="{{ url('/index') }}"><img src="images/user/logo/logo1.png"
                                 alt=""></a>
                     </div>
                     <div class="mobile-nav-icon dots-menu">
@@ -115,7 +115,7 @@
     <div class="mobile-sidebar mobile-sidebar2">
         <div class="logosicon-area">
             <div class="logos">
-                <img src=" {{ asset('public\images\user\logo\logo1.png') }}" alt="">
+                <img src="images/user/logo/logo1.png" alt="">
             </div>
             <div class="menu-close">
                 <i class="fa-solid fa-xmark"></i>
