@@ -13,24 +13,32 @@ class AuthController extends Controller
     public function loginView(Request $request)
     {
         return view('login');
-
     }
 
-    public function registerView(Request $request){
+    public function registerView(Request $request)
+    {
         return view('register');
     }
 
     public function login(Request $request)
     {
+        // Perform login request
         $response = Http::post(env('VITE_DATABASE_ENDPOINT') . '/api/auth/login', $request->only('username', 'password'));
 
         if ($response->successful()) {
             $data = $response->json();
+            log::info($data);
 
-            // Store token in cookie (valid for 1 day)
-            Cookie::queue('bearer_token', $data['token'], 60 * 24);
+            // Check if 'access_token' exists in response
+            if (!isset($data['token'])) {
+                return redirect()->route('login')->withErrors(['login' => 'Authentication failed, no token received.']);
+            }
 
-            // Fetch user role after login
+            // Create an HTTP-only cookie for access token
+            $cookie = cookie('bearer_token', $data['token'], 60, '/', '127.0.0.1', true, true);
+            Cookie::queue($cookie);
+
+            // Fetch user role after login using the access_token
             $userResponse = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $data['token'],
                 'Accept' => 'application/json',
@@ -41,19 +49,35 @@ class AuthController extends Controller
                 $role = $userData['user']['role'] ?? 'guest';
 
                 log::info('User role: ' . $role);
+
                 // Redirect based on role
                 if ($role === 'admin') {
-                    return redirect()->route('admin-index')->with('success', 'Welcome, Admin!');
+                    return response()->json([
+                        'success' => true,
+                        'bearer_token' => $data['token'],
+                        'role' => $role
+                    ]);
                 } elseif ($role === 'user') {
-                    return redirect()->route('user-index')->with('success', 'Welcome back!');
+                    return response()->json([
+                        'success' => true,
+                        'bearer_token' => $data['token'],
+                        'role' => $role
+                    ]);
                 }
             }
 
-            // If no user data, redirect to login
-            return redirect()->route('login')->withErrors(['login' => 'Authentication failed.']);
+            // If no user data, return an error response
+            return response()->json([
+                'success' => false,
+                'error' => 'Authentication failed.'
+            ]);
         }
 
-        return redirect()->back()->withErrors(['login' => 'Invalid username or password']);
+        // If login fails, return with an error
+        return response()->json([
+            'success' => false,
+            'error' => 'Invalid username or password'
+        ]);
     }
 
     public function register(Request $request)
@@ -65,8 +89,7 @@ class AuthController extends Controller
             return redirect()->route('login')->with('success', 'Registered successfully');
         }
 
-        return redirect()->route('login')->with('success', 'Registered successfully');
-
+        return redirect()->route('login')->with('error', 'Registration failed.');
     }
 
     public function logout(Request $request)
@@ -81,10 +104,9 @@ class AuthController extends Controller
 
         if ($response->successful()) {
             Cookie::queue(Cookie::forget('bearer_token'));
-            return redirect()->route('login')->withErrors(['login' => 'Logout failed. Please try again.']);
+            return redirect()->route('login')->with('success', 'Logged out successfully');
         }
 
         return redirect()->route('login')->withErrors(['login' => 'Logout failed. Please try again.']);
     }
 }
-

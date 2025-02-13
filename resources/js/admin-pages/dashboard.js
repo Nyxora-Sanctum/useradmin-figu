@@ -4,87 +4,57 @@ import jsVectorMap from "jsvectormap/dist/jsvectormap.js";
 import "jsvectormap/dist/maps/world-merc.js";
 import "jsvectormap/dist/maps/world.js";
 
-// Development Purpose
 var usersTotalData, incomesTotalData, ordersTotalData, templateTotalData;
 const endpoint = import.meta.env.VITE_DATABASE_ENDPOINT;
-const loginEndpoint = endpoint + "/api/auth/login";
-var accessToken;
+var accessToken = localStorage.getItem('access_token');
 
-const loginData = {
-    username: "admin",
-    password: "adminpassword",
-};
+// Define the endpoints array with placeholders
+const endpoints = [
+    { url: "/api/admin/data/get/total-users" },
+    { url: "/api/admin/data/get/total-incomes" },
+    { url: "/api/admin/data/get/total-orders" },
+    { url: "/api/admin/data/get/total-templates" }
+];
 
-fetch(loginEndpoint, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify(loginData),
-})
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then((data) => {
-        accessToken = data.token;
-        console.log("Access Token:", accessToken);
-
-        // Store token for later use
-        localStorage.setItem("access_token", accessToken);
-
-        // Define the endpoints array with placeholders
-        const endpoints = [
-            { url: "/api/admin/data/get/total-users" },
-            { url: "/api/admin/data/get/total-incomes" },
-            { url: "/api/admin/data/get/total-orders" },
-            { url: "/api/admin/data/get/total-templates" }
-        ];
-
-        // Make multiple requests using Promise.all
-        Promise.all(
-            endpoints.map(({ url }) => 
-                fetch(`${endpoint}${url}`, {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                })
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-            )
-        )
-        .then((results) => {
-            // Destructure the results and assign the data to variables
-            const [usersData, incomesData, ordersData, templatesData] = results;
-
-            usersTotalData = usersData;
-            incomesTotalData = incomesData;
-            ordersTotalData = ordersData;
-            templateTotalData = templatesData;
-
-            // You now have the entire data returned from each API
-            console.log("Users Data:", usersData);
-            console.log("Incomes Data:", incomesData);
-            console.log("Orders Data:", ordersData);
-            console.log("Templates Data:", templatesData);
-
-            renderChart(); // Call your chart rendering function here
+// Make multiple requests using Promise.all
+Promise.all(
+    endpoints.map(({ url }) => 
+        fetch(`${endpoint}${url}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`,
+            },
         })
-        .catch((error) => {
-            console.error("Error fetching data:", error);
-        });
-    })
-    .catch((error) => {
-        console.error("Login failed:", error);
-    });
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+    )
+)
+.then((results) => {
+    // Destructure the results and assign the data to variables
+    const [usersData, incomesData, ordersData, templatesData] = results;
+
+    usersTotalData = usersData;
+    incomesTotalData = incomesData;
+    ordersTotalData = ordersData;
+    templateTotalData = templatesData;
+
+    // You now have the entire data returned from each API
+    console.log("Users Data:", usersData);
+    console.log("Incomes Data:", incomesData);
+    console.log("Orders Data:", ordersData);
+    console.log("Templates Data:", templatesData);
+
+    renderChart(); // Call your chart rendering function here
+})
+.catch((error) => {
+    console.error("Error fetching data:", error);
+});
+
 
 
     
