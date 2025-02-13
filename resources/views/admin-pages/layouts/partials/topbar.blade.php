@@ -42,17 +42,35 @@
                               <div class="dropdown-divider my-1"></div>
 
                          <a class="dropdown-item text-danger" href="#"
-                              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                              onclick="event.preventDefault(); logout();">
                               <iconify-icon icon="solar:logout-3-outline" class="align-middle me-2 fs-18"></iconify-icon>
                               <span class="align-middle">Logout</span>
                          </a>
 
-                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                              @csrf
-                         </form>
                          </div>
                     </div>
                </div>
           </div>
      </div>
 </header>
+
+<script>
+     logoutRoute = "{{ route('logout') }}"
+     function logout() {
+               // Perform the logout request
+               fetch(logoutRoute, {
+                    method: "GET",
+               })
+                    .then(response => {
+                         if (response.ok) {
+                              // Clear the 'access_token' cookie
+                              localStorage.setItem('access_token', '');
+                              // Refresh the page after logout
+                              window.location.reload();
+                         }
+                    })
+                    .catch(error => {
+                         console.error('Logout failed:', error);
+                    });
+          }
+</script>

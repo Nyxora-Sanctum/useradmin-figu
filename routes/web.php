@@ -11,7 +11,7 @@ Route::get('/login', [RoutingController::class, 'login'])->name('login')->middle
 Route::post('/login', [AuthController::class, 'login'])->name('login')->middleware(CheckRole::class . ':guest');
 Route::get('/register', [RoutingController::class, 'register'])->name('register')->middleware(CheckRole::class . ':guest');
 Route::post('/register', [AuthController::class, 'register'])->name('register')->middleware(CheckRole::class . ':guest');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // ✅ Group admin routes inside middleware
 Route::middleware([CheckRole::class . ':admin'])->group(function () {
@@ -20,14 +20,6 @@ Route::middleware([CheckRole::class . ':admin'])->group(function () {
     Route::get('/admin-pages/{first}/{second}', [RoutingController::class, 'secondLevelAdmin'])->name('secondAdmin');
     Route::get('/admin-pages/{first}/{second}/{third}', [RoutingController::class, 'thirdLevelAdmin'])->name('thirdAdmin');
     Route::get('/admin-pages/{first}/{second}/{third}/{id}', [RoutingController::class, 'fourthLevelAdmin'])->name('fourthAdmin');
-    Route::get('/debug-cookie', function () {
-        $cookie = request()->cookie('bearer_token');
-        Log::info('Retrieved Cookie (bearer_token): ' . ($cookie ?? 'Not Set'));
-
-        return response()->json([
-            'cookie_value' => $cookie ?? 'No Cookie Found'
-        ]);
-    });
 });
 
 Route::middleware([CheckRole::class . ':user'])->group(function () {

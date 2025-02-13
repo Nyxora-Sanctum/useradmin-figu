@@ -43,3 +43,4 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         alert('An error occurred during login.');
     });
 });
+
