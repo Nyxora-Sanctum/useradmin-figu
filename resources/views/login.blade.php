@@ -10,14 +10,31 @@
     <title>Figurer || Log In</title>
 
     <!--=====FAV ICON=======-->
-    <link rel="shortcut icon" href="resources/views/user-pages/public/frontend/assets/images/logo/fav-logo.png">
+    <link rel="shortcut icon" href="{{ asset('public\images\user\logo\fav-logo.png') }}">
 
     <!--=====CSS=======-->
-    @vite(['resources/views/user-pages/public/frontend/assets/css/plugins/bootstrap.min.css', 'resources/views/user-pages/public/frontend/assets/css/plugins/swiper.bundle.css', 'resources/views/user-pages/public/frontend/assets/css/plugins/fontawesome.css', 'resources/views/user-pages/public/frontend/assets/css/plugins/mobile.css', 'resources/views/user-pages/public/frontend/assets/css/plugins/magnific-popup.css', 'resources/views/user-pages/public/frontend/assets/css/plugins/slick-slider.css', 'resources/views/user-pages/public/frontend/assets/css/plugins/owlcarousel.min.css', 'resources/views/user-pages/public/frontend/assets/css/plugins/aos.css', 'resources/views/user-pages/public/frontend/assets/css/typography.css', 'resources/views/user-pages/public/frontend/assets/css/master.css'])
+    @vite([
+            'resources\views\user-pages\public-user\css\plugins\bootstrap.min.css', 
+            'resources\views\user-pages\public-user\css\plugins\swiper.bundle.css', 
+            'resources\views\user-pages\public-user\css\plugins\fontawesome.css', 
+            'resources\views\user-pages\public-user\css\plugins\mobile.css', 
+            'resources\views\user-pages\public-user\css\plugins\magnific-popup.css', 
+            'resources\views\user-pages\public-user\css\plugins\slick-slider.css', 
+            'resources\views\user-pages\public-user\css\plugins\owlcarousel.min.css', 
+            'resources\views\user-pages\public-user\css\plugins\aos.css', 
+            'resources\views\user-pages\public-user\css\typography.css', 
+            'resources\views\user-pages\public-user\css\master.css'
+        ])
 </head>
 
 <!--=====JQUERY=======-->
-<script src="'resources/views/user-pages/public/frontend/assets/js/plugins/jquery-3-6-0.min.js"></script>
+@vite(
+        'resources\views\user-pages\public-user\js\plugins\jquery-3-6-0.min.js',
+        'resources\views\user-pages\public-user\js\plugins\swiper.bundle.js',
+        'resources\views\user-pages\public-user\js\plugins\ScrollTrigger.min.js', 
+        'resources\views\user-pages\public-user\js\plugins\aos.js'
+        
+    )
 </head>
 
 <body>
@@ -43,9 +60,7 @@
             <div class="col-12">
                 <div class="mobile-header-elements">
                     <div class="mobile-logo">
-                        <a href="index.html"><img
-                                src="'resources/views/user-pages/public/frontend/assets/images/logo/logo1.png"
-                                alt=""></a>
+                        <a href="index.html"><img src="{{ asset('images/user/logo/logo1.png') }}" alt="Logo 1"></a>
                     </div>
                     <div class="mobile-nav-icon dots-menu">
                         <i class="fa-solid fa-bars"></i>
@@ -58,7 +73,7 @@
     <div class="mobile-sidebar mobile-sidebar2">
         <div class="logosicon-area">
             <div class="logos">
-                <img src="'resources/views/user-pages/public/frontend/assets/images/logo/logo1.png" alt="">
+                <img src="{{ asset('images/user/logo/logo1.png') }}" alt="Logo 1">
             </div>
             <div class="menu-close">
                 <i class="fa-solid fa-xmark"></i>
@@ -153,14 +168,12 @@
 
     <!--===== WELCOME STARTS =======-->
     <div class="about-welcome-section-area login"
-        style="background-image: url({{ asset('resources/views/user-pages/public/frontend/assets/images/background/emailbg.png') }}); background-repeat: no-repeat; background-size: cover;">
+        style="background-image: url({{ asset('public\images\user\background\emailbg.png') }}); background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 m-auto">
                     <div class="about-welcome-header text-center heading3">
-                        <a href="{{ url('/') }}"><img
-                                src="{{ asset('resources/views/user-pages/public/frontend/assets/images/logo/logo4.png') }}"
-                                alt="" class="logo4"></a>
+                        <a href="{{ url('/') }}"><img<img src="{{ asset('images/user/logo/logo4.png') }}" alt="Logo 4"></a>
                         <div class="space16"></div>
                         <a href="{{ url('/index') }}">Home <i class="fa-solid fa-angle-right"></i>
                             <span>Login</span></a>
@@ -214,19 +227,13 @@
 
     <!--=====JS=======-->
     @vite([
-        'resources/views/user-pages/public/frontend/assets/js/plugins/jquery-3-6-0.min.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/bootstrap.min.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/swiper.bundle.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/mobilemenu.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/slick-slider.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/owlcarousel.min.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/counter.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/waypoints.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/aos.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/gsap.min.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/magnific-popup.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/ScrollTrigger.min.js',
-        'resources/views/user-pages/public/frontend/assets/js/main.js',
+        'resources\views\user-pages\public-user\js\plugins\bootstrap.min.js', 
+        'resources\views\user-pages\public-user\js\plugins\mobilemenu.js', 
+        'resources\views\user-pages\public-user\js\plugins\owlcarousel.min.js', 
+        'resources\views\user-pages\public-user\js\plugins\counter.js', 
+        'resources\views\user-pages\public-user\js\plugins\waypoints.js',  
+        'resources\views\user-pages\public-user\js\plugins\magnific-popup.js', 
+        'resources\views\user-pages\public-user\js\main.js'
     ])
 </body>
 
