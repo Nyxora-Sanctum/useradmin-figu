@@ -101,7 +101,11 @@
             <div class="col-12">
                 <div class="mobile-header-elements">
                     <div class="mobile-logo">
+<<<<<<< HEAD
                         <a href="{{ url('/index') }}"><img src=" images/user/logo/logo1.png"
+=======
+                        <a href="{{ url('/index') }}"><img src="images/user/logo/logo1.png"
+>>>>>>> 7475639358479bb138756dde76ec81ba8a0ca993
                                 alt=""></a>
                     </div>
                     <div class="mobile-nav-icon dots-menu">
@@ -115,7 +119,11 @@
     <div class="mobile-sidebar mobile-sidebar2">
         <div class="logosicon-area">
             <div class="logos">
+<<<<<<< HEAD
                 <img src=" images\user\logo\logo1.png" alt="">
+=======
+                <img src="images/user/logo/logo1.png" alt="">
+>>>>>>> 7475639358479bb138756dde76ec81ba8a0ca993
             </div>
             <div class="menu-close">
                 <i class="fa-solid fa-xmark"></i>
