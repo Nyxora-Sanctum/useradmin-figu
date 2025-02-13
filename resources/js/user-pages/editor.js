@@ -4,18 +4,29 @@ console.log('Editor script loaded!');
 
 const form = document.getElementById('editor-form');
 const endpoint = import.meta.env.VITE_DATABASE_ENDPOINT;
-const accessToken = localStorage.getItem('access_token');
-console.log(endpoint, accessToken);
+//const accessToken = localStorage.getItem('access_token');
 
 document.getElementById('submit-button').addEventListener('click', (event) => {
     event.preventDefault(); // Prevent form submission
+    const csrfTokenElement = document.querySelector('meta[name="csrf-token"]');
 
+    if (!csrfTokenElement) {
+        console.error("CSRF token meta tag not found!");
+        return;
+    }
+
+    var csrfToken = csrfTokenElement.getAttribute('content');
+    console.log("CSRF Token:", csrfToken); // Debugging
+
+
+    console.log("Button Clicked")
     fetch(endpoint + '/api/ai/prompt', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`,
+            'X-CSRF-TOKEN': csrfToken,
         },
+        credentials: 'include',
         body: JSON.stringify({ prompt: document.querySelector('#editor-form textarea').value }),
     })
     .then(response => response.json())

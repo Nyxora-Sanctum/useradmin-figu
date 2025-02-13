@@ -20,6 +20,14 @@ Route::middleware([CheckRole::class . ':admin'])->group(function () {
     Route::get('/admin-pages/{first}/{second}', [RoutingController::class, 'secondLevelAdmin'])->name('secondAdmin');
     Route::get('/admin-pages/{first}/{second}/{third}', [RoutingController::class, 'thirdLevelAdmin'])->name('thirdAdmin');
     Route::get('/admin-pages/{first}/{second}/{third}/{id}', [RoutingController::class, 'fourthLevelAdmin'])->name('fourthAdmin');
+    Route::get('/debug-cookie', function () {
+        $cookie = request()->cookie('bearer_token');
+        Log::info('Retrieved Cookie (bearer_token): ' . ($cookie ?? 'Not Set'));
+
+        return response()->json([
+            'cookie_value' => $cookie ?? 'No Cookie Found'
+        ]);
+    });
 });
 
 Route::middleware([CheckRole::class . ':user'])->group(function () {
@@ -29,3 +37,4 @@ Route::middleware([CheckRole::class . ':user'])->group(function () {
     Route::get('{first}/{second}/{third}', [RoutingController::class, 'thirdLevel'])->name('third');
     Route::get('{first}/{second}/{third}/{id}', [RoutingController::class, 'fourthLevel'])->name('fourth');
 });
+

@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
@@ -151,6 +152,7 @@
     </div>
     <!--===== MOBILE HEADER STARTS =======-->
 
+
     <!--===== WELCOME STARTS =======-->
     <div class="about-welcome-section-area login"
         style="background-image: url({{ asset('resources/views/user-pages/public/frontend/assets/images/background/emailbg.png') }}); background-repeat: no-repeat; background-size: cover;">
@@ -167,7 +169,7 @@
                     </div>
                     <div class="space50"></div>
                     <div class="login-boxarea heading6">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form id="loginForm">
                             @csrf <!-- Laravel CSRF Protection -->
                             <h2>Welcome</h2>
                             <div class="space16"></div>
@@ -177,16 +179,14 @@
                             <div class="input-area">
                                 <h4>Username</h4>
                                 <div class="space16"></div>
-                                <input type="text" name="username" placeholder="Enter Your Username"
-                                    id="username" required>
+                                <input type="text" name="username" id="username" placeholder="Enter Your Username" required>
                             </div>
 
                             <div class="space24"></div>
                             <div class="input-area">
                                 <h4>Password</h4>
                                 <div class="space16"></div>
-                                <input type="password" name="password" placeholder="Enter Your Password"
-                                    id="password" required>
+                                <input type="password" name="password" id="password" placeholder="Enter Your Password" required>
                             </div>
 
                             <div class="space32"></div>
@@ -212,22 +212,28 @@
 
     <!--===== WELCOME ENDS =======-->
 
+    <script>
+        const loginRoute = "{{ route("login") }}";
+        const adminDashboard = "{{ route('admin-index') }}";
+        const userDashboard = "{{ route('user-index') }}"
+    </script>
     <!--=====JS=======-->
     @vite([
-        'resources/views/user-pages/public/frontend/assets/js/plugins/jquery-3-6-0.min.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/bootstrap.min.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/swiper.bundle.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/mobilemenu.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/slick-slider.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/owlcarousel.min.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/counter.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/waypoints.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/aos.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/gsap.min.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/magnific-popup.js',
-        'resources/views/user-pages/public/frontend/assets/js/plugins/ScrollTrigger.min.js',
-        'resources/views/user-pages/public/frontend/assets/js/main.js',
-    ])
+    'resources/views/user-pages/public/frontend/assets/js/plugins/jquery-3-6-0.min.js',
+    'resources/views/user-pages/public/frontend/assets/js/plugins/bootstrap.min.js',
+    'resources/views/user-pages/public/frontend/assets/js/plugins/swiper.bundle.js',
+    'resources/views/user-pages/public/frontend/assets/js/plugins/mobilemenu.js',
+    'resources/views/user-pages/public/frontend/assets/js/plugins/slick-slider.js',
+    'resources/views/user-pages/public/frontend/assets/js/plugins/owlcarousel.min.js',
+    'resources/views/user-pages/public/frontend/assets/js/plugins/counter.js',
+    'resources/views/user-pages/public/frontend/assets/js/plugins/waypoints.js',
+    'resources/views/user-pages/public/frontend/assets/js/plugins/aos.js',
+    'resources/views/user-pages/public/frontend/assets/js/plugins/gsap.min.js',
+    'resources/views/user-pages/public/frontend/assets/js/plugins/magnific-popup.js',
+    'resources/views/user-pages/public/frontend/assets/js/plugins/ScrollTrigger.min.js',
+    'resources/views/user-pages/public/frontend/assets/js/main.js',
+    'resources\js\user-pages\auth.js'
+])
 </body>
 
 </html>

@@ -2,10 +2,12 @@
     <div class="main-container">
         <div class="editor">
             <form id="editor-form">
+                @csrf
                 <textarea name="prompt" id="prompt" cols="30" rows="10"></textarea>
-                <button type="button" id="submit-button">Submit</button>
+                <button type="submit" id="submit-button">Submit</button>
             </form>
         </div>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <div class="cv-container"><!-- This is the template file templates, the template file will be inserted here -->
 <div class="cv"
     style="font-family: Arial, sans-serif; width: 210mm; height: 297mm; background-color: cornsilk; position=relative;">
