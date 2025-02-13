@@ -60,7 +60,7 @@
             <div class="col-12">
                 <div class="mobile-header-elements">
                     <div class="mobile-logo">
-                        <a href="index.html"><img src="{{ asset('images/user/logo/logo1.png') }}" alt="Logo 1"></a>
+                        <a href="index.html"><img src="/images/user/logo/logo1.png" alt="Logo 1"></a>
                     </div>
                     <div class="mobile-nav-icon dots-menu">
                         <i class="fa-solid fa-bars"></i>
@@ -73,7 +73,7 @@
     <div class="mobile-sidebar mobile-sidebar2">
         <div class="logosicon-area">
             <div class="logos">
-                <img src="{{ asset('images/user/logo/logo1.png') }}" alt="Logo 1">
+                <img src="/images/user/logo/logo1.png" alt="Logo 1">
             </div>
             <div class="menu-close">
                 <i class="fa-solid fa-xmark"></i>
@@ -168,12 +168,12 @@
 
     <!--===== WELCOME STARTS =======-->
     <div class="about-welcome-section-area login"
-        style="background-image: url({{ asset('public\images\user\background\emailbg.png') }}); background-repeat: no-repeat; background-size: cover;">
+        style="background-image: url('public/images/user/background/emailbg.png'; background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 m-auto">
                     <div class="about-welcome-header text-center heading3">
-                        <a href="{{ url('/') }}"><img<img src="{{ asset('images/user/logo/logo4.png') }}" alt="Logo 4"></a>
+                        <a href="{{ url('/') }}"><img<img src="/images/user/logo/logo4.png" alt="Logo 4"></a>
                         <div class="space16"></div>
                         <a href="{{ url('/index') }}">Home <i class="fa-solid fa-angle-right"></i>
                             <span>Login</span></a>

@@ -74,7 +74,7 @@
                     <div class="col-lg-12">
                         <div class="header-elements">
                             <div class="site-logo">
-                                <a href="{{ url('/index') }}"><img src="{{ asset('public\images\user\logo\logo1.png') }}"
+                                <a href="{{ url('/index') }}"><img src="public/images/user/logo/logo1.png"
                                         alt="">
                             </div>
                             <div class="main-menu">
@@ -101,7 +101,7 @@
             <div class="col-12">
                 <div class="mobile-header-elements">
                     <div class="mobile-logo">
-                        <a href="{{ url('/index') }}"><img src=" {{ asset('public\images\user\logo\logo1.png') }}"
+                        <a href="{{ url('/index') }}"><img src=" public/images/user/logo/logo1.png"
                                 alt=""></a>
                     </div>
                     <div class="mobile-nav-icon dots-menu">
@@ -233,10 +233,10 @@
                 <div class="col-lg-5">
                     <div class="header-images-area">
                         <div class="header-elements1 reveal">
-                            <img src="{{ asset('public\images\user\all-images\haeder2-img1.png') }}" alt="">
+                            <img src="public/images/user/all-images/haeder2-img1.png" alt="">
                         </div>
                         <div class="header-elements2" data-aos="zoom-out" data-aos-duration="1000">
-                            <img src="{{ asset('public\images\user\elements\header2-elements.png') }}" alt=""
+                            <img src="public/images/user/elements/header2-elements.png" alt=""
                                 class="aniamtion-key-3">
                         </div>
                     </div>
@@ -297,7 +297,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="process-images reveal">
-                        <img src="{{ asset('public\images\user\all-images\process-img1.png') }}" alt="">
+                        <img src="public/images/user\all-images/process-img1.png" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -312,9 +312,9 @@
                     </div>
                 </div>
                 <div class="process-section2">
-                    <img src="{{ asset('public\images\user\elements\process-elements1.png') }}" alt=""
+                    <img src="public/images/user/elements/process-elements1.png" alt=""
                         class="process-elements1 d-lg-block d-none">
-                    <img src="{{ asset('public\images\user\elements\process-elements2.png') }}" alt=""
+                    <img src="public/images/user/elements/process-elements2.png" alt=""
                         class="process-elements2 d-lg-block d-none">
                     <div class="row align-items-center">
                         <div class="col-lg-6">
@@ -330,7 +330,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="process-images reveal">
-                                <img src="{{ asset('public\images\user\all-images\process-img2.png') }}" alt="">
+                                <img src="public/images/user/all-images/process-img2.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -339,7 +339,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="process-images reveal">
-                            <img src="{{ asset('public\images\user\all-images\process-img3.png') }}" alt="">
+                            <img src="public/images/user/all-images/process-img3.png" alt="">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -380,7 +380,7 @@
                             <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-duration="1200">
                                 <div class="service2-box-area text-center">
                                     <div class="service2-icon">
-                                        <img src="{{ asset('public\images\user\icons\service2-icon1.svg') }}"
+                                        <img src="public/images/user/icons/service2-icon1.svg"
                                             alt="">
                                     </div>
                                     <div class="service2-content">
@@ -396,7 +396,7 @@
                             <div class="col-lg-4 col-md-6" data-aos="fade-down" data-aos-duration="1200">
                                 <div class="service2-box-area text-center">
                                     <div class="service2-icon1">
-                                        <img src="{{ asset('public\images\user\icons\service2-icon2.svg') }}"
+                                        <img src="public/images/user/icons/service2-icon2.svg"
                                             alt="">
                                     </div>
                                     <div class="service2-content">
@@ -412,7 +412,7 @@
                             <div class="col-lg-4 col-md-6" data-aos="fade-left" data-aos-duration="1200">
                                 <div class="service2-box-area text-center">
                                     <div class="service2-icon2">
-                                        <img src="{{ asset('public\images\user\icons\service2-icon3.svg') }}"
+                                        <img src="public/images/user/icons/service2-icon3.svg"
                                             alt="">z
                                     </div>
                                     <div class="service2-content">
@@ -467,56 +467,56 @@
                                     aria-labelledby="v-pills-all-tab">
                                     <div class="tab-carousel-section owl-carousel">
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img1.png') }}"
+                                            <img src="public/images/user/all-images/templete-img1.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img2.png') }}"
+                                            <img src="public/images/user/all-images/templete-img2.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img3.png') }}"
+                                            <img src="public/images/user/all-images/templete-img3.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img4.png') }}"
+                                            <img src="public/images/user/all-images/templete-img4.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img1.png') }}"
+                                            <img src="public/images/user/all-images/templete-img1.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img2.png') }}"
+                                            <img src="public/images/user/all-images/templete-img2.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img3.png') }}"
+                                            <img src="public/images/user/all-images/templete-img3.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img4.png') }}"
+                                            <img src="public/images/user/all-images/templete-img4.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
@@ -528,56 +528,56 @@
                                     aria-labelledby="v-pills-Free-tab">
                                     <div class="tab-carousel-section owl-carousel">
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img1.png') }}"
+                                            <img src="public/images/user/all-images/templete-img1.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img2.png') }}"
+                                            <img src="public/images/user/all-images/templete-img2.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img3.png') }}"
+                                            <img src="public/images/user/all-images/templete-img3.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img4.png') }}"
+                                            <img src="public/images/user/all-images/templete-img4.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img1.png') }}"
+                                            <img src="public/images/user/all-images/templete-img1.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img2.pngg') }}"
+                                            <img src="public/images/user/all-images\templete-img2.pngg"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img3.png') }}"
+                                            <img src="public/images/user/all-images/templete-img3.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img4.png') }}"
+                                            <img src="public/images/user/all-images/templete-img4.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
@@ -589,56 +589,56 @@
                                     aria-labelledby="v-pills-Premium-tab">
                                     <div class="tab-carousel-section owl-carousel">
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img1.png') }}"
+                                            <img src="public/images/user/all-images/templete-img1.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img2.png') }}"
+                                            <img src="public/images/user/all-images/templete-img2.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img3.png') }}"
+                                            <img src="public/images/user/all-image/templete-img3.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img4.png') }}"
+                                            <img src="public/images/user/all-images/templete-img4.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img1.png') }}"
+                                            <img src="public/images/user/all-images/templete-img1.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img2.png') }}"
+                                            <img src="public/images/user/all-images/templete-img2.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img3.png') }}"
+                                            <img src="public/images/user/all-images/templete-img3.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('public\images\user\all-images\templete-img4.png') }}"
+                                            <img src="public/images/user/all-images/templete-img4.png"
                                                 alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
@@ -663,7 +663,7 @@
                     <div class="footer-header heading2 text-center sp8">
                         <h2 data-aos="fade-up" data-aos-duration="1000">Figurer CV AI</h2>
                         <span data-aos="fade-up" data-aos-duration="1200">
-                            <img src="{{ asset('public\images\user\icons\star-icon1.svg') }}" alt="">Start now and
+                            <img src="public/images/user/icons/star-icon1.svg" alt="">Start now and
                             achieve your dream career!</span>
                         <div class="div text-center" data-aos="fade-up" data-aos-duration="1400">
                             <a href="contact.html" class="header-btn2">Get Started Now </a>
@@ -675,7 +675,7 @@
                         <div class="row">
                             <div class="col-lg-2 col-md-6 col-12">
                                 <div class="footer-auhtor-area">
-                                    <img src="{{ asset('public\images\user\logo\logo2.png') }}" alt="">
+                                    <img src="public/images/user/logo/logo2.png" alt="">
                                 </div>
                             </div>
 
