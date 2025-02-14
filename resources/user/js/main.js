@@ -2,6 +2,8 @@ import AOS from 'aos';
 import Swiper from 'swiper';
 import 'aos/dist/aos.css';
 import 'swiper/css';
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 document.addEventListener("DOMContentLoaded", function() {
     AOS.init();
