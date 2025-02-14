@@ -1,7 +1,7 @@
 import AOS from 'aos';
 import Swiper from 'swiper';
 import 'aos/dist/aos.css';
-import 'swiper/swiper-bundle.min.css';
+import 'swiper/css';
 
 document.addEventListener("DOMContentLoaded", function() {
     AOS.init();
