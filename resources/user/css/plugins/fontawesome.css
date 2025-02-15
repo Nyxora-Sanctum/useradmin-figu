@@ -10190,7 +10190,7 @@
   font-style:normal;
   font-weight:400;
   font-display:block;
-  src:url(../fonts/fa-brands-400.woff2) format("woff2"),url(../fonts/fa-brands-400.ttf) format("truetype")
+  src:url(public\fonts\fa-brands-400.woff2) format("woff2"),url(public/fonts/fa-brands-400.ttf) format("truetype")
 }
 .fa-brands,.fab{
   font-weight:400
@@ -21318,8 +21318,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("/fonts/fa-brands-400.woff2") format("woff2"),
-    url("/fonts/fa-brands-400.ttf") format("truetype");
+  src: url("public/fonts/fa-brands-400.woff2") format("woff2"),
+    url("public/fonts/fa-brands-400.ttf") format("truetype");
 }
 
 @font-face {
@@ -21327,8 +21327,8 @@
   font-style: normal;
   font-weight: 700;
   font-display: block;
-  src: url("/fonts/fa-solid-700.woff2") format("woff2"),
-    url("/fonts/fa-solid-700.ttf") format("truetype");
+  src: url("public/fonts/fa-solid-700.woff2") format("woff2"),
+    url("public/fonts/fa-solid-700.ttf") format("truetype");
 }
 
 /* FontAwesome 5 */
@@ -21336,39 +21336,39 @@
   font-family: "Font Awesome 5 Brands";
   font-display: block;
   font-weight: 400;
-  src: url("/fonts/fa-brands-400.woff2") format("woff2"),
-    url("/fonts/fa-brands-400.ttf") format("truetype");
+  src: url("public/fonts/fa-brands-400.woff2") format("woff2"),
+    url("public/fonts/fa-brands-400.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Font Awesome 5 Pro";
   font-display: block;
   font-weight: 500;
-  src: url("/fonts/fa-solid-500.woff2") format("woff2"),
-    url("/fonts/fa-solid-500.ttf") format("truetype");
+  src: url("public/fonts/fa-solid-500.woff2") format("woff2"),
+    url("public/fonts/fa-solid-500.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Font Awesome 5 Pro";
   font-display: block;
   font-weight: 700;
-  src: url("/fonts/fa-solid-700.woff2") format("woff2"),
-    url("/fonts/fa-solid-700.ttf") format("truetype");
+  src: url("public/fonts/fa-solid-700.woff2") format("woff2"),
+    url("public/fonts/fa-solid-700.ttf") format("truetype");
 }
 
 /* FontAwesome General */
 @font-face {
   font-family: "FontAwesome";
   font-display: block;
-  src: url("/fonts/fa-solid-700.woff2") format("woff2"),
-    url("/fonts/fa-solid-700.ttf") format("truetype");
+  src: url("public/fonts/fa-solid-700.woff2") format("woff2"),
+    url("public/fonts/fa-solid-700.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "FontAwesome";
   font-display: block;
-  src: url("/fonts/fa-brands-400.woff2") format("woff2"),
-    url("/fonts/fa-brands-400.ttf") format("truetype");
+  src: url("public/fonts/fa-brands-400.woff2") format("woff2"),
+    url("public/fonts/fa-brands-400.ttf") format("truetype");
 }
 
 @font-face {
@@ -21376,6 +21376,6 @@
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("/fonts/fa-brands-400.woff2") format("woff2"),
-    url("/fonts/fa-brands-400.ttf") format("truetype");
+  src: url("public/fonts/fa-brands-400.woff2") format("woff2"),
+    url("public/fonts/fa-brands-400.ttf") format("truetype");
 }
