@@ -19,25 +19,23 @@
 
 
     <!--=====JQUERY=======-->
-@vite(
-    'resources/user/js/plugins/jquery-3-6-0.min.js',
-    'resources/user/js/plugins/swiper.bundle.js',
-    'resources/user/js/plugins/ScrollTrigger.min.js',
-    'resources/user/js/plugins/aos.js'
-)
+    @vite(
+        'resources/user/js/plugins/jquery-3-6-0.min.js',
+        'resources/user/js/plugins/swiper.bundle.js',
+    )
 
-<!--===== CSS =======-->
-@vite([
-    'resources/user/css/plugins/bootstrap.min.css',
-    'resources/user/css/plugins/swiper.bundle.css',
-    'resources/user/css/plugins/mobile.css',
-    'resources/user/css/plugins/magnific-popup.css',
-    'resources/user/css/plugins/slick-slider.css',
-    'resources/user/css/plugins/owlcarousel.min.css',
-    'resources/user/css/plugins/aos.css',
-    'resources/user/css/typography.css',
-    'resources/user/css/master.css'
-])
+    <!--===== CSS =======-->
+    @vite([
+        'resources/user/css/plugins/bootstrap.min.css',
+        'resources/user/css/plugins/swiper.bundle.css',
+        'resources/user/css/plugins/mobile.css',
+        'resources/user/css/plugins/magnific-popup.css',
+        'resources/user/css/plugins/slick-slider.css',
+        'resources/user/css/plugins/owlcarousel.min.css',
+        'resources/user/css/plugins/aos.css',
+        'resources/user/css/typography.css',
+        'resources/user/css/master.css'
+    ])
 
 </head>
 
