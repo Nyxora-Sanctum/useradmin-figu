@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--=====TITLE=======-->
     <title>Figurer || Log In</title>
-
+    <script>
+        const adminDashboard = "{{ route('admin-index') }}";
+        const userDashboard = "{{ route('user-index') }}"; 
+    </script>
     <!--=====FAV ICON=======-->
     <link rel="shortcut icon" href="{{ asset('public\images\user\logo\fav-logo.png') }}">
     
@@ -170,75 +173,77 @@
     <!--===== MOBILE HEADER STARTS =======-->
 
     <!--===== WELCOME STARTS =======-->
-    <div class="about-welcome-section-area login"
-        style="background-image: url('public/images/user/background/emailbg.png'; background-repeat: no-repeat; background-size: cover;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 m-auto">
-                    <div class="about-welcome-header text-center heading3">
-                        <a href="{{ url('/') }}"><img<img src="/images/user/logo/logo4.png" alt="Logo 4"></a>
+  <div class="about-welcome-section-area login"
+    style="background-image: url('/images/user/background/emailbg.png'); background-repeat: no-repeat; background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 m-auto">
+                <div class="about-welcome-header text-center heading3">
+                    <a href="{{ url('/') }}">
+                        <img src="/images/user/logo/logo4.png" alt="Logo 4">
+                    </a>
+                    <div class="space16"></div>
+                    <a href="{{ url('/index') }}">Home <i class="fa-solid fa-angle-right"></i> <span>Login</span></a>
+                </div>
+                <div class="space50"></div>
+                <div class="login-boxarea heading6">
+                    <form id="loginForm" method="POST" action="{{ route('login') }}">
+                        @csrf <!-- Laravel CSRF Protection -->
+                        <h2>Welcome</h2>
                         <div class="space16"></div>
-                        <a href="{{ url('/index') }}">Home <i class="fa-solid fa-angle-right"></i>
-                            <span>Login</span></a>
-                    </div>
-                    <div class="space50"></div>
-                    <div class="login-boxarea heading6">
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf <!-- Laravel CSRF Protection -->
-                            <h2>Welcome</h2>
+                        <p>Please fill in your username and password to log in.</p>
+                        <div class="space50"></div>
+
+                        <div class="input-area">
+                            <h4>Username</h4>
                             <div class="space16"></div>
-                            <p>Please fill in your username and password to log in.</p>
-                            <div class="space50"></div>
+                            <input type="text" name="username" placeholder="Enter Your Username" id="username" required>
+                        </div>
 
-                            <div class="input-area">
-                                <h4>Username</h4>
-                                <div class="space16"></div>
-                                <input type="text" name="username" placeholder="Enter Your Username"
-                                    id="username" required>
-                            </div>
+                        <div class="space24"></div>
+                        <div class="input-area">
+                            <h4>Password</h4>
+                            <div class="space16"></div>
+                            <input type="password" name="password" placeholder="Enter Your Password" id="password" required>
+                        </div>
 
-                            <div class="space24"></div>
-                            <div class="input-area">
-                                <h4>Password</h4>
-                                <div class="space16"></div>
-                                <input type="password" name="password" placeholder="Enter Your Password"
-                                    id="password" required>
-                            </div>
+                        <div class="space32"></div>
+                        <div class="input-area">
+                            <button class="header-btn2" type="submit">Log In</button>
+                        </div>
 
-                            <div class="space32"></div>
-                            <div class="input-area">
-                                <button class="header-btn2" type="submit">Log In</button>
-                            </div>
+                        <div class="space32"></div>
+                        <div class="sign-text">
+                            <p>Don’t have an account? <a href="{{ route('register') }}">Register Today.</a></p>
+                            <div class="space16"></div>
+                        </div>
 
-                            <div class="space32"></div>
-                            <div class="sign-text">
-                                <p>Don’t have an account?</p><a href="{{ route('register') }}">Register Today.</a>
-                                <div class="space16"></div>
-                            </div>
-
-                            <div class="sign-text">
-                                <p>Take care of your password!</p>
-                            </div>
-                        </form>
-                    </div>
+                        <div class="sign-text">
+                            <p>Take care of your password!</p>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 
     <!--===== WELCOME ENDS =======-->
 
     <!--=====JS=======-->
-@vite([
-    'resources/user/js/plugins/slick-slider.js',
-    'resources/user/js/plugins/bootstrap.min.js',
-    'resources/user/js/plugins/mobilemenu.js',
-    'resources/user/js/plugins/owlcarousel.min.js',
-    'resources/user/js/plugins/counter.js',
-    'resources/user/js/plugins/waypoints.js',
-    'resources/user/js/plugins/magnific-popup.js',
-    'resources/user/js/main.js'
-])
+    @vite([
+        'resources/js/user-pages/auth.js',
+        'resources/user/js/plugins/slick-slider.js',
+        'resources/user/js/plugins/bootstrap.min.js',
+        'resources/user/js/plugins/mobilemenu.js',
+        'resources/user/js/plugins/owlcarousel.min.js',
+        'resources/user/js/plugins/counter.js',
+        'resources/user/js/plugins/waypoints.js',
+        'resources/user/js/plugins/magnific-popup.js',
+        'resources/user/js/main.js'
+        ])
 </body>
+
 
 </html>
