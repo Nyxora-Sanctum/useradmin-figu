@@ -16,12 +16,13 @@
 
     <!--=====CSS=======-->
 
-    @vite(
-    'resources/user/js/plugins/jquery-3-6-0.min.js',
-    'resources/user/js/plugins/swiper.bundle.js',
-    'resources/user/js/plugins/ScrollTrigger.min.js',
-    'resources/user/js/plugins/aos.js'
-)
+    @vite([
+        'resources/user/js/plugins/jquery-3-6-0.min.js',
+        'resources/user/js/plugins/swiper.bundle.js',
+        'resources/user/js/plugins/ScrollTrigger.min.js',
+        'resources/user/js/plugins/aos.js'
+    ])
+    
        
          <!--===== CSS =======-->
     @vite([
@@ -235,7 +236,7 @@
                             Creating Professional CV.</p>
                         <div data-aos="fade-up" data-aos-duration="1200">
                             <a href="#" class="header-btn2">Get Started </a>
-                            <a href="features.html" class="header-btn3">Explore Features</a>
+                            <a href="{{route('any', 'register')}}" class="header-btn3">Explore Features</a>
                         </div>
                     </div>
                 </div>
