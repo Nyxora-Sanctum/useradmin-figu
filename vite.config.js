@@ -33,7 +33,7 @@ export default defineConfig({
                 "resources/js/pages/maps-spain.js",
                 "resources/js/pages/maps-russia.js",
                 "resources/js/pages/maps-iraq.js",
-                "resources/js/pages/maps-canada.js"
+                "resources/js/pages/maps-canada.js",
 
             ],
             refresh: true,

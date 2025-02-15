@@ -17,23 +17,23 @@
     @yield('css')
 
     @vite([
-        'resources\views\user-pages\public-user\css\plugins\bootstrap.min.css', 
-        'resources\views\user-pages\public-user\css\plugins\swiper.bundle.css', 
-        'resources\views\user-pages\public-user\css\plugins\fontawesome.css', 
-        'resources\views\user-pages\public-user\css\plugins\mobile.css', 
-        'resources\views\user-pages\public-user\css\plugins\magnific-popup.css', 
-        'resources\views\user-pages\public-user\css\plugins\slick-slider.css', 
-        'resources\views\user-pages\public-user\css\plugins\owlcarousel.min.css', 
-        'resources\views\user-pages\public-user\css\plugins\aos.css', 
-        'resources\views\user-pages\public-user\css\typography.css', 
-        'resources\views\user-pages\public-user\css\master.css'
+        'resources\user\css\plugins\bootstrap.min.css', 
+        'resources\user\css\plugins\swiper.bundle.css', 
+        'resources\user\css\plugins\fontawesome.css', 
+        'resources\user\css\plugins\mobile.css', 
+        'resources\user\css\plugins\magnific-popup.css', 
+        'resources\user\css\plugins\slick-slider.css', 
+        'resources\user\css\plugins\owlcarousel.min.css', 
+        'resources\user\css\plugins\aos.css', 
+        'resources\user\css\typography.css', 
+        'resources\user\css\master.css'
     ])
 
     <!--=====JQUERY=======-->
 
     @vite(
-        'resources\views\user-pages\public-user\js\plugins\jquery-3-6-0.min.js', 
-        'resources\views\user-pages\public-user\js\plugins\swiper.bundle.js'
+        'resources\user\js\plugins\jquery-3-6-0.min.js', 
+        'resources\user\js\plugins\swiper.bundle.js'
     )
 
 </head>
@@ -101,12 +101,8 @@
             <div class="col-12">
                 <div class="mobile-header-elements">
                     <div class="mobile-logo">
-<<<<<<< HEAD
-                        <a href="{{ url('/index') }}"><img src=" images/user/logo/logo1.png"
-=======
-                        <a href="{{ url('/index') }}"><img src="images/user/logo/logo1.png"
->>>>>>> 7475639358479bb138756dde76ec81ba8a0ca993
-                                alt=""></a>
+                        <a href="{{ url('/index') }}"><img src=" images/user/logo/logo1.png" alt=""></a>
+                        <a href="{{ url('/index') }}"><img src="images/user/logo/logo1.png" alt=""></a>
                     </div>
                     <div class="mobile-nav-icon dots-menu">
                         <i class="fa-solid fa-bars"></i>
@@ -119,11 +115,8 @@
     <div class="mobile-sidebar mobile-sidebar2">
         <div class="logosicon-area">
             <div class="logos">
-<<<<<<< HEAD
                 <img src=" images\user\logo\logo1.png" alt="">
-=======
                 <img src="images/user/logo/logo1.png" alt="">
->>>>>>> 7475639358479bb138756dde76ec81ba8a0ca993
             </div>
             <div class="menu-close">
                 <i class="fa-solid fa-xmark"></i>
@@ -737,15 +730,15 @@
     <!--=====JS=======-->
 
     @vite([
-        'resources\views\user-pages\public-user\js\plugins\bootstrap.min.js', 
-        'resources\views\user-pages\public-user\js\plugins\mobilemenu.js', 
-        'resources\views\user-pages\public-user\js\plugins\owlcarousel.min.js', 
-        'resources\views\user-pages\public-user\js\plugins\counter.js', 
-        'resources\views\user-pages\public-user\js\plugins\waypoints.js', 
-        'resources\views\user-pages\public-user\js\plugins\aos.js', 
-        'resources\views\user-pages\public-user\js\plugins\magnific-popup.js', 
-        'resources\views\user-pages\public-user\js\plugins\ScrollTrigger.min.js', 
-        'resources\views\user-pages\public-user\js\main.js'
+        'resources\user\js\plugins\bootstrap.min.js', 
+        'resources\user\js\plugins\mobilemenu.js', 
+        'resources\user\js\plugins\owlcarousel.min.js', 
+        'resources\user\js\plugins\counter.js', 
+        'resources\user\js\plugins\waypoints.js', 
+        'resources\user\js\plugins\aos.js', 
+        'resources\user\js\plugins\magnific-popup.js', 
+        'resources\user\js\plugins\ScrollTrigger.min.js', 
+        'resources\user\js\main.js'
     ])
 
 </body>
