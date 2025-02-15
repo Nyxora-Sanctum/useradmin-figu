@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\AuthController;
 
@@ -28,68 +28,48 @@ class RoutingController extends Controller
         return $authController->registerView($request);
     }
 
-    /**
-     * Display a view based on first route param
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private function getView($path, $data = [])
+    {
+        return View::exists($path) ? view($path, $data) : view('404');
+    }
+
     public function root(Request $request, $first)
     {
-        return view('user-pages.' . $first);
+        return $this->getView('user-pages.' . $first);
     }
 
-    /**
-     * second level route
-     */
     public function secondLevel(Request $request, $first, $second)
     {
-        return view('user-pages.' .$first . '.' . $second);
+        return $this->getView('user-pages.' . $first . '.' . $second);
     }
 
-    /**
-     * third level route    
-     */
     public function thirdLevel(Request $request, $first, $second, $third)
     {
-        return view('user-pages.' .$first . '.' . $second . '.' . $third);
+        return $this->getView('user-pages.' . $first . '.' . $second . '.' . $third);
     }
 
-    /**
-     * fourth level route
-     */
     public function fourthLevel(Request $request, $first, $second, $third, $id)
     {
-        // Use the $id parameter to perform operations on the table
-        return view('user-pages.' .$first . '.' . $second . '.' . $third, $id);
+        return $this->getView('user-pages.' . $first . '.' . $second . '.' . $third, ['id' => $id]);
     }
 
     public function rootAdmin(Request $request, $first)
     {
-        return view('admin-pages.'.$first);
+        return $this->getView('admin-pages.' . $first);
     }
 
-    /**
-     * second level route
-     */
     public function secondLevelAdmin(Request $request, $first, $second)
     {
-        return view('admin-pages.' . $first . '.' . $second);
+        return $this->getView('admin-pages.' . $first . '.' . $second);
     }
 
-    /**
-     * third level route
-     */
     public function thirdLevelAdmin(Request $request, $first, $second, $third)
     {
-        return view('admin-pages.' . $first . '.' . $second . '.' . $third);
+        return $this->getView('admin-pages.' . $first . '.' . $second . '.' . $third);
     }
 
-    /**
-     * fourth level route
-     */
     public function fourthLevelAdmin(Request $request, $first, $second, $third, $id)
     {
-        // Use the $id parameter to perform operations on the table
-        return view('admin-pages.' . $first . '.' . $second . '.' . $third, ['id' => $id]);
+        return $this->getView('admin-pages.' . $first . '.' . $second . '.' . $third, ['id' => $id]);
     }
 }

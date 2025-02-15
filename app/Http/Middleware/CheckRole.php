@@ -1,12 +1,13 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use Closure;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
+use Symfony\Component\HttpFoundation\Response;
 
 class CheckRole
 {
@@ -17,26 +18,29 @@ class CheckRole
     {
         $currentPath = $request->path();
 
-        // Prevent redirection loop by allowing access to login page
-        if ($currentPath === 'login' || $currentPath === 'register' || $currentPath === '/') {
+        // Allow unrestricted access to guest pages
+        if (in_array($currentPath, ['/', 'login', 'register'])) {
             return $next($request);
         }
-        log::info('Current path: ' . $currentPath);
 
-        // Enforce "admin" role if route contains "admin-pages"
-        if (str_contains($currentPath, 'admin-pages')) {
+        Log::info('Current path: ' . $currentPath);
+
+        // Determine required role based on URL
+        if (str_starts_with($currentPath, 'admin-pages')) {
             $role = 'admin';
+        } else {
+            $role = 'user';
         }
 
-        // Get API endpoint from environment
+        // API endpoint for authentication check
         $apiEndpoint = env('VITE_DATABASE_ENDPOINT') . '/api/auth/check';
 
-        // Retrieve Bearer token from HttpOnly cookie
+        // Retrieve token from HttpOnly cookie
         $token = $request->cookie('bearer_token');
 
         if (empty($token)) {
             Log::warning('Unauthorized access attempt. No token provided.');
-            return redirect()->route('login'); // ✅ Redirect using named route
+            return redirect()->route('login');
         }
 
         try {
@@ -53,23 +57,30 @@ class CheckRole
 
             if ($response->getStatusCode() !== 200 || (isset($data['message']) && $data['message'] === 'Unauthenticated.')) {
                 Log::warning('User is unauthenticated.');
-                return redirect()->route('login'); // ✅ Redirect using named route
+                return redirect()->route('login');
             }
 
             if (!isset($data['user'])) {
                 Log::warning('No user data found in response.');
-                return redirect()->route('login'); // ✅ Redirect using named route
+                return redirect()->route('login');
             }
 
+            $userRole = $data['user']['role'];
             $request->merge(['authUser' => $data['user']]);
 
-            if ($role && $role !== 'guest' && $data['user']['role'] !== $role) {
-                Log::warning("User does not have required role: {$role}");
-                return redirect()->route('login'); // ✅ Redirect using named route
+            // Role-based redirection logic
+            if ($role === 'admin' && $userRole !== 'admin') {
+                Log::warning('User attempted to access an admin page without proper role.');
+                return redirect()->route('user-index'); // Redirect user to their dashboard
+            }
+
+            if ($role === 'user' && $userRole !== 'user') {
+                Log::warning('Admin attempted to access a user page.');
+                return redirect()->route('admin-index'); // Redirect admin to their dashboard
             }
         } catch (\Exception $e) {
             Log::error('Error in CheckRole middleware: ' . $e->getMessage());
-            return redirect()->route('login'); // ✅ Redirect using named route
+            return redirect()->route('login');
         }
 
         return $next($request);
