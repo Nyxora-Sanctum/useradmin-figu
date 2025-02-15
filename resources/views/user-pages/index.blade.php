@@ -5,36 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <!--=====TITLE=======-->
     <title> FIGURER </title>
 
     <!--=====FAV ICON=======-->
-    <link rel="shortcut icon" href="{{ asset('images\user\logo\fav-logo.png') }}">
+    <link rel="shortcut icon" href="'images\user\logo\fav-logo.png'">
 
 
     <!--=====CSS=======-->
-    @yield('css')
 
-    @vite([
-        'resources\views\user-pages\public-user\css\plugins\bootstrap.min.css', 
-        'resources\views\user-pages\public-user\css\plugins\swiper.bundle.css', 
-        'resources\views\user-pages\public-user\css\plugins\fontawesome.css', 
-        'resources\views\user-pages\public-user\css\plugins\mobile.css', 
-        'resources\views\user-pages\public-user\css\plugins\magnific-popup.css', 
-        'resources\views\user-pages\public-user\css\plugins\slick-slider.css', 
-        'resources\views\user-pages\public-user\css\plugins\owlcarousel.min.css', 
-        'resources\views\user-pages\public-user\css\plugins\aos.css', 
-        'resources\views\user-pages\public-user\css\typography.css', 
-        'resources\views\user-pages\public-user\css\master.css'
-    ])
+@vite(
+    'resources/user/js/plugins/jquery-3-6-0.min.js',
+    'resources/user/js/plugins/swiper.bundle.js',
+    'resources/user/js/plugins/ScrollTrigger.min.js',
+    'resources/user/js/plugins/aos.js'
+)
 
-    <!--=====JQUERY=======-->
-
-    @vite(
-        'resources\views\user-pages\public-user\js\plugins\jquery-3-6-0.min.js', 
-        'resources\views\user-pages\public-user\js\plugins\swiper.bundle.js'
-    )
+<!--===== CSS =======-->
+@vite([
+    'resources/user/css/plugins/bootstrap.min.css',
+    'resources/user/css/plugins/swiper.bundle.css',
+    'resources/user/css/plugins/mobile.css',
+    'resources/user/css/plugins/magnific-popup.css',
+    'resources/user/css/plugins/slick-slider.css',
+    'resources/user/css/plugins/owlcarousel.min.css',
+    'resources/user/css/plugins/aos.css',
+    'resources/user/css/typography.css',
+    'resources/user/css/master.css'
+])
 
 </head>
 <script>
@@ -737,17 +737,15 @@
     <!--=====JS=======-->
 
     @vite([
-        'resources\views\user-pages\public-user\js\plugins\bootstrap.min.js', 
-        'resources\views\user-pages\public-user\js\plugins\mobilemenu.js', 
-        'resources\views\user-pages\public-user\js\plugins\owlcarousel.min.js', 
-        'resources\views\user-pages\public-user\js\plugins\counter.js', 
-        'resources\views\user-pages\public-user\js\plugins\waypoints.js', 
-        'resources\views\user-pages\public-user\js\plugins\aos.js', 
-        'resources\views\user-pages\public-user\js\plugins\magnific-popup.js', 
-        'resources\views\user-pages\public-user\js\plugins\ScrollTrigger.min.js', 
-        'resources\views\user-pages\public-user\js\main.js'
-    ])
-
+    'resources/user/js/plugins/slick-slider.js',
+    'resources/user/js/plugins/bootstrap.min.js',
+    'resources/user/js/plugins/mobilemenu.js',
+    'resources/user/js/plugins/owlcarousel.min.js',
+    'resources/user/js/plugins/counter.js',
+    'resources/user/js/plugins/waypoints.js',
+    'resources/user/js/plugins/magnific-popup.js',
+    'resources/user/js/main.js'
+])
 </body>
 
 </html>
