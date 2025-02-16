@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <!--=====TITLE=======-->
-  <title>Quad || Blog V1</title>
+  <title>Quad || Shop</title>
 
   <!--=====FAV ICON=======-->
-  <link rel="shortcut icon" href="assets/images/logo/fav-logo.png">
+  <link rel="shortcut icon" href="{{ asset('images/user/logo/fav-logo.png') }}">
 
-  <!--=====CSS=======-->
-  <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/plugins/swiper.bundle.css">
-  <link rel="stylesheet" href="assets/css/plugins/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/plugins/mobile.css">
-  <link rel="stylesheet" href="assets/css/plugins/magnific-popup.css">
-  <link rel="stylesheet" href="assets/css/plugins/slick-slider.css">
-  <link rel="stylesheet" href="assets/css/plugins/owlcarousel.min.css">
-  <link rel="stylesheet" href="assets/css/plugins/aos.css">
-  <link rel="stylesheet" href="assets/css/typography.css">
-  <link rel="stylesheet" href="assets/css/master.css">
+  {{-- CSS Plugins --}}
+  @vite([
+    'resources/user/css/plugins/bootstrap.min.css',
+    'resources/user/css/plugins/swiper.bundle.css',
+    'resources/user/css/plugins/mobile.css',
+    'resources/user/css/plugins/magnific-popup.css',
+    'resources/user/css/plugins/slick-slider.css',
+    'resources/user/css/plugins/owlcarousel.min.css', 
+    'resources/user/css/plugins/aos.css',
+    'resources/user/css/typography.css',
+    'resources/user/css/master.css'
+  ])
 
-  <!--=====JQUERY=======-->
-  <script src="assets/js/plugins/jquery-3-6-0.min.js"></script>
+  {{-- JS Plugins --}}
+  @vite([
+    'resources/user/js/plugins/jquery-3-6-0.min.js',
+    'resources/user/js/plugins/swiper.bundle.js',
+    'resources/user/js/plugins/ScrollTrigger.min.js',
+    'resources/user/js/plugins/aos.js'
+])
+
 </head>
-
 <body>
   <!--===== PRELOADER STARTS =======-->
   <div id="preloader">
@@ -36,8 +41,8 @@
       <span></span>
     </div>
   </div>
- <!--===== PRELOADER ENDS =======-->
- 
+  <!--===== PRELOADER ENDS =======-->
+
   <!--===== PAGE PROGRESS START=======-->
   <div class="paginacontainer">
     <div class="progress-wrap">
@@ -46,7 +51,13 @@
       </svg>
     </div>
   </div>
-<!--===== PAGE PROGRESS END=======-->
+  <!--===== PAGE PROGRESS END=======-->
+
+  <!-- Konten halaman lainnya bisa ditambahkan di sini -->
+
+</body>
+</html>
+
 
   <!--=====HEADER START=======-->
   <header>
@@ -787,17 +798,16 @@
 <!--===== FOOTER ENDS =======-->
 
   <!--=====JS=======-->
-  <script src="assets/js/plugins/bootstrap.min.js"></script>
-  <script src="assets/js/plugins/swiper.bundle.js"></script>
-  <script src="assets/js/plugins/mobilemenu.js"></script>
-  <script src="assets/js/plugins/slick-slider.js"></script>
-  <script src="assets/js/plugins/owlcarousel.min.js"></script>
-  <script src="assets/js/plugins/counter.js"></script>
-  <script src="assets/js/plugins/waypoints.js"></script>
-  <script src="assets/js/plugins/aos.js"></script>
-  <script src="assets/js/plugins/gsap.min.js"></script>
-  <script src="assets/js/plugins/magnific-popup.js"></script>
-  <script src="assets/js/plugins/ScrollTrigger.min.js"></script>
-  <script src="assets/js/main.js"></script>
+  @vite([
+    'resources/user/js/plugins/slick-slider.js',
+    'resources/user/js/plugins/bootstrap.min.js',
+    'resources/user/js/plugins/mobilemenu.js',
+    'resources/user/js/plugins/owlcarousel.min.js',
+    'resources/user/js/plugins/counter.js',
+    'resources/user/js/plugins/waypoints.js',
+    'resources/user/js/plugins/magnific-popup.js',
+    'resources/user/js/main.js'
+])
+
 </body>
 </html>

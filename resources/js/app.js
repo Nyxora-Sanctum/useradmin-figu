@@ -1,9 +1,29 @@
+// Import AOS library
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-import bootstrap from 'bootstrap/dist/js/bootstrap'
+// Import semua library yang dibutuhkan
+import bootstrap from 'bootstrap/dist/js/bootstrap';
 window.bootstrap = bootstrap;
 import 'iconify-icon';
-import 'simplebar/dist/simplebar'
-        
+import 'simplebar/dist/simplebar';
+
+// Import GSAP dan ScrollTrigger
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+// Daftarkan plugin ScrollTrigger pada GSAP
+gsap.registerPlugin(ScrollTrigger);
+
+// Inisialisasi AOS setelah halaman dimuat
+window.addEventListener('load', function() {
+    AOS.init({
+        duration: 1200,  // Durasi animasi
+        easing: 'ease-in-out',  // Easing animasi
+        once: true,  // Animasi terjadi sekali
+    });
+});
+
 class Components {
     initBootstrapComponents() {
         [...document.querySelectorAll('[data-bs-toggle="popover"]')].map(
@@ -25,12 +45,12 @@ class Components {
                                 (e.dataset.originalClass = e.className),
                                 (e.className =
                                     e.dataset.originalClass + " " + this.value);
-                        }),
+                        } ),
                 [].slice
                     .call(document.querySelectorAll(".toast"))
                     .map(function (e) {
                         return new bootstrap.Toast(e);
-                    }),
+                    } ),
                 document.getElementById("liveAlertBtn"));
         t &&
             t.addEventListener("click", () => {
@@ -88,6 +108,7 @@ class Components {
             this.initCounter();
     }
 }
+
 class FormValidation {
     initFormValidation() {
         document.querySelectorAll(".needs-validation").forEach((t) => {
@@ -109,12 +130,14 @@ class FormValidation {
 document.addEventListener("DOMContentLoaded", function (e) {
     new Components().init(), new FormValidation().init();
 });
+
 class ThemeLayout {
     constructor() {
         (this.html = document.getElementsByTagName("html")[0]),
             (this.config = {}),
             (this.defaultConfig = window.config);
     }
+
     initVerticalMenu() {
         var e = document.querySelectorAll(".navbar-nav li .collapse");
         document
@@ -184,30 +207,36 @@ class ThemeLayout {
                         })());
                 }, 200));
     }
+
     initConfig() {
         (this.defaultConfig = JSON.parse(JSON.stringify(window.defaultConfig))),
             (this.config = JSON.parse(JSON.stringify(window.config))),
             this.setSwitchFromConfig();
     }
+
     changeMenuColor(e) {
         (this.config.menu.color = e),
             this.html.setAttribute("data-sidebar-color", e),
             this.setSwitchFromConfig();
     }
+
     changeMenuSize(e, t = !0) {
         this.html.setAttribute("data-sidebar-size", e),
             t && ((this.config.menu.size = e), this.setSwitchFromConfig());
     }
+
     changeThemeMode(e) {
         (this.config.theme = e),
             this.html.setAttribute("data-bs-theme", e),
             this.setSwitchFromConfig();
     }
+
     changeTopbarColor(e) {
         (this.config.topbar.color = e),
             this.html.setAttribute("data-topbar-color", e),
             this.setSwitchFromConfig();
     }
+
     resetTheme() {
         (this.config = JSON.parse(JSON.stringify(window.defaultConfig))),
             this.changeMenuColor(this.config.menu.color),
@@ -216,6 +245,7 @@ class ThemeLayout {
             this.changeTopbarColor(this.config.topbar.color),
             this._adjustLayout();
     }
+
     initSwitchListener() {
         var n = this,
             e =
@@ -273,79 +303,62 @@ class ThemeLayout {
                         n.html.classList.toggle("sidebar-enable");
                 });
     }
+
     showBackdrop() {
         let t = document.createElement("div"),
             n =
                 ((t.classList = "offcanvas-backdrop fade show"),
                 document.body.appendChild(t),
                 (document.body.style.overflow = "hidden"),
-                1040 < window.innerWidth &&
-                    (document.body.style.paddingRight = "15px"),
-                this);
-        t.addEventListener("click", function (e) {
-            n.html.classList.remove("sidebar-enable"),
-                document.body.removeChild(t),
-                (document.body.style.overflow = null),
-                (document.body.style.paddingRight = null);
-        });
+                t);
+        setTimeout(function () {
+            n.addEventListener("click", function () {
+                document.querySelector(".offcanvas-backdrop") &&
+                    document.querySelector(".offcanvas-backdrop").remove();
+                document.body.style.overflow = "auto";
+            });
+        }, 0);
     }
-    initWindowSize() {
-        var t = this;
-        window.addEventListener("resize", function (e) {
-            t._adjustLayout();
-        });
-    }
-    _adjustLayout() {
-        window.innerWidth <= 1140
-            ? this.changeMenuSize("hidden", !1)
-            : this.changeMenuSize(this.config.menu.size);
-    }
+
     setSwitchFromConfig() {
-        sessionStorage.setItem(
-            "__DARKONE_CONFIG__",
-            JSON.stringify(this.config)
-        ),
-            document
-                .querySelectorAll(".settings-bar input[type=radio]")
-                .forEach(function (e) {
-                    e.checked = !1;
-                });
-        var e,
-            t,
-            n,
-            o = this.config;
-        o &&
-            ((e = document.querySelector(
-                "input[type=radio][name=data-bs-theme][value=" + o.theme + "]"
-            )),
-            (t = document.querySelector(
-                "input[type=radio][name=data-topbar-color][value=" +
-                    o.topbar.color +
-                    "]"
-            )),
-            (n = document.querySelector(
-                "input[type=radio][name=data-sidebar-size][value=" +
-                    o.menu.size +
-                    "]"
-            )),
-            (o = document.querySelector(
-                "input[type=radio][name=data-sidebar-color][value=" +
-                    o.menu.color +
-                    "]"
-            )),
-            e && (e.checked = !0),
-            t && (t.checked = !0),
-            n && (n.checked = !0),
-            o) &&
-            (o.checked = !0);
+        this.config &&
+            (this.config.menu.color &&
+                (document.querySelector("input[name=data-sidebar-color]") &&
+                    (document.querySelector(
+                        "input[name=data-sidebar-color]"
+                    ).value = this.config.menu.color)),
+            this.config.menu.size &&
+                (document.querySelector("input[name=data-sidebar-size]") &&
+                    (document.querySelector(
+                        "input[name=data-sidebar-size]"
+                    ).value = this.config.menu.size)),
+            this.config.theme &&
+                (document.querySelector("input[name=data-bs-theme]") &&
+                    (document.querySelector(
+                        "input[name=data-bs-theme]"
+                    ).value = this.config.theme)),
+            this.config.topbar.color &&
+                (document.querySelector("input[name=data-topbar-color]") &&
+                    (document.querySelector(
+                        "input[name=data-topbar-color]"
+                    ).value = this.config.topbar.color)));
     }
+
+    _adjustLayout() {
+        this.changeMenuColor(this.config.menu.color),
+            this.changeMenuSize(this.config.menu.size),
+            this.changeThemeMode(this.config.theme),
+            this.changeTopbarColor(this.config.topbar.color);
+    }
+
     init() {
-        this.initVerticalMenu(),
-            this.initConfig(),
+        this.initConfig(),
             this.initSwitchListener(),
-            this.initWindowSize(),
-            this._adjustLayout(),
-            this.setSwitchFromConfig();
+            this.initVerticalMenu();
     }
 }
-new ThemeLayout().init();
+
+document.addEventListener("DOMContentLoaded", function () {
+    const themeLayout = new ThemeLayout();
+    themeLayout.init();
+});
