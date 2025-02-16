@@ -165,12 +165,12 @@
 
     <!--===== WELCOME STARTS =======-->
 <div class="about-welcome-section-area login"
-    style="background-image: url({{ asset('frontend/assets/images/background/emailbg.png') }}); background-repeat: no-repeat; background-size: cover;">
+    style="background-image: url('/images/user/background/emailbg.png'); background-repeat: no-repeat; background-size: cover;">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 m-auto">
                 <div class="about-welcome-header text-center heading3">
-                    <a href="{{ url('/') }}"><img src="{{ asset('frontend/assets/images/logo/logo4.png') }}" alt="Logo" class="logo4"></a>
+                    <a href="{{ url('/') }}"><img src="/images/user/logo/logoo.png" alt="" width="70%" height="60%" class="logo4"></a>
                     <div class="space16"></div>
                     <a href="{{ url('/index') }}">Home <i class="fa-solid fa-angle-right"></i> <span>Sign Up</span></a>
                 </div>
@@ -185,7 +185,7 @@
                     <form action="{{ route('register') }}" method="POST">
                         @csrf
                         <div class="input-area">
-                            <h4>Name</h4>
+                            <h4>Username</h4>
                             <div class="space16"></div>
                             <input type="text" name="username" placeholder="Your Name" required>
                         </div>
@@ -195,6 +195,25 @@
                             <h4>Email</h4>
                             <div class="space16"></div>
                             <input type="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="space24"></div>
+
+                                <div class="input-area">
+                                    <h4>Gender</h4>
+                                    <div class="space16"></div>
+                                    <select name="Gender" required>
+                                        <option value="" disabled selected>Pilih Gender</option>
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+                                    </select>
+                                </div>
+                          
+                        <div class="space24"></div>
+
+                        <div class="input-area">
+                            <h4>Phone Number</h4>
+                            <div class="space16"></div>
+                            <input type="Phone Number" name="Phone Number" placeholder="Phone Number" required>
                         </div>
                         <div class="space24"></div>
 

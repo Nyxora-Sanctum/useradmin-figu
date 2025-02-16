@@ -31,6 +31,7 @@ Location:
 /*============= FOOTER CSS AREA ===============*/
 /*============= RTL CSS AREA ===============*/
 /*============= TYPHOGRAPHY CSS AREA ===============*/
+/*============= CV EDITOR CSS AREA ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
 
 * {
@@ -10303,6 +10304,33 @@ a.header-btn9 i {
     font-weight: 500;
 }
 
+.about-welcome-section-area.login .login-boxarea .input-area select {
+    width: 100%;
+    outline: none;
+    border: none;
+    background: #F8F4FF;
+    padding: 20px;
+    height: 60px;
+    border-radius: 30px;
+    font-family: "Figtree", sans-serif;
+    font-size: 16px;
+    color: var(--Text-Color, #0D0E10);
+    font-weight: 500;
+    appearance: none;
+    /* Menghilangkan panah default pada dropdown */
+    -webkit-appearance: none;
+    /* Untuk browser berbasis WebKit (Chrome, Safari) */
+    -moz-appearance: none;
+    /* Untuk browser berbasis Mozilla (Firefox) */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%230D0E10" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    /* Panah custom */
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    /* Posisi panah */
+    padding-right: 50px;
+    /* Memberi ruang untuk panah */
+}
+
 .about-welcome-section-area.login .login-boxarea .input-area input::-moz-placeholder {
     font-family: "Figtree", sans-serif;
     font-size: 16px;
@@ -10875,4 +10903,293 @@ a.header-btn9 i {
 }
 
 /*============= RTL CSS AREA ENDS ===============*/
+/*============= CV EDITOR CSS AREA ===============*/
+
+/* Global Styles */
+body,
+html {
+    height: 100%;
+    /* Pastikan body dan html memiliki tinggi 100% */
+    margin: 0;
+    /* Hilangkan margin default */
+    display: flex;
+    justify-content: center;
+    /* Pusatkan secara horizontal */
+    align-items: center;
+    /* Pusatkan secara vertikal */
+    background-color: #f5f5f5;
+    /* Warna latar belakang */
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+    gap: 0;
+}
+
+/* Editor Section */
+.editor {
+    width: 50vw;
+    /* Lebar editor */
+    background-color: white;
+    /* Warna latar belakang editor */
+    padding: 20px;
+    /* Padding di dalam editor */
+    border-radius: 10px;
+    /* Sudut bulat */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Bayangan untuk efek elegan */
+    display: flex;
+    justify-content: center;
+    /* Pusatkan secara horizontal */
+    align-items: center;
+}
+
+#editor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.textarea-container {
+    position: relative;
+    /* Relatif untuk memposisikan ikon di dalamnya */
+    width: 100%;
+}
+
+#prompt {
+    width: 100%;
+    height: 150px;
+    padding: 10px 40px 10px 10px;
+    /* Padding kanan untuk memberi ruang pada ikon */
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none;
+    transition: border-color 0.3s ease;
+    background: #f2f2f2;
+}
+
+#prompt:focus {
+    border-color: #86b7fe;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+#submit-button {
+    position: absolute;
+    /* Posisi absolut relatif terhadap .textarea-container */
+    right: 10px;
+    /* Jarak dari kanan */
+    bottom: 10px;
+    /* Jarak dari bawah */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #0d6efd;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+#submit-button:hover {
+    color: #0b5ed7;
+}
+
+/* CV Container */
+.cv-container {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100%;
+    margin-right: 3vw;
+    gap: 0;
+}
+
+.cv {
+    font-family: Arial, sans-serif;
+    width: 210mm;
+    height: 297mm;
+    background-color: cornsilk;
+    position: relative;
+}
+
+/* CV Styles */
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: 'Poppins';
+    text-align: left;
+    margin-top: 20px;
+    padding-top: 40px;
+    color: #333;
+    font-size: 2rem;
+}
+
+.name {
+    font-size: 36px;
+    font-weight: 550;
+    color: #333;
+    margin-left: 60px;
+}
+
+.header-menu {
+    margin-top: 7px;
+    margin-right: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.upper-header-menu {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    text-align: right;
+}
+
+.lower-header-menu {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    margin-top: 0;
+}
+
+.job-and-contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top: 60px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.contact-container,
+.address-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.contact-label,
+.address-label {
+    text-align: left;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.contact,
+.address {
+    color: #333;
+    margin-top: auto;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.job {
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 550;
+    color: #838488;
+    width: 100px;
+}
+
+.education-summary,
+.experience-summary,
+.skills-summary {
+    margin-top: 40px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.education-summary h2,
+.experience-summary h2,
+.skills-summary h2 {
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.education-summary-container,
+.experience-summary-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    margin-top: 25px;
+}
+
+.education-year,
+.experience-year {
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight: 600;
+    color: #898a8e;
+}
+
+.education-major,
+.experience {
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.education-place,
+.experience-place {
+    margin-top: 7.5px;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.education-description,
+.experience-description {
+    margin-top: 1px;
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight: 500;
+    color: #818a8f;
+}
+
+.skill-container-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 150px;
+}
+
+.subskill-container-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.skill {
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.subskill {
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
 /*# sourceMappingURL=master.css.map */

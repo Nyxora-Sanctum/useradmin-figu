@@ -13,7 +13,7 @@
         const userDashboard = "{{ route('user-index') }}"; 
     </script>
     <!--=====FAV ICON=======-->
-    <link rel="shortcut icon" href="{{ asset('public\images\user\logo\fav-logo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('public\images\user\logo\logoo.png') }}">
     
     <!-- Slick JavaScript -->
 
@@ -64,7 +64,7 @@
             <div class="col-12">
                 <div class="mobile-header-elements">
                     <div class="mobile-logo">
-                        <a href="index.html"><img src="/images/user/logo/logo1.png" alt="Logo 1"></a>
+                        <a href="index.html"><img src="/images/user/logo/logoo.png" alt="Logo 1"></a>
                     </div>
                     <div class="mobile-nav-icon dots-menu">
                         <i class="fa-solid fa-bars"></i>
@@ -77,7 +77,7 @@
     <div class="mobile-sidebar mobile-sidebar2">
         <div class="logosicon-area">
             <div class="logos">
-                <img src="/images/user/logo/logo1.png" alt="Logo 1">
+                <img src="/images/user/logo/logoo.png" alt="Logo 1">
             </div>
             <div class="menu-close">
                 <i class="fa-solid fa-xmark"></i>
@@ -178,7 +178,7 @@
             <div class="col-lg-6 m-auto">
                 <div class="about-welcome-header text-center heading3">
                     <a href="{{ url('/') }}">
-                        <img src="/images/user/logo/logo4.png" alt="Logo 4">
+                        <img src="/images/user/logo/logoo.png" alt="" width="100%" height="80">
                     </a>
                     <div class="space16"></div>
                     <a href="{{ url('/index') }}">Home <i class="fa-solid fa-angle-right"></i> <span>Login</span></a>

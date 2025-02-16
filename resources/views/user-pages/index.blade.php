@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +8,7 @@
     <title> FIGURER </title>
 
     <!--=====FAV ICON=======-->
-    <link rel="shortcut icon" href="{{ asset('public\images\user\logo\fav-logo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('public\images\user\logo\icon-logo.png') }}">
 
 
     <!--=====CSS=======-->
@@ -74,18 +71,18 @@
                     <div class="col-lg-12">
                         <div class="header-elements">
                             <div class="site-logo">
-                                <a href="{{ url('/index') }}"><img src="images/user/logo/logo1.png"
-                                        alt="">
+                                <a href="{{ url('/index') }}"><img src="images/user/logo/logoo.png"
+                                        alt=""width="100%" height="45"></a>
                             </div>
                             <div class="main-menu">
                                 <ul>
                                     <li><a href="about.html" class="nav-link active">Inventory</a></li>
-                                    <li><a href="features.html" class="nav-link active">CV Editor</a></li>
+                                    <li><a href="{{ url('editor') }}"class="nav-link active">CV Editor</a></li>
                                     <li><a href="features.html" class="nav-link active">Shop</a></li>
                                     <li><a href="contact.html" class="nav-link active">Invoice</a></li>
                                 </ul>
                                 <a href="login.html" class="header-btn2">Login</a>
-                                <a href="signup.html" class="header-btn3">Sign Up Free</a>
+                                <a href="signup.html" class="header-btn3">Profile</a>
                             </div>
                         </div>
                     </div>
@@ -101,12 +98,8 @@
             <div class="col-12">
                 <div class="mobile-header-elements">
                     <div class="mobile-logo">
-<<<<<<< HEAD
-                        <a href="{{ url('/index') }}"><img src=" images/user/logo/logo1.png"
-=======
-                        <a href="{{ url('/index') }}"><img src="images/user/logo/logo1.png"
->>>>>>> 7475639358479bb138756dde76ec81ba8a0ca993
-                                alt=""></a>
+                        <a href="{{ url('/index') }}"><img src=" images/user/logo/logoo.png" alt=""></a>
+                        <a href="{{ url('/index') }}"><img src="images/user/logo/logo1.png" alt=""></a>
                     </div>
                     <div class="mobile-nav-icon dots-menu">
                         <i class="fa-solid fa-bars"></i>
@@ -119,11 +112,8 @@
     <div class="mobile-sidebar mobile-sidebar2">
         <div class="logosicon-area">
             <div class="logos">
-<<<<<<< HEAD
                 <img src=" images\user\logo\logo1.png" alt="">
-=======
                 <img src="images/user/logo/logo1.png" alt="">
->>>>>>> 7475639358479bb138756dde76ec81ba8a0ca993
             </div>
             <div class="menu-close">
                 <i class="fa-solid fa-xmark"></i>
@@ -740,7 +730,7 @@
     <!--=====JS=======-->
 
 @vite([
-    'resources/user/js/plugins/swiper.bundle.js', // Load Swiper before use
+    'resources/user/js/plugins/swiper.bundle.js',
     'resources/user/js/plugins/slick-slider.js',
     'resources/user/js/plugins/bootstrap.min.js',
     'resources/user/js/plugins/mobilemenu.js',
