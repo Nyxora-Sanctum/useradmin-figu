@@ -8510,6 +8510,10 @@ a.header-btn9 i {
     object-fit: cover;
     border-radius: 4px;
 }
+.process-section-area .process-images .process-img3 {
+    height: 80%;
+    width: 80%;
+}
 
 .process-section-area .process-images-content {
     padding: 0 0 0 50px;
@@ -8933,7 +8937,7 @@ a.header-btn9 i {
 
 .templete1-section-area .tabs-carousel-area .tab-carousel-section .tabs-carousel-img {
     position: relative;
-    z-index: -1;
+    z-index: 1;
     transition: all 0.4s ease-in-out;
 }
 

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Editor Form with CV Template</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,7 +13,13 @@
 
     <!--=====JS=======-->
 
-    @vite(['resources/user/js/plugins/jquery-3-6-0.min.js', 'resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/ScrollTrigger.min.js', 'resources/user/js/plugins/aos.js'])
+    @vite([
+        'resources/user/js/plugins/jquery-3-6-0.min.js', 
+        'resources/user/js/plugins/swiper.bundle.js', 
+        'resources/user/js/plugins/ScrollTrigger.min.js', 
+        'resources/user/js/plugins/aos.js',
+        'resources/js/user-pages/editor.js'
+    ])
 
 
     <!--===== CSS =======-->
@@ -40,7 +47,7 @@
                                     <li><a href="features.html" class="nav-link active">Shop</a></li>
                                     <li><a href="contact.html" class="nav-link active">Invoice</a></li>
                                 </ul>
-                                <a href="login.html" class="header-btn2">Login</a>
+                                <a href="{{ url('login') }}" class="header-btn2">Login</a>
                                 <a href="signup.html" class="header-btn3">Profile</a>
                             </div>
                         </div>
@@ -245,7 +252,9 @@
     </script>
 
     <!-- JS -->
-    @vite(['resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
+    @vite([
+        'resources/user/js/plugins/swiper.bundle.js', 
+        'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
     <!-- JS -->
 
 </body>
