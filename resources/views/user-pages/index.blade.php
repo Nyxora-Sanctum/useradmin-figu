@@ -11,28 +11,13 @@
     <link rel="shortcut icon" href="{{ asset('public\images\user\logo\icon-logo.png') }}">
 
 
-    <!--=====CSS=======-->
+    <!--=====JS=======-->
 
-    @vite([
-        'resources/user/js/plugins/jquery-3-6-0.min.js',
-        'resources/user/js/plugins/swiper.bundle.js',
-        'resources/user/js/plugins/ScrollTrigger.min.js',
-        'resources/user/js/plugins/aos.js'
-    ])
-    
-       
-         <!--===== CSS =======-->
-    @vite([
-    'resources/user/css/plugins/bootstrap.min.css',
-    'resources/user/css/plugins/swiper.bundle.css',
-    'resources/user/css/plugins/mobile.css',
-    'resources/user/css/plugins/magnific-popup.css',
-    'resources/user/css/plugins/slick-slider.css',
-    'resources/user/css/plugins/owlcarousel.min.css',
-    'resources/user/css/plugins/aos.css',
-    'resources/user/css/typography.css',
-    'resources/user/css/master.css'
-])
+    @vite(['resources/user/js/plugins/jquery-3-6-0.min.js', 'resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/ScrollTrigger.min.js', 'resources/user/js/plugins/aos.js'])
+
+
+    <!--===== CSS =======-->
+    @vite(['resources/user/css/plugins/bootstrap.min.css', 'resources/user/css/plugins/swiper.bundle.css', 'resources/user/css/plugins/mobile.css', 'resources/user/css/plugins/magnific-popup.css', 'resources/user/css/plugins/slick-slider.css', 'resources/user/css/plugins/owlcarousel.min.css', 'resources/user/css/plugins/aos.css', 'resources/user/css/typography.css', 'resources/user/css/master.css', 'resources/user/css/plugins/fontawesome.css'])
 
 </head>
 <script>
@@ -57,8 +42,8 @@
     <!--===== PAGE PROGRESS START=======-->
     <div class="paginacontainer">
         <div class="progress-wrap">
-            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+            <svg class="progress-circle svg-content" width="100" height="100" viewBox="0 0 100 100">
+                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" stroke="black" stroke-width="2" fill="blue" />
             </svg>
         </div>
     </div>
@@ -73,7 +58,7 @@
                         <div class="header-elements">
                             <div class="site-logo">
                                 <a href="{{ url('/index') }}"><img src="images/user/logo/logoo.png"
-                                        alt=""width="100%" height="45"></a>
+                                        alt=""width="90%" height="42"></a>
                             </div>
                             <div class="main-menu">
                                 <ul>
@@ -178,7 +163,8 @@
                                     </li>
                                     <li>
                                         <a data-bs-toggle="tooltip" title="Facebook" href="#"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                                                xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                viewBox="0 0 448 512">
                                                 <path
                                                     d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
                                             </svg></a>
@@ -210,8 +196,8 @@
     <!--===== MOBILE HEADER STARTS =======-->
 
     <!--===== WELCOME STARTS =======-->
-<div class="welcome2-section-area"
-    style="background-image: url('images/user/background/header2-bg.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <div class="welcome2-section-area"
+        style="background-image: url('images/user/background/header2-bg.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
 
         <div class="container">
             <div class="row align-items-center">
@@ -226,7 +212,7 @@
                             Creating Professional CV.</p>
                         <div data-aos="fade-up" data-aos-duration="1200">
                             <a href="#" class="header-btn2">Get Started </a>
-                            <a href="{{route('any', 'register')}}" class="header-btn3">Explore Features</a>
+                            <a href="{{ route('any', 'editor') }}" class="header-btn3">Explore CV AI</a>
                         </div>
                     </div>
                 </div>
@@ -359,8 +345,8 @@
     <!--===== PROCESS AREA ENDS =======-->
 
     <!--===== SERVICE AREA STARTS =======-->
-<div class="service2-section-area sp3"
-    style="background-image: url('images/user/background/footer-bg2.png'); background-repeat: no-repeat; background-size: cover;">
+    <div class="service2-section-area sp3"
+        style="background-image: url('images/user/background/footer-bg2.png'); background-repeat: no-repeat; background-size: cover;">
 
         <div class="container">
             <div class="row">
@@ -380,9 +366,8 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-duration="1200">
                                 <div class="service2-box-area text-center">
-                                    <div class="service2-icon">
-                                        <img src="images/user/icons/service2-icon1.svg"
-                                            alt="">
+                                    <div class="service2-icon2">
+                                        <img src="images/user/icons/service2-icon1.svg" alt="">a
                                     </div>
                                     <div class="service2-content">
                                         <a href="features.html">Professional CV in Minutes</a>
@@ -393,12 +378,10 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-6" data-aos="fade-down" data-aos-duration="1200">
                                 <div class="service2-box-area text-center">
-                                    <div class="service2-icon1">
-                                        <img src="images/user/icons/service2-icon2.svg"
-                                            alt="">
+                                    <div class="service2-icon2">
+                                        <img src="images/user/icons/service2-icon2.svg" alt="">b
                                     </div>
                                     <div class="service2-content">
                                         <a href="features.html">Modern & ATS-Friendly Template</a>
@@ -413,8 +396,7 @@
                             <div class="col-lg-4 col-md-6" data-aos="fade-left" data-aos-duration="1200">
                                 <div class="service2-box-area text-center">
                                     <div class="service2-icon2">
-                                        <img src="images/user/icons/service2-icon3.svg"
-                                            alt="">z
+                                        <img src="images/user/icons/service2-icon3.svg" alt="">c
                                     </div>
                                     <div class="service2-content">
                                         <a href="features.html">Access Anytime & Anywhere</a>
@@ -468,57 +450,49 @@
                                     aria-labelledby="v-pills-all-tab">
                                     <div class="tab-carousel-section owl-carousel">
                                         <div class="tabs-carousel-img">
-                                            <img src="images/user/all-images/templete-img1.png"
-                                                alt="">
+                                            <img src="images/user/all-images/templete-img1.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img2.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img2.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img3.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img3.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img4.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img4.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img1.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img1.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img2.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img2.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img3.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img3.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img4.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img4.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
@@ -529,57 +503,49 @@
                                     aria-labelledby="v-pills-Free-tab">
                                     <div class="tab-carousel-section owl-carousel">
                                         <div class="tabs-carousel-img">
-                                            <img src="images/user/all-images/templete-img1.png"
-                                                alt="">
+                                            <img src="images/user/all-images/templete-img1.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img2.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img2.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img3.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img3.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="images/user/all-images/templete-img4.png"
-                                                alt="">
+                                            <img src="images/user/all-images/templete-img4.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="images/user/all-images/templete-img1.png"
-                                                alt="">
+                                            <img src="images/user/all-images/templete-img1.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img2.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img2.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img3.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img3.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="images/user/all-images/templete-img4.png"
-                                                alt="">
+                                            <img src="images/user/all-images/templete-img4.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
@@ -590,57 +556,49 @@
                                     aria-labelledby="v-pills-Premium-tab">
                                     <div class="tab-carousel-section owl-carousel">
                                         <div class="tabs-carousel-img">
-                                            <img src="images/user/all-images/templete-img1.png"
-                                                alt="">
+                                            <img src="images/user/all-images/templete-img1.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img2.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img2.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img3.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img3.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="images/user/all-images/templete-img4.png"
-                                                alt="">
+                                            <img src="images/user/all-images/templete-img4.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="images/user/all-images/templete-img1.png"
-                                                alt="">
+                                            <img src="images/user/all-images/templete-img1.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img2.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img2.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="/images/user/all-images/templete-img3.png"
-                                                alt="">
+                                            <img src="/images/user/all-images/templete-img3.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="images/user/all-images/templete-img4.png"
-                                                alt="">
+                                            <img src="images/user/all-images/templete-img4.png" alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="#" class="header-btn2">Read More</a>
                                             </div>
@@ -656,8 +614,8 @@
     </div>
     <!--===== TEMPLETE AREA ENDS =======-->
     <!--===== FOOTER AREA STARTS =======-->
-<div class="footer2-section-area"
-    style="background-image: url('images/user/background/bg1.png'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+    <div class="footer2-section-area"
+        style="background-image: url('images/user/background/bg1.png'); background-repeat: no-repeat; background-size: cover; background-position: center;">
 
         <div class="container">
             <div class="row">
@@ -730,17 +688,7 @@
 
     <!--=====JS=======-->
 
-@vite([
-    'resources/user/js/plugins/swiper.bundle.js',
-    'resources/user/js/plugins/slick-slider.js',
-    'resources/user/js/plugins/bootstrap.min.js',
-    'resources/user/js/plugins/mobilemenu.js',
-    'resources/user/js/plugins/owlcarousel.min.js',
-    'resources/user/js/plugins/counter.js',
-    'resources/user/js/plugins/waypoints.js',
-    'resources/user/js/plugins/magnific-popup.js',
-    'resources/user/js/main.js'
-])
+    @vite(['resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
 
 </body>
 

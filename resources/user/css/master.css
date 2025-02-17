@@ -1605,7 +1605,12 @@ img {
 }
 
 .welcome2-section-area {
-    padding: 190px 0 76px;
+    padding: 130px 0 76px;
+    position: relative;
+}
+
+.welcome2-section-area-cv {
+    padding: 130px 0 0;
     position: relative;
 }
 
@@ -7078,8 +7083,8 @@ a.header-btn9 i {
 }
 
 .footer2-section-area .footer2-last-section .footer-auhtor-area ul.social-links li a {
-    height: 32px;
-    width: 32px;
+    height: 16px;
+    width: 16px;
     display: inline-block;
     line-height: 33px;
     text-align: center;
@@ -10903,23 +10908,8 @@ a.header-btn9 i {
 }
 
 /*============= RTL CSS AREA ENDS ===============*/
-/*============= CV EDITOR CSS AREA ===============*/
 
-/* Global Styles */
-body,
-html {
-    height: 100%;
-    /* Pastikan body dan html memiliki tinggi 100% */
-    margin: 0;
-    /* Hilangkan margin default */
-    display: flex;
-    justify-content: center;
-    /* Pusatkan secara horizontal */
-    align-items: center;
-    /* Pusatkan secara vertikal */
-    background-color: #f5f5f5;
-    /* Warna latar belakang */
-}
+/*============= CV EDITOR CSS AREA STARTS ===============*/
 
 .main-container {
     display: flex;
@@ -10932,20 +10922,13 @@ html {
 
 /* Editor Section */
 .editor {
-    width: 50vw;
-    /* Lebar editor */
-    background-color: white;
-    /* Warna latar belakang editor */
-    padding: 20px;
-    /* Padding di dalam editor */
-    border-radius: 10px;
-    /* Sudut bulat */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Bayangan untuk efek elegan */
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    /* Pusatkan secara horizontal */
     align-items: center;
+    width: 50%;
+    background-color: #f5f5f5;
+    gap: 0;
 }
 
 #editor-form {
@@ -10953,8 +10936,10 @@ html {
     flex-direction: column;
     gap: 15px;
     width: 100%;
+    padding: 20px;
 }
 
+/* Container untuk textarea dan ikon */
 .textarea-container {
     position: relative;
     /* Relatif untuk memposisikan ikon di dalamnya */
@@ -10963,7 +10948,7 @@ html {
 
 #prompt {
     width: 100%;
-    height: 150px;
+    height: 300px;
     padding: 10px 40px 10px 10px;
     /* Padding kanan untuk memberi ruang pada ikon */
     border: 1px solid #ced4da;
@@ -10971,7 +10956,6 @@ html {
     font-size: 14px;
     resize: none;
     transition: border-color 0.3s ease;
-    background: #f2f2f2;
 }
 
 #prompt:focus {
@@ -10995,31 +10979,76 @@ html {
     transition: color 0.3s ease;
 }
 
+#download-cv {
+    margin-top: 10px;
+    display: block;
+    width: 150px;
+}
+
 #submit-button:hover {
     color: #0b5ed7;
 }
 
 /* CV Container */
 .cv-container {
-    background-color: black;
+    overflow-y: auto;
+    /* Mengaktifkan scroll vertikal */
+    background-color: rgb(229, 228, 234);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
-    height: 100%;
-    margin-right: 3vw;
+    align-items: center;
+    height: auto;
+    width: 50%;
     gap: 0;
+    padding: 60px 0;
 }
 
 .cv {
     font-family: Arial, sans-serif;
     width: 210mm;
-    height: 297mm;
     background-color: cornsilk;
     position: relative;
 }
 
 /* CV Styles */
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    object-fit: cover;
+    border: 3px solid #ddd;
+    cursor: pointer;
+    display: block;
+    background-color: rgb(229, 228, 234);
+    position: relative;
+}
+
+.upload-label {
+    position: relative;
+    display: inline-block;
+    padding: 30px 60px;
+}
+
+.upload-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 50%;
+    transition: opacity 0.3s;
+}
+
+.upload-label:hover .upload-icon {
+    opacity: 1;
+}
+
+
+
 .header {
     width: 100%;
     display: flex;
@@ -11029,7 +11058,6 @@ html {
     font-family: 'Poppins';
     text-align: left;
     margin-top: 20px;
-    padding-top: 40px;
     color: #333;
     font-size: 2rem;
 }
@@ -11192,4 +11220,5 @@ html {
     color: #333;
 }
 
+/*============= CV EDITOR CSS AREA ENDS ===============*/
 /*# sourceMappingURL=master.css.map */
