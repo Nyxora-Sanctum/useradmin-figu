@@ -14,6 +14,8 @@ document.getElementById('submit-button').addEventListener('click', (event) => {
         console.error("CSRF token meta tag not found!");
         return;
     }
+    console.log(localStorage.getItem('access_token'));
+    const token = localStorage.getItem('access_token');
 
     var csrfToken = csrfTokenElement.getAttribute('content');
     console.log("CSRF Token:", csrfToken); // Debugging
@@ -25,7 +27,7 @@ document.getElementById('submit-button').addEventListener('click', (event) => {
         headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': csrfToken,
-            'Authorization': localStorage.getItem('access_token'),
+            'Authorization': 'Bearer ' + token,
         },
         body: JSON.stringify({ prompt: document.querySelector('#editor-form textarea').value }),
     })
