@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from "vite";
+import laravel from "laravel-vite-plugin";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
     plugins: [
@@ -18,7 +18,6 @@ export default defineConfig({
                 "node_modules/flatpickr/dist/themes/dark.css",
                 "node_modules/gridjs/dist/theme/mermaid.min.css",
 
-
                 //js
                 "resources/js/app.js",
                 "resources/js/config.js",
@@ -34,7 +33,6 @@ export default defineConfig({
                 "resources/js/pages/maps-russia.js",
                 "resources/js/pages/maps-iraq.js",
                 "resources/js/pages/maps-canada.js",
-
             ],
             refresh: true,
         }),
