@@ -47,7 +47,7 @@ class CheckRole
             $client = new Client();
             $response = $client->request('GET', $apiEndpoint, [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $token,
+                    'Authorization' => 'Bearer ' . $token, 
                     'Accept' => 'application/json',
                 ],
                 'http_errors' => false,

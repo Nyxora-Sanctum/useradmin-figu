@@ -8,9 +8,12 @@ use App\Http\Controllers\Auth\AuthController;
 
 class RoutingController extends Controller
 {
+    public function landing(Request $request){
+        return view('landing');
+    }
     public function index(Request $request)
     {
-        return view('user-pages.index');
+        return view('user-pages.editor');
     }
 
     public function indexAdmin(Request $request)

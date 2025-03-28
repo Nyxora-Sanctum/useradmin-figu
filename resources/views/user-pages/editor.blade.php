@@ -24,8 +24,6 @@
 
     <!--===== CSS =======-->
     @vite(['resources/user/css/plugins/bootstrap.min.css', 'resources/user/css/plugins/swiper.bundle.css', 'resources/user/css/plugins/mobile.css', 'resources/user/css/plugins/magnific-popup.css', 'resources/user/css/plugins/slick-slider.css', 'resources/user/css/plugins/owlcarousel.min.css', 'resources/user/css/plugins/aos.css', 'resources/user/css/typography.css', 'resources/user/css/master.css', 'resources/user/css/plugins/fontawesome.css'])
-
-
 </head>
 
 <body>
@@ -47,7 +45,6 @@
                                     <li><a href="features.html" class="nav-link active">Shop</a></li>
                                     <li><a href="contact.html" class="nav-link active">Invoice</a></li>
                                 </ul>
-                                <a href="{{ url('login') }}" class="header-btn2">Login</a>
                                 <a href="signup.html" class="header-btn3">Profile</a>
                             </div>
                         </div>
