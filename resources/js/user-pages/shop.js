@@ -33,46 +33,33 @@ function renderCards(templates) {
     templates.forEach((template) => {
         const isFavorite = favorites.includes(template.id.toString())
             ? "text-red-500"
-            : "text-[#6E24FF] hover:text-[#5A1EDB]";
+            : "text-white hover:text-gray-300";
         const priceTag =
             template.price > 0
-                ? `<button class="text-[#6E24FF] hover:text-[#5A1EDB] p-1 bg-white rounded-full shadow-md">
-            <i class="fas fa-money-bill-wave text-sm"></i>
-        </button>`
+                ? `<button class="p-2 bg-gray-800 bg-opacity-80 text-white rounded-full shadow-md hover:bg-opacity-100 transition">
+                    <i class="fas fa-money-bill-wave text-sm"></i>
+                  </button>`
                 : "";
 
         const card = `
-            <div class="max-w-[240px] bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
+            <div class="max-w-[240px] bg-white rounded-lg shadow-xl overflow-hidden border border-gray-300">
                 <div class="relative aspect-[3/4]">
-                    
-                    <img class="w-full h-full object-cover" src="${endpoint}/${
-            template["template-preview"]
-        }" alt="${template.name}">
-                    <div class="absolute top-2 right-2 flex space-x-2">
-                        <button class="favorite-btn ${isFavorite} p-1 bg-white rounded-full shadow-md" data-id="${
-            template.id
-        }">
-                            <i class="fas fa-heart text-sm"></i>
+                    <img class="w-full h-full object-cover" src="${endpoint}/${template["template-preview"]}" alt="${template.name}">
+                    <div class="absolute bottom-2 right-2 flex space-x-2">
+                        <button class="favorite-btn ${isFavorite} p-2 bg-gray-800 bg-opacity-80 text-white rounded-full shadow-md hover:bg-opacity-100 transition" data-id="${template.id}">
+                            <i class="fas fa-heart text-lg"></i>
                         </button>
                         ${priceTag}
-                        <a href="${endpoint}/${
-            template["template-link"]
-        }" class="text-[#6E24FF] hover:text-[#5A1EDB] p-1 bg-white rounded-full shadow-md">
-                            <i class="fas fa-edit text-sm"></i>
+                        <a href="${endpoint}/${template["template-link"]}" class="p-2 bg-gray-800 bg-opacity-80 text-white rounded-full shadow-md hover:bg-opacity-100 transition">
+                            <i class="fas fa-edit text-lg"></i>
                         </a>
                     </div>
                 </div>
                 <div class="p-3">
-                    <span class="text-[#6E24FF] font-semibold text-xs">${
-                        template.name
-                    }</span>
+                    <span class="text-[#6E24FF] font-semibold text-xs">${template.name}</span>
                     <div>${template.price}</div>
                     <p class="text-gray-600 text-xs mt-1">
-                        ${
-                            template.price > 0
-                                ? "Premium CV Template"
-                                : "Free CV Template"
-                        }
+                        ${template.price > 0 ? "Premium CV Template" : "Free CV Template"}
                     </p>
                 </div>
             </div>
@@ -93,11 +80,11 @@ function addFavoriteEventListeners() {
             if (favorites.includes(templateId)) {
                 favorites = favorites.filter((id) => id !== templateId);
                 this.classList.remove("text-red-500");
-                this.classList.add("text-[#6E24FF]", "hover:text-[#5A1EDB]");
+                this.classList.add("text-white", "hover:text-gray-300");
             } else {
                 favorites.push(templateId);
                 this.classList.add("text-red-500");
-                this.classList.remove("text-[#6E24FF]", "hover:text-[#5A1EDB]");
+                this.classList.remove("text-white", "hover:text-gray-300");
             }
 
             localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -115,5 +102,4 @@ function updateFavoriteBadge() {
     }
 }
 
-// Panggil fetchTemplates saat halaman dimuat
 document.addEventListener("DOMContentLoaded", fetchTemplates);
