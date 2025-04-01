@@ -26,7 +26,7 @@ export default defineConfig({
                 "resources/user/css/master.css",
                 "resources/user/css/plugins/fontawesome.css",
 
-                // JavaScript
+                // JavaScriptt
                 "resources/js/user-pages/editor.js",
                 "resources/user/js/plugins/gsap.min.js",
                 "resources/js/user-pages/auth.js",
