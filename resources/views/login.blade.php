@@ -13,49 +13,34 @@
         const userDashboard = "{{ route('user-index') }}"; 
     </script>
     <!--=====FAV ICON=======-->
-    <link rel="shortcut icon" href="{{ asset('public\images\user\logo\icon-logo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('public\images\user\logo\logoo.png') }}">
     
     <!-- Slick JavaScript -->
 
-<!-- JQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Swiper -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!--=====JQUERY=======-->
+    @vite(
+    'resources/user/js/plugins/jquery-3-6-0.min.js',
+)
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @vite('resources/user/js/plugins/swiper.bundle.js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--===== CSS =======-->
+    @vite([
+    'resources/user/css/plugins/bootstrap.min.css',
+    'resources/user/css/plugins/swiper.bundle.css',
+    'resources/user/css/plugins/mobile.css',
+    'resources/user/css/plugins/magnific-popup.css',
+    'resources/user/css/plugins/slick-slider.css',
+    'resources/user/css/plugins/owlcarousel.min.css',
+    'resources/user/css/plugins/aos.css',
+    'resources/user/css/typography.css',
+    'resources/user/css/master.css'
+])
 
-<!-- ScrollTrigger (Assuming you use GSAP ScrollTrigger) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-
-<!-- AOS (Animate on Scroll) -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
-<!-- Slick Carousel -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
-    integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<!-- Bootstrap -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-
-<!-- ====== Your Custom CSS & Scripts ====== -->
-@vite(['resources/user/css/plugins/bootstrap.min.css', 'resources/user/css/plugins/swiper.bundle.css', 'resources/user/css/plugins/mobile.css', 'resources/user/css/plugins/magnific-popup.css', 'resources/user/css/plugins/slick-slider.css', 'resources/user/css/plugins/owlcarousel.min.css', 'resources/user/css/plugins/aos.css', 'resources/user/css/typography.css', 'resources/user/css/master.css'])
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var swiper = new Swiper(".mySwiper", {
-            loop: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-        });
-    });
-</script>
 </head>
 
 </head>
@@ -319,6 +304,14 @@
     <!--=====JS=======-->
     @vite([
     'resources/js/user-pages/auth.js',
+    'resources/user/js/plugins/slick-slider.js',
+    'resources/user/js/plugins/bootstrap.min.js',
+    'resources/user/js/plugins/mobilemenu.js',
+    'resources/user/js/plugins/owlcarousel.min.js',
+    'resources/user/js/plugins/counter.js',
+    'resources/user/js/plugins/waypoints.js',
+    'resources/user/js/plugins/magnific-popup.js',
+    'resources/user/js/main.js'
 ])
 </body>
 

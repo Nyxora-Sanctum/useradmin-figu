@@ -10,13 +10,17 @@
     <title>Figurer || Register</title>
 
     <!--=====FAV ICON=======-->
-    <link rel="shortcut icon" href="frontend/assets/images/logo/fav-logo.png">
+    <link rel="shortcut icon" href="{{ asset('public\images\user\logo\icon-logo.png') }}">
 
     <!--=====CSS=======-->
     @vite(['resources/user/css/plugins/bootstrap.min.css', 'resources/user/css/plugins/swiper.bundle.css', 'resources/user/css/plugins/fontawesome.css', 'resources/user/css/plugins/mobile.css', 'resources/user/css/plugins/magnific-popup.css', 'resources/user/css/plugins/slick-slider.css', 'resources/user/css/plugins/owlcarousel.min.css', 'resources/user/css/plugins/aos.css', 'resources/user/css/typography.css', 'resources/user/css/master.css'])
 
     <!--=====JQUERY=======-->
-    <script src="user/js/plugins/jquery-3-6-0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+            integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
