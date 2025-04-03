@@ -1,105 +1,138 @@
-const accessToken = localStorage.getItem("access_token");
-const endpoint = import.meta.env.VITE_DATABASE_ENDPOINT;
-const cardContainer = document.getElementById("cardContainer");
+document.addEventListener("DOMContentLoaded", function () {
+    const accessToken = localStorage.getItem("access_token");
+    const endpoint = import.meta.env.VITE_DATABASE_ENDPOINT;
+    const templateList = document.getElementById("template-list");
+    const searchInput = document.getElementById("search");
+    const filterSelect = document.getElementById("filter");
+    const badge = document.getElementById("favBadge");
 
-async function fetchTemplates() {
-    try {
-        const response = await fetch(
-            `${endpoint}/api/templates/get/all-templates`,
-            {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
-        );
-
-        if (!response.ok) {
-            throw new Error("Failed to fetch templates");
-        }
-
-        const templates = await response.json();
-        renderCards(templates);
-    } catch (error) {
-        console.error("Error fetching templates:", error);
+    if (!templateList) {
+        console.error("Element #template-list tidak ditemukan di halaman.");
+        return;
     }
-}
 
-function renderCards(templates) {
-    cardContainer.innerHTML = ""; // Bersihkan sebelum render ulang
+    let templatesData = [];
 
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    // Modal Elements
+    const previewModal = document.getElementById("previewModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalCategory = document.getElementById("modalCategory");
+    const modalPrice = document.getElementById("modalPrice");
+    const buyButton = document.getElementById("buyButton");
+    const closeModal = document.getElementById("closeModal");
+    const closeModalBtn = document.getElementById("closeModalBtn");
 
-    templates.forEach((template) => {
-        const isFavorite = favorites.includes(template.id.toString())
-            ? "text-red-500"
-            : "text-white hover:text-gray-300";
-        const priceTag =
-            template.price > 0
-                ? `<button class="p-2 bg-gray-800 bg-opacity-80 text-white rounded-full shadow-md hover:bg-opacity-100 transition">
-                    <i class="fas fa-money-bill-wave text-sm"></i>
-                  </button>`
-                : "";
+    async function fetchTemplates() {
+        try {
+            const response = await fetch(`${endpoint}/api/templates/get/all-templates`, {
+                method: "GET",
+                headers: { Authorization: `Bearer ${accessToken}` },
+            });
 
-        const card = `
-            <div class="max-w-[240px] bg-white rounded-lg shadow-xl overflow-hidden border border-gray-300">
-                <div class="relative aspect-[3/4]">
-                    <img class="w-full h-full object-cover" src="${endpoint}/${template["template-preview"]}" alt="${template.name}">
-                    <div class="absolute bottom-2 right-2 flex space-x-2">
-                        <button class="favorite-btn ${isFavorite} p-2 bg-gray-800 bg-opacity-80 text-white rounded-full shadow-md hover:bg-opacity-100 transition" data-id="${template.id}">
-                            <i class="fas fa-heart text-lg"></i>
-                        </button>
-                        ${priceTag}
-                        <a href="${endpoint}/${template["template-link"]}" class="p-2 bg-gray-800 bg-opacity-80 text-white rounded-full shadow-md hover:bg-opacity-100 transition">
-                            <i class="fas fa-edit text-lg"></i>
-                        </a>
+            if (!response.ok) throw new Error("Failed to fetch templates");
+
+            templatesData = await response.json();
+            displayTemplates();
+        } catch (error) {
+            console.error("Error fetching templates:", error);
+        }
+    }
+
+    function displayTemplates() {
+        templateList.innerHTML = "";
+        const searchText = searchInput.value.toLowerCase();
+        const selectedFilter = filterSelect.value;
+
+        const filteredTemplates = templatesData.filter(template => {
+            const isMatchingName = template.name.toLowerCase().includes(searchText);
+            const isMatchingCategory = selectedFilter === "all" ||
+                (selectedFilter === "free" && template.price == 0) ||
+                (selectedFilter === "premium" && template.price > 0);
+
+            return isMatchingName && isMatchingCategory;
+        });
+
+        filteredTemplates.forEach((template) => {
+            const priceText = template.price > 0 ? `Rp ${template.price}` : "Gratis";
+            const categoryText = template.price > 0 ? "Premium CV Template" : "Free CV Template";
+
+            const templateCard = `
+                <div class="max-w-[240px] bg-white rounded-lg shadow-xl overflow-hidden border border-gray-300">
+                    <div class="relative aspect-[3/4]">
+                        <img class="w-full h-full object-cover" src="${endpoint}/${template["template-preview"]}" alt="${template.name}">
+                    </div>
+                    
+                    <div class="p-3">
+                        <span class="text-[#6E24FF] font-semibold text-xs">${template.name}</span>
+                        <div>${priceText}</div>
+                        <p class="text-gray-600 text-xs mt-1">${categoryText}</p>
+
+                        <div class="mt-3 flex justify-between">
+                            ${template.price > 0 ? `
+                                <button class="px-3 py-1 bg-purple-600 text-white rounded-full shadow-md hover:bg-purple-700 transition">
+                                    Beli
+                                </button>
+                            ` : ""}
+                            <button class="preview-btn px-3 py-1 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-900 transition"
+                                data-image="${endpoint}/${template["template-preview"]}" 
+                                data-title="${template.name}" 
+                                data-category="${categoryText}" 
+                                data-price="${priceText}">
+                                Preview
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="p-3">
-                    <span class="text-[#6E24FF] font-semibold text-xs">${template.name}</span>
-                    <div>${template.price}</div>
-                    <p class="text-gray-600 text-xs mt-1">
-                        ${template.price > 0 ? "Premium CV Template" : "Free CV Template"}
-                    </p>
-                </div>
-            </div>
-        `;
-        cardContainer.innerHTML += card;
-    });
+            `;
+            templateList.innerHTML += templateCard;
+        });
 
-    addFavoriteEventListeners();
-}
+        addPreviewEventListeners();
+    }
 
-function addFavoriteEventListeners() {
-    const favoriteButtons = document.querySelectorAll(".favorite-btn");
-    favoriteButtons.forEach((btn) => {
-        btn.addEventListener("click", function () {
-            const templateId = this.getAttribute("data-id");
-            let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    function addPreviewEventListeners() {
+        document.querySelectorAll(".preview-btn").forEach((btn) => {
+            btn.addEventListener("click", function () {
+                modalImage.src = this.getAttribute("data-image");
+                modalTitle.textContent = this.getAttribute("data-title");
+                modalCategory.textContent = this.getAttribute("data-category");
+                modalPrice.textContent = this.getAttribute("data-price");
+                previewModal.classList.remove("hidden");
+            });
+        });
+    }
 
-            if (favorites.includes(templateId)) {
-                favorites = favorites.filter((id) => id !== templateId);
-                this.classList.remove("text-red-500");
-                this.classList.add("text-white", "hover:text-gray-300");
-            } else {
-                favorites.push(templateId);
-                this.classList.add("text-red-500");
-                this.classList.remove("text-white", "hover:text-gray-300");
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const paymentModal = document.getElementById("paymentModal");
+        const closePaymentModal = document.getElementById("closePaymentModal");
+        const closePaymentBtn = document.getElementById("closePaymentBtn");
+        const confirmPayment = document.getElementById("confirmPayment");
+    
+        document.addEventListener("click", function (event) {
+            if (event.target.classList.contains("buy-btn")) {
+                paymentModal.classList.remove("hidden");
             }
-
-            localStorage.setItem("favorites", JSON.stringify(favorites));
-            updateFavoriteBadge();
+        });
+    
+        closePaymentModal.addEventListener("click", () => paymentModal.classList.add("hidden"));
+        closePaymentBtn.addEventListener("click", () => paymentModal.classList.add("hidden"));
+    
+        confirmPayment.addEventListener("click", function () {
+            window.location.href = "https://midtrans.com/payment-link";
         });
     });
-}
+    
+    // Event Listener untuk pencarian
+    searchInput.addEventListener("input", displayTemplates);
 
-function updateFavoriteBadge() {
-    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    const badge = document.getElementById("favBadge");
-    if (badge) {
-        badge.textContent = favorites.length;
-        badge.classList.toggle("hidden", favorites.length === 0);
-    }
-}
+    // Event Listener untuk filter kategori
+    filterSelect.addEventListener("change", displayTemplates);
 
-document.addEventListener("DOMContentLoaded", fetchTemplates);
+    // Event Listener untuk Menutup Modal
+    closeModal.addEventListener("click", () => previewModal.classList.add("hidden"));
+    closeModalBtn.addEventListener("click", () => previewModal.classList.add("hidden"));
+
+    fetchTemplates();
+});

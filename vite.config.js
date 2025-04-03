@@ -22,6 +22,7 @@ export default defineConfig({
                 "resources/js/app.js",
                 "resources/js/config.js",
                 "resources/js/pages/dashboard.js",
+                "resources/js/user-pages/shop.js",
                 "resources/js/pages/chart.js",
                 "resources/js/pages/form-quilljs.js",
                 "resources/js/pages/form-fileupload.js",
@@ -37,4 +38,7 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+        sourcemap: false, // Matikan source map agar tidak mencari file .map yang hilang
+    },
 });

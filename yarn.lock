@@ -1354,10 +1354,10 @@ svg.select.js@^3.0.1:
   dependencies:
     svg.js "^2.6.5"
 
-swiper@^11.2.4:
-  version "11.2.4"
-  resolved "https://registry.npmjs.org/swiper/-/swiper-11.2.4.tgz"
-  integrity sha512-DTtglrsFfMYytid+oNy4QI3t2N2+XhhwSYbnyOhlwBmvY8Bkoj3ombK1/b80w8vDpQ+Lqlnbm+0737+i32MrcA==
+swiper@^11.2.6:
+  version "11.2.6"
+  resolved "https://registry.npmjs.org/swiper/-/swiper-11.2.6.tgz"
+  integrity sha512-8aXpYKtjy3DjcbzZfz+/OX/GhcU5h+looA6PbAzHMZT6ESSycSp9nAjPCenczgJyslV+rUGse64LMGpWE3PX9Q==
 
 tailwindcss@^3.4.17:
   version "3.4.17"
