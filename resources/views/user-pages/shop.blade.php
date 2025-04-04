@@ -15,39 +15,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script>
-    @vite(['resources/user/js/plugins/jquery-3-6-0.min.js', 'resources/js/user-pages/shop.js'])
+    @vite(['resources/js/user-pages/shop.js', 'resources/user/js/plugins/jquery-3-6-0.min.js'])
+    
     <!-- Custom CSS tambahan jika diperlukan -->
     <style>
-        #preloader {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-        }
-
-        .preloader {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #6E24FF;
-            border-top-color: transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
         .navbar {
             font-family: "Poppins", sans-serif;
             font-weight: 700;
@@ -84,10 +55,6 @@
 </head>
 
 <body class="bg-gray-100">
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="preloader"></div>
-    </div>
 
     <!-- Header Navbar -->
     <header class="bg-[#6E24FF] w-full p-3">
@@ -143,9 +110,9 @@
                     <option value="premium">Premium</option>
                 </select>
             </div>
-
-
+        </div>
     </section>
+
 
     <!-- Container untuk Template List -->
     <section id="template-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6 mb-10">
@@ -191,31 +158,25 @@
         </div>
     </div>
 
-    <!-- Overlay Pembayaran -->
-    <div id="paymentOverlay" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
-        <div class="bg-white p-5 rounded-lg shadow-lg max-w-md w-full relative">
-            <!-- Tombol Close -->
-            <button id="closePayment" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
-                ✕
-            </button>
-
-            <!-- Informasi Pembayaran -->
-            <h2 class="text-xl font-semibold">Konfirmasi Pembayaran</h2>
-            <p id="paymentTemplateName" class="text-sm text-gray-600 mt-2"></p>
-            <p id="paymentPrice" class="text-lg font-bold mt-1"></p>
-
-            <!-- Tombol Konfirmasi -->
-            <div class="mt-4 flex justify-end">
-                <button id="confirmPayment"
-                    class="px-4 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition">
-                    Konfirmasi Pembayaran
-                </button>
-            </div>
-        </div>
+<!-- Modal Konfirmasi Pembayaran -->
+<div id="paymentConfirmModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm text-center">
+        <h2 id="confirmModalTitle" class="text-lg font-semibold mb-2">Konfirmasi Pembelian</h2>
+        <p id="confirmModalDesc" class="text-sm text-gray-600 mb-4">Deskripsi produk</p>
+        <button id="confirmPayBtn" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Bayar Sekarang</button>
     </div>
+</div>
+
+<!-- Overlay Invoice -->
+<div id="invoiceOverlay" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
+    <div class="bg-white p-6 rounded-lg text-center shadow-xl">
+        <h2 class="text-xl font-bold mb-2 text-green-600">Pembayaran Berhasil</h2>
+        <p>Invoice #: <span id="invoiceCode" class="font-mono text-sm"></span></p>
+        <button id="closeInvoiceOverlay" class="mt-4 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-900">Tutup</button>
+    </div>
+</div>
 
 </main>
-
 
 <footer class="bg-gray-900 text-white py-10">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -275,7 +236,41 @@
     </div>
 </footer>
 
-<script></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+            const previewModal = document.getElementById("previewModal");
+            const overlayCard = document.getElementById("overlayCard");
+            const buyButton = document.getElementById("buyButton");
+
+            document.querySelectorAll(".preview-btn").forEach(button => {
+                button.addEventListener("click", (e) => {
+                    document.getElementById("modalImage").src = e.target.dataset.image;
+                    document.getElementById("modalTitle").textContent = e.target.dataset.name;
+                    document.getElementById("modalCategory").textContent = e.target.dataset.category;
+                    document.getElementById("modalPrice").textContent = `Rp ${e.target.dataset.price}`;
+                    previewModal.classList.remove("hidden");
+                });
+            });
+
+            document.getElementById("closeModal").addEventListener("click", () => {
+                previewModal.classList.add("hidden");
+            });
+            buyButton.addEventListener("click", () => {
+                previewModal.classList.add("hidden");
+                setTimeout(() => {
+                    document.getElementById("invoiceNumber").textContent = "INV-" + Math.floor(Math.random() * 100000);
+                    document.getElementById("paymentStatus").textContent = "Berhasil";
+                    overlayCard.classList.remove("hidden");
+                }, 1000);
+            });
+
+            document.getElementById("closeOverlayBtn").addEventListener("click", () => {
+                overlayCard.classList.add("hidden");
+            });
+        });
+
+</script>
 </body>
 
 </html>
