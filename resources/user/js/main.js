@@ -4,6 +4,8 @@ import 'aos/dist/aos.css';
 import 'swiper/css';
 import { gsap, Power2 } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import 'slick-carousel';
+
 
 document.addEventListener("DOMContentLoaded", function() {
     AOS.init();

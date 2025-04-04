@@ -32,11 +32,14 @@
     "jsvectormap": "^1.5.1",
     "moment": "^2.29.4",
     "node-waves": "^0.7.6",
+    "owlcarousel": "^1.3.3",
     "quill": "^2.0.3",
     "scrolltrigger": "^1.0.1",
     "simplebar": "^5.3.9",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.2.6",
+    "swiper": "^11.2.4",
+    "vite-plugin-commonjs": "^0.10.4",
     "wnumb": "^1.2.0"
   }
 }
