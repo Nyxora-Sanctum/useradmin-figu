@@ -8,7 +8,7 @@
     <title> FIGURER </title>
 
     <!--=====FAV ICON=======-->
-    <link rel="shortcut icon" href="{{ asset('public\images\user\logo\icon-logo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/user/logo/icon-logo.png') }}">
     <!--=====JS=======-->
 
     @vite(['resources/user/js/plugins/jquery-3-6-0.min.js', 'resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/ScrollTrigger.min.js', 'resources/user/js/plugins/aos.js'])

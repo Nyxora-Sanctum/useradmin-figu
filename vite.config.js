@@ -15,6 +15,7 @@ export default defineConfig({
                 "node_modules/flatpickr/dist/flatpickr.min.css",
                 "node_modules/flatpickr/dist/themes/dark.css",
                 "node_modules/gridjs/dist/theme/mermaid.css",
+                "node_modules/gridjs/dist/theme/mermaid.min.css",
                 "resources/user/css/plugins/bootstrap.min.css",
                 "resources/user/css/plugins/swiper.bundle.css",
                 "resources/user/css/plugins/mobile.css",
@@ -27,6 +28,15 @@ export default defineConfig({
                 "resources/user/css/plugins/fontawesome.css",
 
                 // JavaScriptt
+                "resources/js/admin-pages/manageuser.js",
+                "resources/js/admin-pages/config.js",
+                "resources/js/admin-pages/invoices.js",
+                "resources/js/admin-pages/managetemplate.js",
+                "resources/js/admin-pages/manageuser.js",
+                "resources/js/admin-pages/template-table-editor.js",
+                "resources/js/admin-pages/transactions.js",
+                "resources/js/admin-pages/user-table-editor.js",
+                "resources/js/admin-pages/dashboard.js",
                 "resources/js/user-pages/editor.js",
                 "resources/user/js/plugins/gsap.min.js",
                 "resources/js/user-pages/auth.js",
