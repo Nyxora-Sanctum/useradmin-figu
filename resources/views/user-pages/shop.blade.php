@@ -57,73 +57,100 @@
 <body class="bg-gray-100">
 
     <!-- Header Navbar -->
-    <header class="bg-[#6E24FF] w-full p-3">
-        <div class="container mx-auto flex items-center justify-between">
-            <div>
-                <a href="{{ url('/index') }}"><img src="images/user/logo/logoo.png" alt="" width="40%"></a>
+    <header class="bg-[#6E24FF] w-full h-12 md:h-16">
+        <div class="container mx-auto h-full flex items-center justify-between px-6">
+            <div class="h-full flex items-center">
+                <a href="{{ url('/index') }}"> <img src="images/user/logo/logoo.png" alt="Logo" class="h-6 md:h-10"></a>
             </div>
-            <nav>
-                <ul class="flex space-x-6 font-bold">
-                    <li><a href="{{ url('shop') }}" class="text-white hover:text-[#5A1EDB]">Shop</a></li>
-                    <li><a href="{{ url('inventory') }}" class="text-white hover:text-[#5A1EDB]">Inventory</a></li>
-                    <li><a href="{{ url('editor') }}" class="text-white hover:text-[#5A1EDB]">CV Editor</a></li>
-                    <li><a href="{{ url('invoice') }}" class="text-white hover:text-[#5A1EDB]">Invoice</a></li>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6 font-bold text-white">
+                    <li><a href="{{ url('shop') }}" class="hover:text-[#d1c3ff]">Shop</a></li>
+                    <li><a href="{{ url('inventory') }}" class="hover:text-[#d1c3ff]">Inventory</a></li>
+                    <li><a href="{{ url('editor') }}" class="hover:text-[#d1c3ff]">CV Editor</a></li>
+                    <li><a href="{{ url('invoice') }}" class="hover:text-[#d1c3ff]">Invoice</a></li>
                 </ul>
             </nav>
-            <div class="flex items-center space-x-4">
-                <!-- Search Bar -->
-                <div class="flex items-center justify-between mb-4">
-                    <input type="text" id="search" placeholder="Cari template..."
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600">
+                   <!-- Search + Profile -->
+        <div class="flex items-center space-x-4">
+            <!-- Search -->
+            <div class="relative">
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Cari template CV..."
+                    class="pl-10 pr-4 py-1.5 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent w-48 md:w-64 text-sm"
+                />
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
+                    </svg>
                 </div>
-                <!-- Ikon Profil dengan Dropdown -->
-                <div x-data="{ open: false }" class="relative flex items-center space-x-2" @click.away="open = false">
-                    <button @click="open = !open" class="focus:outline-none flex items-center space-x-2">
-                        <img src="images/user/profil/icon-profil.jpg" alt="Profile"
-                            class="h-10 w-10 rounded-full border-2 border-white">
-                        <span class="text-white font-medium">Hi, Nadin</span>
-                    </button>
-                    <!-- Dropdown Menu -->
-                    <div x-show="open"
-                        class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
-                        <a href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile
-                            Settings</a>
-                        <a href="logout.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Logout</a>
-                    </div>
+            </div>
+
+            <!-- Profile Dropdown -->
+            <div x-data="{ open: false }" class="relative" @click.away="open = false">
+                <button @click="open = !open" class="flex items-center space-x-2 focus:outline-none">
+                    <img src="images/user/profil/icon-profil.jpg" alt="Profile"
+                         class="h-10 w-10 rounded-full border-2 border-white">
+                    <span class="text-white font-medium hidden md:inline">Hi, Nadin</span>
+                </button>
+                <!-- Dropdown -->
+                <div x-show="open"
+                     class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                    <a href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
+                    <a href="logout.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Logout</a>
                 </div>
             </div>
         </div>
+    </div>
     </header>
 
 </body>
-<main class="container mx-auto px-6 py-4">
-    <!-- Filter Harga -->
-    <section class="filter-price py-4 mb-4">
-        <div class="flex items-center justify-between">
-            <!-- Bagian Kiri: SHOP dan Filter Kategori -->
-            <div class="flex items-center space-x-4">
-                <span class="text-gray-700 text-2xl font-bold">SHOP</span>
-                <select id="filter"
-                    class="ml-4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600">
-                    <option value="all">Semua</option>
-                    <option value="free">Gratis</option>
-                    <option value="premium">Premium</option>
-                </select>
-            </div>
-        </div>
-    </section>
 
+<main class="container mx-auto px-6 py-4">
+  <!-- Filter Harga -->
+  <section class="filter-price py-4 mb-4">
+    <div class="flex items-center justify-between">
+      <!-- Bagian Kiri: SHOP dan Filter Kategori -->
+      <div class="flex items-center space-x-4">
+        <span class="text-gray-700 text-2xl font-bold">SHOP</span>
+        <div class="relative">
+            <select id="filter"
+              class="appearance-none pl-4 pr-10 py-1 border border-gray-300 rounded-lg bg-white shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent cursor-pointer transition duration-200">
+              <option value="all">Semua</option>
+              <option value="free">Gratis</option>
+              <option value="premium">Premium</option>
+            </select>
+          
+            <!-- Icon panah dropdown, sekarang agak menjauh dari edge -->
+            <div class="pointer-events-none absolute inset-y-0 right-2 flex items-center pr-1">
+              <svg class="w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.584l3.71-4.354a.75.75 0 111.14.976l-4.25 5a.75.75 0 01-1.14 0l-4.25-5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+  </section>
 
     <!-- Container untuk Template List -->
     <section id="template-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6 mb-10">
         @if (isset($templates) && count($templates) > 0)
             @foreach ($templates as $template)
-                <div class="card bg-white rounded-lg shadow-lg border border-gray-200 p-4"
-                    data-category="{{ $template->category }}">
-                    <img src="{{ asset($template->image) }}" alt="{{ $template->name }}" class="w-full rounded-md">
-                    <p class="text-center text-gray-600 mt-2">{{ $template->name }}</p>
-                    <p class="price-tag hidden">{{ $template->price }}</p>
-                </div>
+            <div class="card bg-white rounded-lg shadow-lg border border-gray-200 p-4 cursor-pointer preview-btn"
+            data-image="{{ asset($template->image) }}"
+            data-name="{{ $template->name }}"
+            data-category="{{ $template->category }}"
+            data-price="{{ $template->price }}"
+            data-description="{{ $template->description }}">
+            
+            <img src="{{ asset($template->image) }}" alt="{{ $template->name }}" class="w-full rounded-md">
+            <p class="text-center text-gray-600 mt-2">{{ $template->name }}</p>
+            <p class="price-tag hidden">{{ $template->price }}</p>
+            <p>{{ $template->description }}</p>
+        </div>
             @endforeach
         @else
             <p class="text-gray-600 text-center">No templates available</p>
@@ -143,17 +170,26 @@
                 <img id="modalImage" class="w-full h-full object-contain rounded-lg" src="" alt="">
             </div>
 
-            <!-- Informasi Template -->
-            <h2 id="modalTitle" class="text-xl font-semibold mt-3"></h2>
-            <p id="modalCategory" class="text-sm text-gray-500"></p>
-            <p id="modalPrice" class="text-lg font-bold mt-2"></p>
+           <!-- Informasi Template -->
+            <div class="mt-4 space-y-1.5">
+                <!-- Nama Template -->
+                <h2 id="modalTitle" class="text-2xl font-bold text-gray-800"></h2>
+
+                <!-- Harga -->
+                <p id="modalPrice" class="text-lg font-semibold text-gray-700 mt-1"></p>
+
+                <!-- Kategori -->
+                <p id="modalCategory" class="text-sm text-purple-600 italic"></p>
+
+                <!-- Deskripsi -->
+                <p id="modalDescription" class="text-sm text-gray-600 mt-3 leading-relaxed"></p>
+            </div>
+
 
             <!-- Tombol Beli & Tutup -->
-            <div class="mt-4 flex justify-between">
+            <div class="mt-4 flex justify-end">
                 <button id="buyButton"
-                    class="px-4 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition">Beli</button>
-                <button id="closeModalBtn"
-                    class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition">Tutup</button>
+                    class="px-4 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition">Beli Sekarang</button>
             </div>
         </div>
     </div>
@@ -244,14 +280,19 @@ document.addEventListener("DOMContentLoaded", () => {
             const buyButton = document.getElementById("buyButton");
 
             document.querySelectorAll(".preview-btn").forEach(button => {
-                button.addEventListener("click", (e) => {
-                    document.getElementById("modalImage").src = e.target.dataset.image;
-                    document.getElementById("modalTitle").textContent = e.target.dataset.name;
-                    document.getElementById("modalCategory").textContent = e.target.dataset.category;
-                    document.getElementById("modalPrice").textContent = `Rp ${e.target.dataset.price}`;
-                    previewModal.classList.remove("hidden");
-                });
+            button.addEventListener("click", (e) => {
+                const card = e.currentTarget; // gunakan currentTarget, bukan target
+
+                document.getElementById("modalImage").src = card.dataset.image;
+                document.getElementById("modalTitle").textContent = card.dataset.name;
+                document.getElementById("modalCategory").textContent = card.dataset.category;
+                document.getElementById("modalPrice").textContent = `Rp ${card.dataset.price}`;
+                document.getElementById("modalDescription").textContent = card.dataset.description;
+
+                previewModal.classList.remove("hidden");
             });
+        });
+
 
             document.getElementById("closeModal").addEventListener("click", () => {
                 previewModal.classList.add("hidden");

@@ -1,19 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
     const accessToken = localStorage.getItem("access_token");
     const endpoint = import.meta.env.VITE_DATABASE_ENDPOINT;
+
     const templateList = document.getElementById("template-list");
     const searchInput = document.getElementById("search");
     const filterSelect = document.getElementById("filter");
 
-    if (!templateList) {
-        console.error("Element #template-list tidak ditemukan di halaman.");
-        return;
-    }
-
-    let templatesData = [];
-    let selectedTemplate = null;
-
-    // Modal Elements
+    // Modal Preview Elements
     const previewModal = document.getElementById("previewModal");
     const modalImage = document.getElementById("modalImage");
     const modalTitle = document.getElementById("modalTitle");
@@ -23,16 +16,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeModal = document.getElementById("closeModal");
     const closeModalBtn = document.getElementById("closeModalBtn");
 
-    // Modal Konfirmasi Pembayaran
+    // Modal Konfirmasi
     const paymentConfirmModal = document.getElementById("paymentConfirmModal");
     const confirmModalTitle = document.getElementById("confirmModalTitle");
-    const confirmModalDesc = document.getElementById("confirmModalDesc");
+    const modalDescription = document.getElementById("modalDescription");
     const confirmPayBtn = document.getElementById("confirmPayBtn");
 
     // Overlay Invoice
     const invoiceOverlay = document.getElementById("invoiceOverlay");
     const invoiceCode = document.getElementById("invoiceCode");
     const closeInvoiceOverlay = document.getElementById("closeInvoiceOverlay");
+
+    if (!templateList) {
+        console.error("Element #template-list tidak ditemukan di halaman.");
+        return;
+    }
+
+    let templatesData = [];
+    let selectedTemplate = null;
 
     async function fetchTemplates() {
         try {
@@ -88,10 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             ` : ""}
 
                             <button class="preview-btn px-3 py-1 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-900 transition"
-                                data-image="${endpoint}/${template["template-preview"]}" 
-                                data-title="${template.name}" 
-                                data-category="${categoryText}" 
-                                data-price="${priceText}">
+                                data-template-id="${template.id}">
                                 Preview
                             </button>
                         </div>
@@ -107,37 +105,34 @@ document.addEventListener("DOMContentLoaded", function () {
     function addPreviewEventListeners() {
         document.querySelectorAll(".preview-btn").forEach((btn) => {
             btn.addEventListener("click", function () {
-                modalImage.src = this.getAttribute("data-image");
-                modalTitle.textContent = this.getAttribute("data-title");
-                modalCategory.textContent = this.getAttribute("data-category");
-                modalPrice.textContent = this.getAttribute("data-price");
+                const templateId = this.getAttribute("data-template-id");
+                const template = templatesData.find(t => t.id == templateId);
 
-                const template = templatesData.find(t => t.name === this.getAttribute("data-title"));
-                selectedTemplate = template || null;
+                if (!template) return;
+
+                selectedTemplate = template;
+
+                modalImage.src = `${endpoint}/${template["template-preview"]}`;
+                modalTitle.textContent = template.name;
+                modalCategory.textContent = template.price > 0 ? "Premium CV Template" : "Free CV Template";
+                modalPrice.textContent = template.price > 0 ? `Rp ${template.price}` : "Gratis";
+                modalDescription.textContent = template.description || "Deskripsi belum tersedia.";
+
+                // Tampilkan tombol beli hanya jika template berbayar
+                if (buyButton) {
+                    if (template.price > 0) {
+                        buyButton.classList.remove("hidden");
+                    } else {
+                        buyButton.classList.add("hidden");
+                    }
+                }
 
                 previewModal.classList.remove("hidden");
             });
         });
     }
 
-    // Beli langsung dari card
-    document.addEventListener("click", function (event) {
-        if (event.target.classList.contains("buy-btn")) {
-            const templateId = event.target.getAttribute("data-template-id");
-            const template = templatesData.find(t => t.id == templateId);
-
-            if (template) {
-                selectedTemplate = template;
-
-                confirmModalTitle.textContent = `Beli Template: ${template.name}`;
-                confirmModalDesc.textContent = `Harga: ${template.price > 0 ? 'Rp ' + template.price : 'Gratis'}`;
-
-                paymentConfirmModal.classList.remove("hidden");
-            }
-        }
-    });
-
-    // Beli dari dalam modal preview
+    // Tombol Beli dalam Modal Preview
     if (buyButton) {
         buyButton.addEventListener("click", function () {
             if (!selectedTemplate) {
@@ -154,7 +149,24 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Klik tombol "Bayar Sekarang"
+    // Klik tombol "Beli" dari Card
+    document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("buy-btn")) {
+            const templateId = event.target.getAttribute("data-template-id");
+            const template = templatesData.find(t => t.id == templateId);
+
+            if (template) {
+                selectedTemplate = template;
+
+                confirmModalTitle.textContent = `Beli Template: ${template.name}`;
+                confirmModalDesc.textContent = `Harga: ${template.price > 0 ? 'Rp ' + template.price : 'Gratis'}`;
+
+                paymentConfirmModal.classList.remove("hidden");
+            }
+        }
+    });
+
+    // Tombol Bayar Sekarang
     if (confirmPayBtn) {
         confirmPayBtn.addEventListener("click", async function () {
             if (!selectedTemplate) {
@@ -178,7 +190,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data && data.payment_url) {
                     window.open(data.payment_url, '_blank');
 
-                    // Simulasi delay (anggap Midtrans sukses setelah 3 detik)
                     setTimeout(() => {
                         invoiceCode.textContent = data.invoice || "INV-" + Math.floor(Math.random() * 999999);
                         invoiceOverlay.classList.remove("hidden");

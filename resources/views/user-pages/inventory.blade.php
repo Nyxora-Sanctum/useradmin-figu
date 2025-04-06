@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventory</title>
 
-    <!--=====FAV ICON=======-->
+    <!--===== FAVICON =====-->
     <link rel="shortcut icon" href="assets/images/logo/icon-logo.png" />
 
-    <!-- Link Tailwind CSS melalui CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    @vite(['resources/js/user-pages/shop.js'])
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script>
-    <script type="text/javascript" data-client-key="YOUR_CLIENT_KEY"></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- ===== FONT & ICONS ===== -->
+    <link rel="shortcut icon" href="assets/images/logo/icon-logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script>
+    @vite(['resources/js/user-pages/inventory.js', 'resources/user/js/plugins/jquery-3-6-0.min.js'])
+    
     <!-- Custom CSS tambahan jika diperlukan -->
     <style>
         .navbar {
@@ -55,80 +54,166 @@
 
 </head>
 
-<body class="bg-gray-100">
-
+<body class="bg-gray-100 min-h-screen flex flex-col">
     <!-- Header Navbar -->
-    <header class="bg-[#6E24FF] w-full p-3">
-        <div class="container mx-auto flex items-center justify-between">
-            <div>
-                <a href="{{ url('/index') }}"><img src="images/user/logo/logoo.png" alt="" width="40%"></a>
+    <header class="bg-[#6E24FF] w-full h-12 md:h-16">
+        <div class="container mx-auto h-full flex items-center justify-between px-6">
+            <div class="h-full flex items-center">
+                <a href="{{ url('/index') }}"> <img src="images/user/logo/logoo.png" alt="Logo" class="h-6 md:h-10"></a>
             </div>
-            <nav>
-                <ul class="flex space-x-6 font-bold">
-                    <li><a href="{{ url('shop') }}" class="text-white hover:text-[#5A1EDB]">Shop</a></li>
-                    <li><a href="{{ url('inventory') }}" class="text-white hover:text-[#5A1EDB]">Inventory</a></li>
-                    <li><a href="{{ url('editor') }}" class="text-white hover:text-[#5A1EDB]">CV Editor</a></li>
-                    <li><a href="{{ url('invoice') }}" class="text-white hover:text-[#5A1EDB]">Invoice</a></li>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6 font-bold text-white">
+                    <li><a href="{{ url('shop') }}" class="hover:text-[#d1c3ff]">Shop</a></li>
+                    <li><a href="{{ url('inventory') }}" class="hover:text-[#d1c3ff]">Inventory</a></li>
+                    <li><a href="{{ url('editor') }}" class="hover:text-[#d1c3ff]">CV Editor</a></li>
+                    <li><a href="{{ url('invoice') }}" class="hover:text-[#d1c3ff]">Invoice</a></li>
                 </ul>
             </nav>
-            <div class="flex items-center space-x-4">
-                <!-- Input Pencarian -->
-                <div class="relative">
-                    <input type="text" placeholder="Search..." class="pl-4 pr-10 py-2 rounded-full focus:outline-none" />
-                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                        <svg class="h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M12.9 14.32a8 8 0 111.414-1.414l4.387 4.387a1 1 0 01-1.414 1.414l-4.387-4.387zM10 16a6 6 0 100-12 6 6 0 000 12z" clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
+                   <!-- Search + Profile -->
+        <div class="flex items-center space-x-4">
+            <!-- Search -->
+            <div class="relative">
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Cari template CV..."
+                    class="pl-10 pr-4 py-1.5 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent w-48 md:w-64 text-sm"
+                />
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
+                    </svg>
                 </div>
-                <!-- Ikon Profil dengan Dropdown -->
-                <div x-data="{ open: false }" class="relative flex items-center space-x-2" @click.away="open = false">
-                    <button @click="open = !open" class="focus:outline-none flex items-center space-x-2">
-                        <img src="images/user/profil/icon-profil.jpg" alt="Profile" class="h-10 w-10 rounded-full border-2 border-white">
-                        <span class="text-white font-medium">Hi, Nadin</span>
-                    </button>
-                    <!-- Dropdown Menu -->
-                    <div x-show="open" class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
-                        <a href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
-                        <a href="logout.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Logout</a>
-                    </div>
+            </div>
+
+            <!-- Profile Dropdown -->
+            <div x-data="{ open: false }" class="relative" @click.away="open = false">
+                <button @click="open = !open" class="flex items-center space-x-2 focus:outline-none">
+                    <img src="images/user/profil/icon-profil.jpg" alt="Profile"
+                         class="h-10 w-10 rounded-full border-2 border-white">
+                    <span class="text-white font-medium hidden md:inline">Hi, Nadin</span>
+                </button>
+                <!-- Dropdown -->
+                <div x-show="open"
+                     class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                    <a href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
+                    <a href="logout.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Logout</a>
                 </div>
             </div>
         </div>
+    </div>
     </header>
-    
+
 </body>
 
-<body class="bg-gray-100">
-        <div class="flex justify-between mb-4">
-            <div>
-                <button class="bg-gray-300 px-4 py-2 rounded">Semua</button>
-                <button class="bg-gray-300 px-4 py-2 rounded">Tersedia</button>
-                <button class="bg-gray-300 px-4 py-2 rounded">Habis</button>
-            </div>
-        </div>
-        
-        <div class="grid grid-cols-3 gap-4">
-            <div class="bg-white p-4 shadow rounded">
-                <img src="product-image.jpg" alt="Produk" class="w-full h-40 object-cover rounded">
-                <h2 class="text-lg font-semibold mt-2">Nama Produk</h2>
-                <p class="text-gray-500">Kategori</p>
-                <p class="text-sm">Stok: <span class="font-bold text-green-500">10</span></p>
-                <div class="mt-2 flex justify-between">
-                    <button class="bg-yellow-500 text-white px-4 py-2 rounded">Edit</button>
-                    <button class="bg-red-500 text-white px-4 py-2 rounded">Hapus</button>
+<main class="container mx-auto px-6 py-4 flex-grow">
+
+    <!-- Container untuk Template List -->
+    <section id="template-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-4 mb-10">
+        @if (isset($templates) && count($templates) > 0)
+            @foreach ($templates as $template)
+                <div class="card bg-white rounded-lg shadow-lg border border-gray-200 p-4">
+                    <img src="{{ asset($template->image) }}" alt="{{ $template->name }}" class="w-full rounded-md h-40 object-cover">
+                    <p class="text-center text-gray-600 mt-2 font-semibold">{{ $template->name }}</p>
+
+                    <!-- Tombol Aksi -->
+                    <div class="flex justify-between mt-3">
+                        <button class="text-sm text-purple-600 hover:underline preview-btn"
+                            data-image="{{ asset($template->image) }}"
+                            data-name="{{ $template->name }}">Preview</button>
+                        <a href="{{ url('editor?template=' . $template->id) }}"
+                            class="text-sm bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700 transition">Pakai</a>
+                    </div>
                 </div>
-            </div>
-            <div class="bg-white p-4 shadow rounded">
-                <img src="product-image.jpg" alt="Produk" class="w-full h-40 object-cover rounded">
-                <h2 class="text-lg font-semibold mt-2">Nama Produk</ h2>
-                <p class="text-gray-500">Kategori</p>
-                <p class="text-sm">Stok: <span class="font-bold text-red-500">0</span></p>
-                <div class="mt-2 flex justify-between">
-                    <button class="bg-yellow-500 text-white px-4 py-2 rounded">Edit</button>
-                    <button class="bg-red-500 text-white px-4 py-2 rounded">Hapus</button>
-                </div>
-            </div>
+            @endforeach
+        @else
+        <p class="text-gray-600 text-center col-span-full flex flex-col items-center">
+            <img src="/images/empty-box.svg" alt="No data" class="w-32 h-32 mb-4">
+            Kamu belum membeli template apapun.
+        </p>
+        @endif
+    </section>
+
+    <!-- Modal Overlay -->
+<!-- Modal Preview -->
+<div id="preview-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+    <div class="bg-white p-4 rounded-lg shadow-lg max-w-sm w-full relative">
+        <button id="close-modal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">✕</button>
+        <img id="preview-image" class="w-full rounded-md object-contain max-h-[75vh]" src="" alt="Preview">
+    </div>
+</div>
+
+            <!-- Informasi Template -->
+            <h2 id="modalTitle" class="text-xl font-semibold mt-3"></h2>
+            <p id="modalCategory" class="text-sm text-gray-500"></p>
+            <p id="modalPrice" class="text-lg font-bold mt-2"></p>
         </div>
-    </main>
+    </div>
+</main>
+
+<footer class="bg-gray-900 text-white py-10">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-6">
+
+        <div>
+            <img src="images/user/logo/logoo.png" alt="CV AI Logo" class="w-32 mb-2">
+            <!-- Tambahkan logo di sini -->
+            <h2 class="text-lg font-semibold">About Us</h2>
+            <p class="text-sm mt-2 text-gray-400">Platform AI untuk membuat CV profesional secara otomatis.
+                Tingkatkan peluang kerja dengan CV yang menarik.</p>
+        </div>
+
+        <div>
+            <h2 class="text-lg font-semibold">Quick Links</h2>
+            <ul class="mt-2 space-y-2 text-sm text-gray-400">
+                <li><a href="#" class="hover:text-purple-300">Home</a></li>
+                <li><a href="#" class="hover:text-purple-300">CV Editor</a></li>
+                <li><a href="#" class="hover:text-purple-300">Shop</a></li>
+                <li><a href="#" class="hover:text-purple-300">My Templates</a></li>
+                <li><a href="#" class="hover:text-purple-300">Invoice & Payment</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2 class="text-lg font-semibold">Support</h2>
+            <ul class="mt-2 space-y-2 text-sm text-gray-400">
+                <li><a href="#" class="hover:text-purple-300">FAQ</a></li>
+                <li><a href="#" class="hover:text-purple-300">Help Center</a></li>
+                <li><a href="#" class="hover:text-purple-300">Contact Us</a></li>
+            </ul>
+            <h2 class="text-lg font-semibold mt-4">Legal</h2>
+            <ul class="mt-2 space-y-2 text-sm text-gray-400">
+                <li><a href="#" class="hover:text-purple-300">Terms & Conditions</a></li>
+                <li><a href="#" class="hover:text-purple-300">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2 class="text-lg font-semibold">Follow Us</h2>
+            <div class="flex space-x-4 mt-2">
+                <a href="#" class="text-gray-400 hover:text-purple-300"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-purple-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-400 hover:text-purple-300"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-purple-300"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <h2 class="text-lg font-semibold mt-4">Newsletter</h2>
+            <form class="mt-2">
+                <input type="email" placeholder="Enter your email"
+                    class="w-full p-2 rounded bg-gray-800 border border-gray-700 text-white">
+                <button class="w-full mt-2 p-2 bg-purple-500 rounded hover:bg-purple-600">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center text-gray-400 text-sm mt-10 border-t border-gray-700 pt-4">
+        &copy; 2025 CV AI | All Rights Reserved.
+    </div>
+</footer>
+
+
+<script>
+</script>
 </body>
+
+</html>
