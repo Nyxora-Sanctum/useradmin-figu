@@ -35,7 +35,7 @@ class AuthController extends Controller
             }
 
             // Create an HTTP-only cookie for access token
-            $cookie = cookie('bearer_token', $data['token'], 60, '/', '127.0.0.1', true, true);
+            $cookie = cookie('bearer_token', $data['token'], 60, '/', 'aifigu.azurewebsites.net', true, true);
             Cookie::queue($cookie);
 
             // Fetch user role after login using the access_token
