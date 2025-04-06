@@ -36,7 +36,8 @@ class CheckRole
         $apiEndpoint = env('VITE_DATABASE_ENDPOINT') . '/api/auth/check';
 
         // Retrieve token from HttpOnly cookie
-        $token = $request->cookie('bearer_token');
+        $token = $request->bearerToken() ?? $request->cookie('bearer_token');
+
 
         if (empty($token)) {
             Log::warning('Unauthorized access attempt. No token provided.');
