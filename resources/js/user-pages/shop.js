@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const templateList = document.getElementById("template-list");
     const searchInput = document.getElementById("search");
     const filterSelect = document.getElementById("filter");
-
+    const loadingOverlay = document.getElementById("loadingOverlay");
     // Modal Preview Elements
     const previewModal = document.getElementById("previewModal");
     const modalImage = document.getElementById("modalImage");
@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let selectedTemplate = null;
 
     async function fetchTemplates() {
+        loadingOverlay.classList.add("active");
         try {
             const response = await fetch(`${endpoint}/api/templates/get/all-templates`, {
                 method: "GET",
@@ -70,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const categoryText = template.price > 0 ? "Premium CV Template" : "Free CV Template";
 
             const templateCard = `
-                <div class="max-w-[240px] bg-white rounded-lg shadow-xl overflow-hidden border border-gray-300">
+                <div class="max-w-[240px] bg-white rounded-lg shadow-xl overflow-hidd    en border border-gray-300">
                     <div class="relative aspect-[3/4]">
                         <img class="w-full h-full object-cover" src="${endpoint}/${template["template-preview"]}" alt="${template.name}">
                     </div>
@@ -98,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
             templateList.innerHTML += templateCard;
         });
-
+        loadingOverlay.classList.remove("active");
         addPreviewEventListeners();
     }
 

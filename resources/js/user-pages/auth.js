@@ -7,6 +7,7 @@ document
         const password = document.getElementById("password").value;
         const loginRoute = "/login";
         const loadingOverlay = document.getElementById("loadingOverlay");
+        
 
         // Show the loading overlay smoothly
         loadingOverlay.classList.add("active");

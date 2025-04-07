@@ -134,27 +134,81 @@
             </div>
           </div>
   </section>
+<style>
+    /* Loading overlay */
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        /* Semi-transparent white */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+        z-index: 9999;
+        /* Ensure it's on top */
+    }
+
+    /* Show when active */
+    .loading-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Loader animation */
+    .loader {
+        display: flex;
+        gap: 6px;
+    }
+
+    .loader div {
+        width: 6px;
+        height: 20px;
+        background: #9b98f2;
+        /* Purple */
+        animation: loadingBounce 0.6s infinite ease-in-out alternate;
+    }
+
+    .loader div:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .loader div:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .loader div:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes loadingBounce {
+        from {
+            transform: scaleY(0.5);
+        }
+
+        to {
+            transform: scaleY(1.5);
+        }
+    }
+</style>
+
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
 
     <!-- Container untuk Template List -->
     <section id="template-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6 mb-10">
-        @if (isset($templates) && count($templates) > 0)
-            @foreach ($templates as $template)
-            <div class="card bg-white rounded-lg shadow-lg border border-gray-200 p-4 cursor-pointer preview-btn"
-            data-image="{{ asset($template->image) }}"
-            data-name="{{ $template->name }}"
-            data-category="{{ $template->category }}"
-            data-price="{{ $template->price }}"
-            data-description="{{ $template->description }}">
-            
-            <img src="{{ asset($template->image) }}" alt="{{ $template->name }}" class="w-full rounded-md">
-            <p class="text-center text-gray-600 mt-2">{{ $template->name }}</p>
-            <p class="price-tag hidden">{{ $template->price }}</p>
-            <p>{{ $template->description }}</p>
-        </div>
-            @endforeach
-        @else
-            <p class="text-gray-600 text-center">No templates available</p>
-        @endif
+
     </section>
 
     <!-- Modal Overlay -->

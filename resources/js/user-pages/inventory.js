@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     const accessToken = localStorage.getItem("access_token");
     const endpoint = import.meta.env.VITE_DATABASE_ENDPOINT;
-
+    const loadingOverlay = document.getElementById("loadingOverlay");
     const templateList = document.getElementById("template-list");
     const searchInput = document.getElementById("search");
 
     let templatesData = [];
 
     async function fetchTemplates() {
+        loadingOverlay.classList.add("active");
         try {
             const response = await fetch(`${endpoint}/api/templates/get/all-templates`, {
                 method: "GET",
@@ -26,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function displayTemplates() {
+
         if (!templateList) return;
 
         const searchText = searchInput?.value.toLowerCase() || "";
@@ -59,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
             templateList.innerHTML += card;
         });
-
+        loadingOverlay.classList.remove("active");
         addInventoryEventListeners();
     }
 

@@ -106,7 +106,9 @@
     </div>
     </header>
 
+
 </body>
+
 
 <main class="container mx-auto px-6 py-4 flex-grow">
 
@@ -211,9 +213,78 @@
     </div>
 </footer>
 
+<style>
+    /* Loading overlay */
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        /* Semi-transparent white */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+        z-index: 9999;
+        /* Ensure it's on top */
+    }
 
-<script>
-</script>
+    /* Show when active */
+    .loading-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Loader animation */
+    .loader {
+        display: flex;
+        gap: 6px;
+    }
+
+    .loader div {
+        width: 6px;
+        height: 20px;
+        background: #9b98f2;
+        /* Purple */
+        animation: loadingBounce 0.6s infinite ease-in-out alternate;
+    }
+
+    .loader div:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .loader div:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .loader div:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes loadingBounce {
+        from {
+            transform: scaleY(0.5);
+        }
+
+        to {
+            transform: scaleY(1.5);
+        }
+    }
+</style>
+
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
 </body>
 
 </html>
