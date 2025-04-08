@@ -65,7 +65,7 @@
                                     <li><a href="about.html" class="nav-link active">Inventory</a></li>
                                     <li><a href="{{ url('editor') }}"class="nav-link active">CV Editor</a></li>
                                     <li><a href="features.html" class="nav-link active">Shop</a></li>
-                                    <li><a href="contact.html" class="nav-link active">Invoice</a></li>
+                                    <li><a href="{{ url('invoice') }}" class="nav-link active">Invoice</a></li>
                                 </ul>
                                 <a href="{{ url('login') }}" class="header-btn2">Login</a>
                                 <a href="signup.html" class="header-btn3">Profile</a>

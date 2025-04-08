@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Editor Form with CV Template</title>
+    <title>CV Editor</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for Icons -->
@@ -13,13 +13,7 @@
 
     <!--=====JS=======-->
 
-    @vite([
-        'resources/user/js/plugins/jquery-3-6-0.min.js', 
-        'resources/user/js/plugins/swiper.bundle.js', 
-        'resources/user/js/plugins/ScrollTrigger.min.js', 
-        'resources/user/js/plugins/aos.js',
-        'resources/js/user-pages/editor.js'
-    ])
+    @vite(['resources/user/js/plugins/jquery-3-6-0.min.js', 'resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/ScrollTrigger.min.js', 'resources/user/js/plugins/aos.js', 'resources/js/user-pages/editor.js'])
 
 
     <!--===== CSS =======-->
@@ -45,7 +39,7 @@
                                     <li><a href="about.html" class="nav-link active">Inventory</a></li>
                                     <li><a href="{{ url('editor') }}"class="nav-link active">CV Editor</a></li>
                                     <li><a href="features.html" class="nav-link active">Shop</a></li>
-                                    <li><a href="contact.html" class="nav-link active">Invoice</a></li>
+                                    <li><a href="{{ url('invoice') }}" class="nav-link active">Invoice</a></li>
                                 </ul>
                                 <a href="{{ url('login') }}" class="header-btn2">Login</a>
                                 <a href="signup.html" class="header-btn3">Profile</a>
@@ -65,9 +59,29 @@
             <form id="editor-form">
                 @csrf
                 <!-- Container untuk textarea dan ikon -->
+                <p> CV biasa? No way!!! 🚀 Isi promp ini dengan data dirimu, dan dapatkan CV yang bikin recruiter
+                    langsung 'klik'! </p>
                 <div class="textarea-container">
                     <textarea name="prompt" id="prompt" cols="30" rows="10" class="form-control"
-                        placeholder="Type your message..."></textarea>
+                        placeholder="contoh data diri......
+
+                        Profil CV - Misellia Ikhwan
+                        Graphic & Web Designer profesional dengan pengalaman 3+ tahun di PT. Unimasoft, 
+                        khususnya dalam pengembangan game dan desain UI/UX. 
+                        Lulusan SMKN 4 Malang jurusan Teknik Komputer dan Jaringan, 
+                        dengan keahlian utama di:
+                        Desain Website & Aplikasi Mobile
+
+                        Pengembangan Game (blockchain integration)
+
+                        Tools: Adobe Photoshop, Figma, HTML/CSS
+
+                        Kontak: +62 812 3456 7890 | Jalan Diponegoro, Malang
+                        Portofolio: misellia.design | LinkedIn: linkedin.com/in/misellia
+
+                        Siap berkontribusi di proyek kreatif dan inovatif.
+                        
+                        "></textarea>
                     <!-- Submit Button as Icon -->
                     <button type="submit" id="submit-button">
                         <i class="fas fa-paper-plane"></i> <!-- Font Awesome icon -->
@@ -168,6 +182,7 @@
                 <!-- Skills -->
                 <section class="skills-summary">
                     <h2>SKILLS</h2>
+                    <br>
                     <ul class="skill-container-list">
                         <li>
                             <div class="skill-container">
@@ -252,9 +267,7 @@
     </script>
 
     <!-- JS -->
-    @vite([
-        'resources/user/js/plugins/swiper.bundle.js', 
-        'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
+    @vite(['resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
     <!-- JS -->
 
 </body>
