@@ -60,7 +60,12 @@
                                 <a href="{{ url('/index') }}"><img src="images/user/logo/logoo.png"
                                         alt=""width="90%" height="42"></a>
                             </div>
-                            <div class="main-menu">
+                            <div class="main-menu">                                <ul>
+                                    <li><a href="about.html" class="nav-link active">Inventory</a></li>
+                                    <li><a href="{{ url('editor') }}"class="nav-link active">CV Editor</a></li>
+                                    <li><a href="features.html" class="nav-link active">Shop</a></li>
+                                    <li><a href="{{ url('invoice') }}" class="nav-link active">Invoice</a></li>
+                                </ul>
                                 <a href="{{ url('login') }}" class="header-btn2">Login</a>
                                 <a href="signup.html" class="header-btn3">Sign Up</a>
                             </div>
