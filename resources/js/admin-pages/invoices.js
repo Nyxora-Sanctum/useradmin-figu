@@ -27,19 +27,6 @@ class GridDatatable {
 
                response_data.then((data) => {
                     data_key = Object.keys(data[0]);
-                    data_key.push({ 
-                         name: 'Actions',
-                         formatter: (cell, row) => {
-                              return h('button', {
-                                   className: 'py-2 mb-4 px-4 border rounded-md text-white bg-blue-600',
-                                   onClick: () => alert(`Editing "${row.cells[0].data}" "${row.cells[1].data}"`)
-                              }, 'Edit');
-                         },
-                         attributes: {
-                              "contenteditable": "true"
-                         }
-                    });
-
                     data_value = data.map(obj => Object.values(obj));
 
                     console.log(data_key);
