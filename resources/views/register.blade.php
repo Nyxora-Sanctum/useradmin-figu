@@ -10,13 +10,17 @@
     <title>Figurer || Register</title>
 
     <!--=====FAV ICON=======-->
-    <link rel="shortcut icon" href="frontend/assets/images/logo/fav-logo.png">
+    <link rel="shortcut icon" href="{{ asset('public\images\user\logo\icon-logo.png') }}">
 
     <!--=====CSS=======-->
     @vite(['resources/user/css/plugins/bootstrap.min.css', 'resources/user/css/plugins/swiper.bundle.css', 'resources/user/css/plugins/fontawesome.css', 'resources/user/css/plugins/mobile.css', 'resources/user/css/plugins/magnific-popup.css', 'resources/user/css/plugins/slick-slider.css', 'resources/user/css/plugins/owlcarousel.min.css', 'resources/user/css/plugins/aos.css', 'resources/user/css/typography.css', 'resources/user/css/master.css'])
 
     <!--=====JQUERY=======-->
-    <script src="user/js/plugins/jquery-3-6-0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+            integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -147,7 +151,51 @@
         </div>
     </div>
     <!--===== MOBILE HEADER STARTS =======-->
+    <style>
+    /* Loading overlay */
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    }
 
+    /* Show when active */
+    .loading-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+
+
+        </style>
+        <div id="loadingOverlay" class="loading-overlay">
+        <div class="loader loader--style6">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+            <rect x="0" y="13" width="4" height="5">
+                <animate attributeName="height" values="5;21;5" begin="0s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="y" values="13; 5; 13" begin="0s" dur="0.6s" repeatCount="indefinite" />
+            </rect>
+            <rect x="10" y="13" width="4" height="5">
+                <animate attributeName="height" values="5;21;5" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="y" values="13; 5; 13" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+            </rect>
+            <rect x="20" y="13" width="4" height="5">
+                <animate attributeName="height" values="5;21;5" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="y" values="13; 5; 13" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+            </rect>
+            </svg>
+        </div>
+        </div>
     <!--===== WELCOME STARTS =======-->
     <div class="about-welcome-section-area login"
         style="background-image: url('/images/user/background/emailbg.png'); background-repeat: no-repeat; background-size: cover;">
@@ -239,7 +287,20 @@
 
     <!--=====JS=======-->
     @vite(['resources/user/js/plugins/jquery-3-6-0.min.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/aos.js', 'resources/user/js/plugins/gsap.min.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/plugins/ScrollTrigger.min.js', 'resources/user/js/main.js'])
+    <script>document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
 
+            const loadingOverlay = document.getElementById('loadingOverlay');
+
+            // Show loading overlay
+            loadingOverlay.classList.add('active');
+
+            // Submit the form after a short delay to show animation
+            setTimeout(() => {
+                this.submit();
+            }, 300);
+        });
+</script>
 </body>
 
 </html>

@@ -20,22 +20,26 @@
 
     <!--=====JQUERY=======-->
     @vite(
-        'resources/user/js/plugins/jquery-3-6-0.min.js',
-        'resources/user/js/plugins/swiper.bundle.js',
-    )
-
+    'resources/user/js/plugins/jquery-3-6-0.min.js',
+)
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @vite('resources/user/js/plugins/swiper.bundle.js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!--===== CSS =======-->
     @vite([
-        'resources/user/css/plugins/bootstrap.min.css',
-        'resources/user/css/plugins/swiper.bundle.css',
-        'resources/user/css/plugins/mobile.css',
-        'resources/user/css/plugins/magnific-popup.css',
-        'resources/user/css/plugins/slick-slider.css',
-        'resources/user/css/plugins/owlcarousel.min.css',
-        'resources/user/css/plugins/aos.css',
-        'resources/user/css/typography.css',
-        'resources/user/css/master.css'
-    ])
+    'resources/user/css/plugins/bootstrap.min.css',
+    'resources/user/css/plugins/swiper.bundle.css',
+    'resources/user/css/plugins/mobile.css',
+    'resources/user/css/plugins/magnific-popup.css',
+    'resources/user/css/plugins/slick-slider.css',
+    'resources/user/css/plugins/owlcarousel.min.css',
+    'resources/user/css/plugins/aos.css',
+    'resources/user/css/typography.css',
+    'resources/user/css/master.css'
+])
 
 </head>
 
@@ -169,6 +173,74 @@
         </div>
     </div>
     <!--===== MOBILE HEADER STARTS =======-->
+<style>
+    /* Loading overlay */
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+        z-index: 9999; /* Ensure it's on top */
+    }
+
+    /* Show when active */
+    .loading-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Loader animation */
+    .loader {
+        display: flex;
+        gap: 6px;
+    }
+
+    .loader div {
+        width: 6px;
+        height: 20px;
+        background: #9b98f2; /* Purple */
+        animation: loadingBounce 0.6s infinite ease-in-out alternate;
+    }
+
+    .loader div:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .loader div:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .loader div:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes loadingBounce {
+        from {
+            transform: scaleY(0.5);
+        }
+        to {
+            transform: scaleY(1.5);
+        }
+    }
+</style>
+
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
 
     <!--===== WELCOME STARTS =======-->
   <div class="about-welcome-section-area login"
@@ -231,16 +303,16 @@
 
     <!--=====JS=======-->
     @vite([
-        'resources/js/user-pages/auth.js',
-        'resources/user/js/plugins/slick-slider.js',
-        'resources/user/js/plugins/bootstrap.min.js',
-        'resources/user/js/plugins/mobilemenu.js',
-        'resources/user/js/plugins/owlcarousel.min.js',
-        'resources/user/js/plugins/counter.js',
-        'resources/user/js/plugins/waypoints.js',
-        'resources/user/js/plugins/magnific-popup.js',
-        'resources/user/js/main.js'
-        ])
+    'resources/js/user-pages/auth.js',
+    'resources/user/js/plugins/slick-slider.js',
+    'resources/user/js/plugins/bootstrap.min.js',
+    'resources/user/js/plugins/mobilemenu.js',
+    'resources/user/js/plugins/owlcarousel.min.js',
+    'resources/user/js/plugins/counter.js',
+    'resources/user/js/plugins/waypoints.js',
+    'resources/user/js/plugins/magnific-popup.js',
+    'resources/user/js/main.js'
+])
 </body>
 
 

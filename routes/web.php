@@ -6,7 +6,7 @@ use App\Http\Middleware\CheckRole;
 use App\Http\Controllers\Auth\AuthController;
 
 // ✅ Do NOT apply middleware to login route!
-Route::get('/', [RoutingController::class, 'index'])->name('root')->middleware(CheckRole::class . ':guest');
+Route::get('/', [RoutingController::class, 'landing'])->name('root')->middleware(CheckRole::class . ':guest');
 Route::get('/login', [RoutingController::class, 'login'])->name('login')->middleware(CheckRole::class . ':guest');
 Route::post('/login', [AuthController::class, 'login'])->name('login')->middleware(CheckRole::class . ':guest');
 Route::get('/register', [RoutingController::class, 'register'])->name('register')->middleware(CheckRole::class . ':guest');

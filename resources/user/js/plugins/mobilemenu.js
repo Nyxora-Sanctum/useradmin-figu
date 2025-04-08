@@ -25,7 +25,7 @@ const mobile_menu = {
                 });
                 //mobile-menus-markup
                 $.fn.menumarker = function (options) {
-                    mobile_menu = $(this),
+                    let $mobile_menu = $(this),
                         settings = $.extend({
                             format: "dropdown",
                             sticky: false
