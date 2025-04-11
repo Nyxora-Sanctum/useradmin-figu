@@ -36,7 +36,6 @@
                                 <ul>
                                     <li><a href="{{ url('inventory') }}" class="nav-link active">Inventory</a></li>
                                     <li><a href="{{ url('editor') }}"class="nav-link active">CV Editor</a></li>
-                                    <li><a href="features.html" class="nav-link active">Shop</a></li>
                                     <li><a href="{{ url('shop') }}" class="nav-link active">Shop</a></li>
                                     <li><a href="{{ url('invoice') }}" class="nav-link active">Invoice</a></li>
                                 </ul>
@@ -54,42 +53,74 @@
         style="background-image: url('images/user/background/header2-bg.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
         <!-- Editor Section -->
         <div class="editor">
-            <form id="editor-form">
+            <form id="cv-form">
                 @csrf
-                <!-- Container untuk textarea dan ikon -->
-                <p> CV biasa? No way!!! 🚀 Isi promp ini dengan data dirimu, dan dapatkan CV yang bikin recruiter
-                    langsung 'klik'! </p>
-                <div class="textarea-container">
-                    <textarea name="prompt" id="prompt" cols="30" rows="10" class="form-control"
-                        placeholder="contoh data diri......
+                <h2>Form Pengisian CV</h2>
 
-                        Profil CV - Misellia Ikhwan
-                        Graphic & Web Designer profesional dengan pengalaman 3+ tahun di PT. Unimasoft, 
-                        khususnya dalam pengembangan game dan desain UI/UX. 
-                        Lulusan SMKN 4 Malang jurusan Teknik Komputer dan Jaringan, 
-                        dengan keahlian utama di:
-                        Desain Website & Aplikasi Mobile
-
-                        Pengembangan Game (blockchain integration)
-
-                        Tools: Adobe Photoshop, Figma, HTML/CSS
-
-                        Kontak: +62 812 3456 7890 | Jalan Diponegoro, Malang
-                        Portofolio: misellia.design | LinkedIn: linkedin.com/in/misellia
-
-                        Siap berkontribusi di proyek kreatif dan inovatif.
-                        
-                        "></textarea>
-                    <!-- Submit Button as Icon -->
-                    <button type="submit" id="submit-button">
-                        <i class="fas fa-paper-plane"></i> <!-- Font Awesome icon -->
-                    </button>
+                <!-- Upload Foto -->
+                <div class="form-grid-2col">
+                    <div class="form-group">
+                        <label for="upload">Upload Foto:</label> 
+                        <input type="file" id="upload" name="upload">
+                    </div>
                 </div>
-                <button type="button" id="download-cv" class="btn btn-primary">
-                    <i class="fas fa-download"></i> Download CV
-                </button>
+
+                <!-- Informasi Dasar -->
+                <div class="form-grid-2col">
+                    <div class="form-group">
+                        <label>Nama:</label>
+                        <input type="text" id="form-name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Pekerjaan:</label>
+                        <input type="text" id="form-job" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Kontak:</label>
+                        <input type="text" id="form-contact" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat:</label>
+                        <input type="text" id="form-address" class="form-control">
+                    </div>
+                </div>
+
+                <!-- Pendidikan -->
+                <h4>Pendidikan</h4>
+                <div id="education-section">
+                    <div class="edu-item">
+                        <input type="text" placeholder="Tahun" class="edu-year form-control">
+                        <input type="text" placeholder="Jurusan" class="edu-major form-control">
+                        <input type="text" placeholder="Tempat" class="edu-place form-control">
+                        <textarea placeholder="Deskripsi" class="edu-desc form-control"></textarea>
+                    </div>
+                </div>
+                <button type="button" class="btn-small" onclick="addEducation()">+Pendidikan</button>
+
+                <!-- Pengalaman -->
+                <h4>Pengalaman</h4>
+                <div id="experience-section">
+                    <div class="exp-item">
+                        <input type="text" placeholder="Tahun" class="exp-year form-control">
+                        <input type="text" placeholder="Jabatan" class="exp-role form-control">
+                        <input type="text" placeholder="Perusahaan" class="exp-place form-control">
+                        <textarea placeholder="Deskripsi" class="exp-desc form-control"></textarea>
+                    </div>
+                </div>
+                <button type="button" class="btn-small" onclick="addExperience()">+Pengalaman</button>
+
+                <!-- Skill -->
+                <h4>Skill</h4>
+                <div id="skill-section">
+                    <input type="text" class="skill-item form-control" placeholder="Contoh: Website Design">
+                </div>
+                <button type="button" class="btn-small" onclick="addSkill()">+Skill</button>
+
+                <br>
+                <button type="submit">Simpan ke CV</button>
             </form>
         </div>
+
         <!-- CV Container -->
         <div class="cv-container">
             <div class="cv">
@@ -246,21 +277,108 @@
                 reader.onload = function(e) {
                     document.getElementById('image').src = e.target.result;
                     document.querySelector('.upload-icon').style.display =
-                        'none'; // Sembunyikan ikon setelah gambar dipilih
+                        'none';
                 }
                 reader.readAsDataURL(file);
             }
         });
     </script>
     <script>
-        document.getElementById("download-cv").addEventListener("click", function() {
-            // Simulasi mengunduh file CV (ubah 'cv-sample.pdf' ke path yang sesuai)
+        document.getElementById("download-cv").addEventListener("click", function() {// Simulasi mengunduh file CV (ubah 'cv-sample.pdf' ke path yang sesuai)
             const link = document.createElement("a");
             link.href = "cv-sample.pdf"; // Ganti dengan path CV yang benar
             link.download = "My_CV.pdf";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+        });
+
+        // Tambah Pendidikan
+        function addEducation() {
+            const container = document.getElementById('education-section');
+            const clone = container.children[0].cloneNode(true);
+            clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
+            container.appendChild(clone);
+        }
+
+        // Tambah Pengalaman
+        function addExperience() {
+            const container = document.getElementById('experience-section');
+            const clone = container.children[0].cloneNode(true);
+            clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
+            container.appendChild(clone);
+        }
+
+        // Tambah Skill
+        function addSkill() {
+            const container = document.getElementById('skill-section');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.placeholder = 'Contoh: UI/UX';
+            input.classList.add('skill-item');
+            container.appendChild(input);
+        }
+
+        // Submit Data ke CV
+        document.getElementById('cv-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Basic Info
+            document.getElementById('name').textContent = document.getElementById('form-name').value;
+            document.getElementById('job').textContent = document.getElementById('form-job').value;
+            document.getElementById('contact').textContent = document.getElementById('form-contact').value;
+            document.getElementById('address').textContent = document.getElementById('form-address').value;
+
+            // Gambar
+            const fileInput = document.getElementById('upload');
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('image').src = e.target.result;
+                }
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+
+            // Pendidikan
+            const eduItems = document.querySelectorAll('#education-section .edu-item');
+            const eduList = document.querySelector('.education-summary ul');
+            eduList.innerHTML = ''; // clear
+            eduItems.forEach(item => {
+                eduList.innerHTML += `
+                <li>
+                    <div class="education-summary-container">
+                        <span class="education-year">${item.querySelector('.edu-year').value}</span>
+                        <span class="education-major">${item.querySelector('.edu-major').value}</span>
+                        <span class="education-place">${item.querySelector('.edu-place').value}</span>
+                        <span class="education-description">${item.querySelector('.edu-desc').value}</span>
+                    </div>
+                </li>`;
+            });
+
+            // Pengalaman
+            const expItems = document.querySelectorAll('#experience-section .exp-item');
+            const expList = document.querySelector('.experience-summary ul');
+            expList.innerHTML = ''; // clear
+            expItems.forEach(item => {
+                expList.innerHTML += `
+                <li>
+                    <div class="experience-summary-container">
+                        <span class="experience-year">${item.querySelector('.exp-year').value}</span>
+                        <span class="experience">${item.querySelector('.exp-role').value}</span>
+                        <span class="experience-place">${item.querySelector('.exp-place').value}</span>
+                        <span class="experience-description">${item.querySelector('.exp-desc').value}</span>
+                    </div>
+                </li>`;
+            });
+
+            // Skill
+            const skillItems = document.querySelectorAll('.skill-item');
+            const skillList = document.querySelectorAll('.subskill-container-list');
+            const skillHTML = Array.from(skillItems).map(input => `
+            <li><span class="subskill">${input.value}</span></li>
+        `).join('');
+
+            skillList.forEach(list => list.innerHTML = skillHTML);
         });
     </script>
 

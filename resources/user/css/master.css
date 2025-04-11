@@ -32,6 +32,7 @@ Location:
 /*============= RTL CSS AREA ===============*/
 /*============= TYPHOGRAPHY CSS AREA ===============*/
 /*============= CV EDITOR CSS AREA ===============*/
+/*============= INVOICE CSS AREA ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
 
 * {
@@ -10327,18 +10328,12 @@ a.header-btn9 i {
     color: var(--Text-Color, #0D0E10);
     font-weight: 500;
     appearance: none;
-    /* Menghilangkan panah default pada dropdown */
     -webkit-appearance: none;
-    /* Untuk browser berbasis WebKit (Chrome, Safari) */
     -moz-appearance: none;
-    /* Untuk browser berbasis Mozilla (Firefox) */
     background-image: url('data:image/svg+xml;utf8,<svg fill="%230D0E10" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-    /* Panah custom */
     background-repeat: no-repeat;
     background-position: right 20px center;
-    /* Posisi panah */
     padding-right: 50px;
-    /* Memberi ruang untuk panah */
 }
 
 .about-welcome-section-area.login .login-boxarea .input-area input::-moz-placeholder {
@@ -10916,92 +10911,183 @@ a.header-btn9 i {
 
 /*============= CV EDITOR CSS AREA STARTS ===============*/
 
+/* ===== Container Layout ===== */
 .main-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-    height: 100vh;
-    gap: 0;
-    overflow: hidden;/* Hilangkan scroll global */
-}
-
-/* Editor Section */
-.editor {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    background-color: #f5f5f5;
-    gap: 0;
     height: 100vh;
     overflow: hidden;
-    /* Hilangkan scroll pada editor */
 }
 
-#editor-form {
+.editor {
+    width: 50%;
+    background-color: #f5f5f5;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* ===== Form Styling ===== */
+form#cv-form {
+    width: 90%;
+    max-width: 700px;
+    background: #fff;
+    padding: 25px 30px;
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    padding: 20px;
+    gap: 24px;
 }
 
-/* Container untuk textarea dan ikon */
-.textarea-container {
-    position: relative;
-    /* Relatif untuk memposisikan ikon di dalamnya */
-    width: 100%;
+form h2,
+form h3 {
+    color: #333;
+    margin-bottom: 10px;
 }
 
-#prompt {
-    width: 100%;
-    height: 300px;
-    padding: 10px 40px 10px 10px;
-    /* Padding kanan untuk memberi ruang pada ikon */
-    border: 1px solid #ced4da;
-    border-radius: 5px;
+/* ===== Label ===== */
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: inline-block;
     font-size: 14px;
-    resize: none;
+}
+
+/* ===== Input, Textarea, Upload ===== */
+input[type="text"],
+input[type="file"],
+textarea,
+input.form-control,
+textarea.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
     transition: border-color 0.3s ease;
 }
 
-#prompt:focus {
+input:focus,
+textarea:focus {
     border-color: #86b7fe;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.2);
 }
 
+textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* ===== Grid 2 Kolom ===== */
+.form-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Section Style ===== */
+.section-group {
+    margin-bottom: 30px;
+}
+
+.edu-item,
+.exp-item {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    background: #fafafa;
+}
+
+.skill-item {
+    margin-bottom: 10px;
+}
+
+/* ===== Tahun Range (Optional) ===== */
+.year-range-inputs {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.year-range-inputs input {
+    width: 90px;
+}
+
+/* ===== Tombol ===== */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.btn-small {
+    padding: 4px 10px;
+    font-size: 16px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content; /* Biar lebarnya sekecil kontennya */
+    display: inline-block; /* Supaya nggak ambil seluruh lebar parent */
+}
+
+
+.btn-small:hover {
+    background-color: blueviolet;
+}
+
+/* ===== Submit/Download Khusus ===== */
 #submit-button {
-    position: absolute;
-    /* Posisi absolut relatif terhadap .textarea-container */
-    right: 10px;
-    /* Jarak dari kanan */
-    bottom: 10px;
-    /* Jarak dari bawah */
     background: none;
     border: none;
     cursor: pointer;
     color: #0d6efd;
     font-size: 24px;
-    transition: color 0.3s ease;
-}
-
-#download-cv {
     margin-top: 10px;
-    display: block;
-    width: 150px;
+    transition: color 0.3s ease;
 }
 
 #submit-button:hover {
     color: #0b5ed7;
 }
 
-/* CV Container */
+#download-cv {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 6px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
 .cv-container {
     overflow-y: auto;
-    /* Mengaktifkan scroll vertikal */
     background-color: rgb(229, 228, 234);
     display: flex;
     flex-direction: column;
@@ -11020,7 +11106,6 @@ a.header-btn9 i {
     position: relative;
 }
 
-/* CV Styles */
 .profile-photo {
     width: 150px;
     height: 150px;
@@ -11103,20 +11188,19 @@ a.header-btn9 i {
 .job-and-contact {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* Jarak antar item */
-    align-items: center; /* Tengah vertikal */
+    justify-content: space-between; 
+    align-items: center; 
     margin-top: 60px;
     margin-left: 80px;
     margin-right: 80px;
 }
 
-/* Tambahkan ini untuk mengatur alignment teks */
 .job, 
 .contact-container, 
 .address-container {
     display: flex;
-    align-items: center; /* Tengah vertikal */
-    height: 100%; /* Gunakan tinggi penuh parent */
+    align-items: center;
+    height: 100%;
 }
 
 
@@ -11240,4 +11324,89 @@ a.header-btn9 i {
 }
 
 /*============= CV EDITOR CSS AREA ENDS ===============*/
+
+/*============= INVOICE CSS AREA ===============*/
+
+    .invoice-card {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 1280px;
+        margin: 2rem auto;
+        overflow-y: auto;
+    }
+
+    .invoice-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .invoice-header h2 {
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .invoice-header p {
+        color: #777;
+        margin-bottom: 0;
+    }
+
+    .invoice-details {
+        margin-bottom: 2rem;
+    }
+
+    .invoice-details .row {
+        margin-bottom: 0.5rem;
+    }
+
+    .invoice-details .label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .invoice-table {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .invoice-table th,
+    .invoice-table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .invoice-table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .invoice-total {
+        text-align: right;
+    }
+
+    .invoice-total .total-label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .invoice-total .total-value {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .invoice-footer {
+        text-align: center;
+        margin-top: 2rem;
+        color: #777;
+    }
+
+    .invoice-table-container {
+        max-height: 500px;
+    }
+/*============= INVOICE CSS AREA ENDS ===============*/
 /*# sourceMappingURL=master.css.map */
