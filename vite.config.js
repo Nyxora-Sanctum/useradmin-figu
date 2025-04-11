@@ -28,6 +28,8 @@ export default defineConfig({
                 "resources/user/css/plugins/fontawesome.css",
 
                 // JavaScriptt
+                "resources/js/user-pages/shop.js",
+                "resources/js/user-pages/inventory.js",
                 "resources/js/admin-pages/manageuser.js",
                 "resources/js/admin-pages/config.js",
                 "resources/js/admin-pages/invoices.js",
