@@ -11115,22 +11115,24 @@ button:hover {
 
 .cv-container {
     overflow-y: auto;
-    background-color: rgb(229, 228, 234);
+    background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: auto;
-    width: 75%;
-    gap: 0;
-    padding: 695px 60px 75px 60px;
+    width: 100%;
+    padding: 40px 0;
 }
 
 .cv {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     width: 210mm;
-    background-color: cornsilk;
+    min-height: 297mm;
+    background-color: white;
     position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 60px;
 }
 
 .profile-photo {
@@ -11138,17 +11140,17 @@ button:hover {
     height: 150px;
     border-radius: 100%;
     object-fit: cover;
-    border: 3px solid #ddd;
+    border: 4px solid #2c3e50;
     cursor: pointer;
     display: block;
-    background-color: rgb(229, 228, 234);
-    position: relative;
+    margin: 0 auto 30px;
+    background-color: #ecf0f1;
+    transition: all 0.3s ease;
 }
 
-.upload-label {
-    position: relative;
-    display: inline-block;
-    padding: 30px 60px;
+.profile-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .upload-icon {
@@ -11158,9 +11160,10 @@ button:hover {
     transform: translate(-50%, -50%);
     font-size: 24px;
     color: white;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(44, 62, 80, 0.7);
     padding: 10px;
     border-radius: 50%;
+    opacity: 0;
     transition: opacity 0.3s;
 }
 
@@ -11168,48 +11171,42 @@ button:hover {
     opacity: 1;
 }
 
-
-
 .header {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    font-family: 'Poppins';
+    font-family: 'Montserrat', sans-serif;
     text-align: left;
-    margin-top: 20px;
-    color: #333;
-    font-size: 2rem;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 20px;
 }
 
 .name {
     font-size: 36px;
-    font-weight: 550;
-    color: #333;
-    margin-left: 60px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+    letter-spacing: 1px;
 }
 
 .header-menu {
-    margin-top: 7px;
-    margin-right: 60px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    text-align: right;
 }
 
 .upper-header-menu {
     font-size: 18px;
-    font-weight: 500;
-    color: #333;
-    text-align: right;
+    font-weight: 600;
+    color: #2c3e50;
 }
 
 .lower-header-menu {
     font-size: 16px;
     font-weight: 400;
-    color: #333;
-    margin-top: 0;
+    color: #7f8c8d;
+    margin-top: 5px;
 }
 
 .job-and-contact {
@@ -11217,138 +11214,167 @@ button:hover {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 60px;
-    margin-left: 80px;
-    margin-right: 80px;
+    margin: 30px 0;
+    padding: 20px 0;
+    border-top: 1px solid #ecf0f1;
+    border-bottom: 1px solid #ecf0f1;
 }
 
-.job,
-.contact-container,
-.address-container {
-    display: flex;
-    align-items: center;
-    height: 100%;
+.job {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #3498db;
+    flex: 1;
+    font-style: italic;
 }
-
 
 .contact-container,
 .address-container {
     display: flex;
     flex-direction: column;
     flex: 1;
+    padding: 0 15px;
 }
 
 .contact-label,
 .address-label {
     text-align: left;
-    font-family: 'Poppins';
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
 }
 
 .contact,
 .address {
-    color: #333;
-    margin-top: auto;
-    font-family: 'Poppins';
+    color: #2c3e50;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     text-align: left;
-}
-
-.job {
-    font-family: 'Poppins';
-    font-size: 16px;
-    font-weight: 550;
-    color: #838488;
-    width: 100px;
 }
 
 .education-summary,
 .experience-summary,
 .skills-summary {
-    margin-top: 40px;
-    margin-left: 80px;
-    margin-right: 80px;
+    margin: 40px 0;
 }
 
 .education-summary h2,
 .experience-summary h2,
 .skills-summary h2 {
-    text-align: center;
-    font-family: 'Poppins';
-    font-size: 20px;
-    font-weight: 600;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+    margin-bottom: 25px;
 }
 
 .education-summary-container,
 .experience-summary-container {
     display: flex;
     flex-direction: column;
-    gap: 0px;
-    margin-top: 25px;
+    gap: 5px;
+    margin-bottom: 30px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.education-summary-container:before,
+.experience-summary-container:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: #3498db;
+    border-radius: 50%;
 }
 
 .education-year,
 .experience-year {
-    font-family: 'Poppins';
-    font-size: 12px;
-    font-weight: 600;
-    color: #898a8e;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #3498db;
 }
 
 .education-major,
 .experience {
-    font-family: 'Poppins';
-    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
     font-weight: 600;
-    color: #333;
+    color: #2c3e50;
+    margin: 5px 0;
 }
 
 .education-place,
 .experience-place {
-    margin-top: 7.5px;
-    font-family: 'Poppins';
-    font-size: 14px;
-    font-weight: 600;
-    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #7f8c8d;
+    font-style: italic;
 }
 
 .education-description,
 .experience-description {
-    margin-top: 1px;
-    font-family: 'Poppins';
-    font-size: 12px;
-    font-weight: 500;
-    color: #818a8f;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #34495e;
+    line-height: 1.5;
+    margin-top: 10px;
 }
 
 .skill-container-list {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 150px;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
 .subskill-container-list {
     display: flex;
     flex-direction: column;
-    gap: 0px;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 .skill {
-    font-family: 'Poppins';
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 600;
-    color: #333;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .subskill {
-    font-family: 'Poppins';
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
-    font-weight: 500;
-    color: #333;
+    font-weight: 400;
+    color: #34495e;
+    position: relative;
+    padding-left: 15px;
 }
+
+.subskill:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #3498db;
+}
+
 
 /*============= CV EDITOR CSS AREA ENDS ===============*/
 
@@ -11362,6 +11388,9 @@ button:hover {
     max-width: 1280px;
     margin: 2rem auto;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Important for scroll container */
 }
 
 .invoice-header {
@@ -11396,6 +11425,7 @@ button:hover {
 .invoice-table {
     width: 100%;
     margin-bottom: 2rem;
+    border-collapse: collapse;
 }
 
 .invoice-table th,
@@ -11409,6 +11439,8 @@ button:hover {
     background-color: #f8f9fa;
     font-weight: bold;
     color: #333;
+    position: sticky;
+    top: 0;
 }
 
 .invoice-total {
@@ -11428,13 +11460,17 @@ button:hover {
 
 .invoice-footer {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: auto; /* This pushes footer to bottom */
+    padding-top: 20px;
     color: #777;
+    border-top: 1px solid #eee;
 }
 
 .invoice-table-container {
     max-height: 500px;
+    overflow-y: auto;
+    flex-grow: 1; /* Takes available space */
+    margin-bottom: 20px; /* Space between table and footer */
 }
 
 /*============= INVOICE CSS AREA ENDS ===============*/
-/*# sourceMappingURL=master.css.map */
