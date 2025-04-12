@@ -82,13 +82,14 @@
 
 <!-- Right Side (Image/Illustration) -->
 <div class="w-1/2 bg-blue-900 text-white flex flex-col justify-center items-center p-10">
-    <div class="mb-6">
-        <a href="{{ url('/') }}">
-            <img src="/images/user/logo/logoo.png" alt="Logo" class="w-52 h-12 mx-auto mt-2">
-        </a>
+    <div class="mb-2">
+      <a href="{{ url('/') }}">
+        <img src="/images/user/logo/logoo.png" alt="Logo" class="w-52 h-12 mx-auto mt-2">
+      </a>
     </div>
-    <img src="/images/login1.svg" alt="Illustration" class="w-120 h-120 object-contain" />
-</div>
+    <img src="/images/login1.svg" alt="Illustration" class="w-[32rem] h-[32rem] object-contain -mt-4" />
+  </div>
+  
 
 </body>
 
