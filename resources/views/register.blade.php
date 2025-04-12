@@ -67,7 +67,7 @@
         </div>
       
         <!-- Submit Button -->
-        <button type="submit" class="w-full bg-blue-800 text-white px-4 py-2 rounded-md hover:bg-blue-900 transition-all">
+        <button type="submit" class="w-full bg-[#6E24FF] text-white px-4 py-2 rounded-md hover:bg-[#4A1AB0] transition-all">
           Register
         </button>
  
@@ -81,7 +81,7 @@
   </div>
 
 <!-- Right Side (Image/Illustration) -->
-<div class="w-1/2 bg-blue-900 text-white flex flex-col justify-center items-center p-10">
+<div class="w-1/2 bg-gradient-to-br from-[#6E24FF] to-purple-300 text-white flex flex-col justify-center items-center p-10">
     <div class="mb-2">
       <a href="{{ url('/') }}">
         <img src="/images/user/logo/logoo.png" alt="Logo" class="w-52 h-12 mx-auto mt-2">
