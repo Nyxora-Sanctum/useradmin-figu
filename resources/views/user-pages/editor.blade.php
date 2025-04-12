@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>CV Editor</title>
     <!-- Bootstrap CSS -->
@@ -77,7 +77,7 @@
                         <input type="text" id="form-job" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Kontak:</label>
+                        <label>No tlpn:</label>
                         <input type="text" id="form-contact" class="form-control">
                     </div>
                     <div class="form-group">
@@ -91,8 +91,8 @@
                 <div id="education-section">
                     <div class="edu-item">
                         <div class="grid-2col">
-                            <input type="number" placeholder="Tahun Mulai" class="exp-year form-control" min="1900" max="2099" step="1">
-                            <input type="number" placeholder="Tahun Selesai" class="exp-year form-control" min="1900" max="2099" step="1">
+                            <input type="number" placeholder="Tahun Mulai" class="edu-year-start form-control" min="1900" max="2099" step="1">
+                            <input type="number" placeholder="Tahun Selesai" class="edu-year-end form-control" min="1900" max="2099" step="1">
                         </div>
                         <input type="text" placeholder="Jurusan" class="edu-major form-control">
                         <input type="text" placeholder="Tempat" class="edu-place form-control">
@@ -105,8 +105,8 @@
                 <div id="experience-section">
                     <div class="exp-item">
                         <div class="grid-2col">
-                            <input type="number" placeholder="Tahun Mulai" class="exp-year form-control" min="1900" max="2099" step="1">
-                            <input type="number" placeholder="Tahun Selesai" class="exp-year form-control" min="1900" max="2099" step="1">
+                            <input type="number" placeholder="Tahun Mulai" class="edu-year-start form-control" min="1900" max="2099" step="1">
+                            <input type="number" placeholder="Tahun Selesai" class="edu-year-end form-control" min="1900" max="2099" step="1">
                         </div>                        
                         <input type="text" placeholder="Jabatan" class="exp-role form-control">
                         <input type="text" placeholder="Perusahaan" class="exp-place form-control">
@@ -120,6 +120,11 @@
                     <input type="text" class="skill-item form-control" placeholder="Contoh: Website Design">
                 </div>
                 <button type="button" class="btn-small" onclick="addSkill()">+Skill</button>
+
+                <div class="form-group">
+                    <label>Prompt Tambahan:</label>
+                    <input type="text" id="form-address" class="form-control">
+                </div>
 
                 <button class="btn-small-create" type="submit">Buat CV</button>
             </form>
@@ -293,7 +298,7 @@
     </script>
     <script>
         document.getElementById("download-cv").addEventListener("click",
-            function() { // Simulasi mengunduh file CV (ubah 'cv-sample.pdf' ke path yang sesuai)
+            function() {
                 const link = document.createElement("a");
                 link.href = "cv-sample.pdf"; // Ganti dengan path CV yang benar
                 link.download = "My_CV.pdf";
