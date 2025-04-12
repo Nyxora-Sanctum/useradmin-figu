@@ -214,10 +214,10 @@
     </div>
 </div>
 
-    <!-- Container untuk Template List -->
-    <section id="template-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6 mb-10">
+<!-- Container untuk Template List -->
+<section id="template-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6 mb-10">
 
-    </section>
+</section>
 
 <!-- Modal Overlay -->
 <div id="previewModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
@@ -336,43 +336,6 @@
 </footer>
 
 <script>
-
-document.addEventListener("DOMContentLoaded", () => {
-            const previewModal = document.getElementById("previewModal");
-            const overlayCard = document.getElementById("overlayCard");
-            const buyButton = document.getElementById("buyButton");
-
-            document.querySelectorAll(".preview-btn").forEach(button => {
-            button.addEventListener("click", (e) => {
-                const card = e.currentTarget; // gunakan currentTarget, bukan target
-
-                document.getElementById("modalImage").src = card.dataset.image;
-                document.getElementById("modalTitle").textContent = card.dataset.name;
-                document.getElementById("modalCategory").textContent = card.dataset.category;
-                document.getElementById("modalPrice").textContent = `Rp ${card.dataset.price}`;
-                document.getElementById("modalDescription").textContent = card.dataset.description;
-
-                previewModal.classList.remove("hidden");
-            });
-        });
-
-
-            document.getElementById("closeModal").addEventListener("click", () => {
-                previewModal.classList.add("hidden");
-            });
-            buyButton.addEventListener("click", () => {
-                previewModal.classList.add("hidden");
-                setTimeout(() => {
-                    document.getElementById("invoiceNumber").textContent = "INV-" + Math.floor(Math.random() * 100000);
-                    document.getElementById("paymentStatus").textContent = "Berhasil";
-                    overlayCard.classList.remove("hidden");
-                }, 1000);
-            });
-
-            document.getElementById("closeOverlayBtn").addEventListener("click", () => {
-                overlayCard.classList.add("hidden");
-            });
-        });
 
 </script>
 </body>

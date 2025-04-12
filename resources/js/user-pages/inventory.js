@@ -10,12 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
     async function fetchTemplates() {
         loadingOverlay.classList.add("active");
         try {
-            const response = await fetch(`${endpoint}/api/templates/get/all-templates`, {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            });
+            const response = await fetch(`${endpoint}/api/templates/inventory`,
+                {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                }
+            );
 
             if (!response.ok) throw new Error("Gagal mengambil data template");
 
