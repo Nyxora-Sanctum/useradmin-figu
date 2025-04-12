@@ -107,7 +107,7 @@
 
             <form id="loginForm" method="POST" action="{{ route('login') }}">
                 @csrf
-                <div class="mb-4">
+                <div class="mb-2">
                     <label for="username" class="block text-gray-700 mb-1 text-lg">Username</label>
                     <input type="text" id="username" name="username"
                         class="w-full border border-gray-300 rounded-md px-4 py-2 text-lg" required
@@ -115,7 +115,7 @@
                 </div>
 
                 <!-- Password -->
-                <div class="mb-4">
+                <div class="mb-3">
                     <label for="password" class="block text-gray-700 mb-1 text-lg">Password</label>
                     <input type="password" id="password" name="password"
                         class="w-full border border-gray-300 rounded-md px-4 py-2 text-sm" required
@@ -137,7 +137,7 @@
     </div>
 
     <!-- Right Side (Image/Illustration) -->
-    <div class="w-1/2 bg-[#6E24FF] text-white flex flex-col justify-center items-center p-10">
+    <div class="w-1/2 bg-gradient-to-br from-[#6E24FF] to-purple-300 text-white flex flex-col justify-center items-center p-10">
         <div class="mb-2">
             <a href="{{ url('/') }}">
                 <img src="/images/user/logo/logoo.png" alt="Logo" class="w-52 h-12 mx-auto mt-2">
