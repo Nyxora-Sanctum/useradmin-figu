@@ -8,6 +8,7 @@
     <title>CV Editor</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
@@ -60,7 +61,7 @@
                 <!-- Upload Foto -->
                 <div class="form-grid-2col">
                     <div class="form-group">
-                        <label for="upload">Upload Foto:</label> 
+                        <label for="upload">Upload Foto:</label>
                         <input type="file" id="upload" name="upload">
                     </div>
                 </div>
@@ -89,7 +90,10 @@
                 <h4>Pendidikan</h4>
                 <div id="education-section">
                     <div class="edu-item">
-                        <input type="text" placeholder="Tahun" class="edu-year form-control">
+                        <div class="grid-2col">
+                            <input type="number" placeholder="Tahun Mulai" class="exp-year form-control" min="1900" max="2099" step="1">
+                            <input type="number" placeholder="Tahun Selesai" class="exp-year form-control" min="1900" max="2099" step="1">
+                        </div>
                         <input type="text" placeholder="Jurusan" class="edu-major form-control">
                         <input type="text" placeholder="Tempat" class="edu-place form-control">
                         <textarea placeholder="Deskripsi" class="edu-desc form-control"></textarea>
@@ -97,11 +101,13 @@
                 </div>
                 <button type="button" class="btn-small" onclick="addEducation()">+Pendidikan</button>
 
-                <!-- Pengalaman -->
                 <h4>Pengalaman</h4>
                 <div id="experience-section">
                     <div class="exp-item">
-                        <input type="text" placeholder="Tahun" class="exp-year form-control">
+                        <div class="grid-2col">
+                            <input type="number" placeholder="Tahun Mulai" class="exp-year form-control" min="1900" max="2099" step="1">
+                            <input type="number" placeholder="Tahun Selesai" class="exp-year form-control" min="1900" max="2099" step="1">
+                        </div>                        
                         <input type="text" placeholder="Jabatan" class="exp-role form-control">
                         <input type="text" placeholder="Perusahaan" class="exp-place form-control">
                         <textarea placeholder="Deskripsi" class="exp-desc form-control"></textarea>
@@ -109,15 +115,13 @@
                 </div>
                 <button type="button" class="btn-small" onclick="addExperience()">+Pengalaman</button>
 
-                <!-- Skill -->
                 <h4>Skill</h4>
                 <div id="skill-section">
                     <input type="text" class="skill-item form-control" placeholder="Contoh: Website Design">
                 </div>
                 <button type="button" class="btn-small" onclick="addSkill()">+Skill</button>
 
-                <br>
-                <button type="submit">Simpan ke CV</button>
+                <button class="btn-small-create" type="submit">Buat CV</button>
             </form>
         </div>
 
@@ -264,6 +268,10 @@
                     </ul>
                 </section>
             </div>
+            <a href="path/to/your-cv.pdf" download class="btn btn-primary btn-sm mt-3 btn-small-download "
+                title="Download CV">
+                <i class="bi bi-download"></i>
+            </a>
         </div>
     </div>
 
@@ -284,14 +292,15 @@
         });
     </script>
     <script>
-        document.getElementById("download-cv").addEventListener("click", function() {// Simulasi mengunduh file CV (ubah 'cv-sample.pdf' ke path yang sesuai)
-            const link = document.createElement("a");
-            link.href = "cv-sample.pdf"; // Ganti dengan path CV yang benar
-            link.download = "My_CV.pdf";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        });
+        document.getElementById("download-cv").addEventListener("click",
+            function() { // Simulasi mengunduh file CV (ubah 'cv-sample.pdf' ke path yang sesuai)
+                const link = document.createElement("a");
+                link.href = "cv-sample.pdf"; // Ganti dengan path CV yang benar
+                link.download = "My_CV.pdf";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
 
         // Tambah Pendidikan
         function addEducation() {

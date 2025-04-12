@@ -11051,12 +11051,50 @@ button:hover {
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: fit-content; /* Biar lebarnya sekecil kontennya */
-    display: inline-block; /* Supaya nggak ambil seluruh lebar parent */
+    width: fit-content;
+    display: inline-block;
 }
 
 
 .btn-small:hover {
+    background-color: purple;
+}
+
+.btn-small-download {
+    padding: 5px 18px;
+    font-size: 16px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+    display: inline-block;
+    position: absolute;
+    bottom: 20px; 
+    right: 80px; 
+    z-index: 10;
+}
+
+.btn-small-download:hover {
+    background-color: blueviolet;
+}
+
+.btn-small-create {
+    padding: 5px 18px;
+    font-size: 16px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+    display: inline-block;
+}
+
+.btn-small-create:hover {
     background-color: blueviolet;
 }
 
@@ -11073,17 +11111,6 @@ button:hover {
 
 #submit-button:hover {
     color: #0b5ed7;
-}
-
-#download-cv {
-    margin-top: 10px;
-    padding: 8px 16px;
-    background-color: #0d6efd;
-    color: white;
-    border-radius: 6px;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
 }
 
 .cv-container {
@@ -11188,15 +11215,15 @@ button:hover {
 .job-and-contact {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
     margin-top: 60px;
     margin-left: 80px;
     margin-right: 80px;
 }
 
-.job, 
-.contact-container, 
+.job,
+.contact-container,
 .address-container {
     display: flex;
     align-items: center;
@@ -11327,86 +11354,87 @@ button:hover {
 
 /*============= INVOICE CSS AREA ===============*/
 
-    .invoice-card {
-        background-color: #ffffff;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        max-width: 1280px;
-        margin: 2rem auto;
-        overflow-y: auto;
-    }
+.invoice-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1280px;
+    margin: 2rem auto;
+    overflow-y: auto;
+}
 
-    .invoice-header {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
+.invoice-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
 
-    .invoice-header h2 {
-        color: #333;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-    }
+.invoice-header h2 {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
 
-    .invoice-header p {
-        color: #777;
-        margin-bottom: 0;
-    }
+.invoice-header p {
+    color: #777;
+    margin-bottom: 0;
+}
 
-    .invoice-details {
-        margin-bottom: 2rem;
-    }
+.invoice-details {
+    margin-bottom: 2rem;
+}
 
-    .invoice-details .row {
-        margin-bottom: 0.5rem;
-    }
+.invoice-details .row {
+    margin-bottom: 0.5rem;
+}
 
-    .invoice-details .label {
-        font-weight: bold;
-        color: #555;
-    }
+.invoice-details .label {
+    font-weight: bold;
+    color: #555;
+}
 
-    .invoice-table {
-        width: 100%;
-        margin-bottom: 2rem;
-    }
+.invoice-table {
+    width: 100%;
+    margin-bottom: 2rem;
+}
 
-    .invoice-table th,
-    .invoice-table td {
-        padding: 0.75rem;
-        vertical-align: top;
-        border-top: 1px solid #dee2e6;
-    }
+.invoice-table th,
+.invoice-table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
 
-    .invoice-table th {
-        background-color: #f8f9fa;
-        font-weight: bold;
-        color: #333;
-    }
+.invoice-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #333;
+}
 
-    .invoice-total {
-        text-align: right;
-    }
+.invoice-total {
+    text-align: right;
+}
 
-    .invoice-total .total-label {
-        font-weight: bold;
-        color: #555;
-    }
+.invoice-total .total-label {
+    font-weight: bold;
+    color: #555;
+}
 
-    .invoice-total .total-value {
-        font-size: 1.25rem;
-        font-weight: bold;
-        color: #333;
-    }
+.invoice-total .total-value {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
 
-    .invoice-footer {
-        text-align: center;
-        margin-top: 2rem;
-        color: #777;
-    }
+.invoice-footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: #777;
+}
 
-    .invoice-table-container {
-        max-height: 500px;
-    }
+.invoice-table-container {
+    max-height: 500px;
+}
+
 /*============= INVOICE CSS AREA ENDS ===============*/
 /*# sourceMappingURL=master.css.map */
