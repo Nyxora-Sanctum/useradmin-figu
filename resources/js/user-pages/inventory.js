@@ -39,26 +39,23 @@ document.addEventListener("DOMContentLoaded", function () {
         templateList.innerHTML = "";
 
         filteredTemplates.forEach((template) => {
-            const priceText = template.price > 0 ? `Rp ${template.price}` : "Gratis";
-
             const card = `
-                <div class="bg-white border p-3 rounded shadow text-sm max-w-[240px]">
-                    <img class="w-full aspect-[3/4] object-cover mb-2 cursor-pointer preview-trigger" 
-                         src="${endpoint}/${template["template-preview"]}" 
-                         alt="${template.name}" 
-                         data-src="${endpoint}/${template["template-preview"]}">
-                    <div class="font-semibold">${template.name}</div>
-                    <div class="text-gray-500 mb-2">${priceText}</div>
-                    <div class="flex gap-2 flex-wrap">
-                        <button class="preview-btn bg-gray-700 text-white px-2 py-1 rounded text-xs" 
-                                data-src="${endpoint}/${template["template-preview"]}">Preview</button>
-                        <button class="edit-btn bg-blue-600 text-white px-2 py-1 rounded text-xs" 
-                                data-id="${template.id}">Edit</button>
-                        <button class="delete-btn bg-red-600 text-white px-2 py-1 rounded text-xs" 
-                                data-id="${template.id}">Hapus</button>
-                    </div>
+            <div class="bg-white border p-3 rounded shadow text-sm max-w-[240px]">
+                <img class="w-full aspect-[3/4] object-cover mb-2 cursor-pointer preview-trigger" 
+                     src="${endpoint}/${template["template-preview"]}" 
+                     alt="${template.name}" 
+                     data-src="${endpoint}/${template["template-preview"]}">
+                <div class="font-semibold mb-2">${template.name}</div> <!-- Menambahkan margin bottom di sini -->
+                <div class="flex gap-2 flex-wrap">
+                    <button class="preview-btn bg-gray-700 text-white px-2 py-1 rounded text-xs" 
+                            data-src="${endpoint}/${template["template-preview"]}">Preview</button>
+                    <button class="edit-btn bg-blue-600 text-white px-2 py-1 rounded text-xs" 
+                            data-id="${template.id}">Gunakan</button>
+                    <button class="delete-btn bg-red-600 text-white px-2 py-1 rounded text-xs" 
+                            data-id="${template.id}">Hapus</button>
                 </div>
-            `;
+            </div>
+        `;
             templateList.innerHTML += card;
         });
         loadingOverlay.classList.remove("active");

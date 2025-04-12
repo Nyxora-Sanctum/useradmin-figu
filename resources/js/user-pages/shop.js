@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Modal Konfirmasi
     const paymentConfirmModal = document.getElementById("paymentConfirmModal");
     const confirmModalTitle = document.getElementById("confirmModalTitle");
-    const modalDescription = document.getElementById("modalDescription");
+    
     const confirmPayBtn = document.getElementById("confirmPayBtn");
 
     // Overlay Invoice
@@ -83,13 +83,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         <div class="mt-3 flex justify-between">
                             ${template.price > 0 ? ` 
-                                <button class="buy-btn px-3 py-1 bg-purple-600 text-white rounded-full shadow-md hover:bg-purple-700 transition"
+                                <button class="buy-btn px-3 py-1 bg-[#6E24FF] text-white rounded-full shadow-md hover:bg-[#4A1AB0] transition"
                                     data-template-id="${template.id}">
                                     Beli
                                 </button>
                             ` : ""}
 
-                            <button class="preview-btn px-3 py-1 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-900 transition"
+                            <button class="preview-btn px-3 py-1 bg-gray-800 text-white rounded-full shadow-md hover:bg-[#141920] transition"
                                 data-template-id="${template.id}">
                                 Preview
                             </button>
@@ -117,7 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 modalTitle.textContent = template.name;
                 modalCategory.textContent = template.price > 0 ? "Premium CV Template" : "Free CV Template";
                 modalPrice.textContent = template.price > 0 ? `Rp ${template.price}` : "Gratis";
-                modalDescription.textContent = template.description || "Deskripsi belum tersedia.";
 
                 // Tampilkan tombol beli hanya jika template berbayar
                 if (buyButton) {

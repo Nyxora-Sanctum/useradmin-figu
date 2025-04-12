@@ -50,6 +50,14 @@
             padding-top: 20px;
             /* Padding atas agar tidak terlalu rapat */
         }
+        .card-template {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card-template:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
     </style>
 
 </head>
@@ -63,11 +71,10 @@
                 <a href="{{ url('/index') }}"> <img src="images/user/logo/logoo.png" alt="Logo" class="h-6 md:h-10"></a>
             </div>
             <nav class="hidden md:block">
-                <ul class="flex space-x-6 font-bold text-white">
-                    <li><a href="{{ url('shop') }}" class="hover:text-[#d1c3ff]">Shop</a></li>
-                    <li><a href="{{ url('inventory') }}" class="hover:text-[#d1c3ff]">Inventory</a></li>
-                    <li><a href="{{ url('editor') }}" class="hover:text-[#d1c3ff]">CV Editor</a></li>
-                    <li><a href="{{ url('invoice') }}" class="hover:text-[#d1c3ff]">Invoice</a></li>
+                <ul class="flex space-x-8 font-bold text-white">
+                    <li><a href="{{ url('shop') }}" class="hover:text-[#4A1AB0]">Shop</a></li>
+                    <li><a href="{{ url('inventory') }}" class="hover:text-[#4A1AB0]">Inventory</a></li>
+                    <li><a href="{{ url('editor') }}" class="hover:text-[#4A1AB0]">Editor</a></li>
                 </ul>
             </nav>
                    <!-- Search + Profile -->
@@ -100,6 +107,7 @@
                 <div x-show="open"
                      class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
                     <a href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
+                    <a href="{{ url('invoice') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
                     <a href="logout.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Logout</a>
                 </div>
             </div>
@@ -211,49 +219,50 @@
 
     </section>
 
-    <!-- Modal Overlay -->
-    <div id="previewModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
-        <div class="bg-white p-4 rounded-lg shadow-lg max-w-sm w-full relative">
-            <!-- Tombol Close -->
-            <button id="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
-                ✕
-            </button>
+<!-- Modal Overlay -->
+<div id="previewModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+    <div class="bg-white p-4 rounded-lg shadow-lg max-w-sm w-full relative">
+        <!-- Tombol Close -->
+        <button id="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+            ✕
+        </button>
 
-            <!-- Gambar dengan Rasio 3:4 -->
-            <div class="w-full aspect-[3/4] max-h-60 overflow-hidden">
-                <img id="modalImage" class="w-full h-full object-contain rounded-lg" src="" alt="">
-            </div>
+        <!-- Gambar dengan Rasio 3:4 -->
+        <div class="w-full aspect-[3/4] max-h-60 overflow-hidden">
+            <img id="modalImage" class="w-full h-full object-contain rounded-lg" src="" alt="">
+        </div>
 
-           <!-- Informasi Template -->
-            <div class="mt-4 space-y-1.5">
-                <!-- Nama Template -->
-                <h2 id="modalTitle" class="text-2xl font-bold text-gray-800"></h2>
+        <!-- Informasi Template -->
+        <div class="mt-4 space-y-1.5">
+            <!-- Nama Template -->
+            <h2 id="modalTitle" class="text-2xl font-bold text-gray-800"></h2>
 
-                <!-- Harga -->
-                <p id="modalPrice" class="text-lg font-semibold text-gray-700 mt-1"></p>
+            <!-- Harga -->
+            <p id="modalPrice" class="text-lg font-semibold text-gray-700 mt-1"></p>
 
-                <!-- Kategori -->
-                <p id="modalCategory" class="text-sm text-purple-600 italic"></p>
+            <!-- Kategori -->
+            <p id="modalCategory" class="text-sm text-purple-600 italic"></p>
 
-                <!-- Deskripsi -->
-                <p id="modalDescription" class="text-sm text-gray-600 mt-3 leading-relaxed"></p>
-            </div>
-
+            <!-- Deskripsi statis -->
+            <p class="text-sm text-gray-600 mt-3 leading-relaxed">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
 
             <!-- Tombol Beli & Tutup -->
             <div class="mt-4 flex justify-end">
                 <button id="buyButton"
-                    class="px-4 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition">Beli Sekarang</button>
+                    class="px-4 py-2 bg-[#6E24FF] text-white rounded-lg shadow-md hover:bg-purple-700 transition">Beli Sekarang</button>
             </div>
         </div>
     </div>
+</div>
 
 <!-- Modal Konfirmasi Pembayaran -->
 <div id="paymentConfirmModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
     <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm text-center">
         <h2 id="confirmModalTitle" class="text-lg font-semibold mb-2">Konfirmasi Pembelian</h2>
         <p id="confirmModalDesc" class="text-sm text-gray-600 mb-4">Deskripsi produk</p>
-        <button id="confirmPayBtn" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Bayar Sekarang</button>
+        <button id="confirmPayBtn" class="bg-[#6E24FF] text-white px-4 py-2 rounded hover:bg-[#2B0F66]">Bayar Sekarang</button>
     </div>
 </div>
 
@@ -283,7 +292,7 @@
             <h2 class="text-lg font-semibold">Quick Links</h2>
             <ul class="mt-2 space-y-2 text-sm text-gray-400">
                 <li><a href="#" class="hover:text-purple-300">Home</a></li>
-                <li><a href="#" class="hover:text-purple-300">CV Editor</a></li>
+                <li><a href="#" class="hover:text-purple-300">Editor</a></li>
                 <li><a href="#" class="hover:text-purple-300">Shop</a></li>
                 <li><a href="#" class="hover:text-purple-300">My Templates</a></li>
                 <li><a href="#" class="hover:text-purple-300">Invoice & Payment</a></li>

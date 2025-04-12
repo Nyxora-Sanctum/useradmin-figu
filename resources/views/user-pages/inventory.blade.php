@@ -16,7 +16,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script>
     @vite(['resources/js/user-pages/inventory.js', 'resources/user/js/plugins/jquery-3-6-0.min.js'])
-    
+
     <!-- Custom CSS tambahan jika diperlukan -->
     <style>
         .navbar {
@@ -54,7 +54,8 @@
 
 </head>
 
-<body class="bg-gray-100 min-h-screen flex flex-col">
+<body class="bg-gray-100">
+
     <!-- Header Navbar -->
     <header class="bg-[#6E24FF] w-full h-12 md:h-16">
         <div class="container mx-auto h-full flex items-center justify-between px-6">
@@ -62,11 +63,10 @@
                 <a href="{{ url('/index') }}"> <img src="images/user/logo/logoo.png" alt="Logo" class="h-6 md:h-10"></a>
             </div>
             <nav class="hidden md:block">
-                <ul class="flex space-x-6 font-bold text-white">
-                    <li><a href="{{ url('shop') }}" class="hover:text-[#d1c3ff]">Shop</a></li>
-                    <li><a href="{{ url('inventory') }}" class="hover:text-[#d1c3ff]">Inventory</a></li>
-                    <li><a href="{{ url('editor') }}" class="hover:text-[#d1c3ff]">CV Editor</a></li>
-                    <li><a href="{{ url('invoice') }}" class="hover:text-[#d1c3ff]">Invoice</a></li>
+                <ul class="flex space-x-8 font-bold text-white">
+                    <li><a href="{{ url('shop') }}" class="hover:text-[#4A1AB0]">Shop</a></li>
+                    <li><a href="{{ url('inventory') }}" class="hover:text-[#4A1AB0]">Inventory</a></li>
+                    <li><a href="{{ url('editor') }}" class="hover:text-[#4A1AB0]">Editor</a></li>
                 </ul>
             </nav>
                    <!-- Search + Profile -->
@@ -99,12 +99,14 @@
                 <div x-show="open"
                      class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
                     <a href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
+                    <a href="{{ url('invoice') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
                     <a href="logout.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Logout</a>
                 </div>
             </div>
         </div>
     </div>
     </header>
+
 
 
 </body>
@@ -117,7 +119,8 @@
         @if (isset($templates) && count($templates) > 0)
             @foreach ($templates as $template)
                 <div class="card bg-white rounded-lg shadow-lg border border-gray-200 p-4">
-                    <img src="{{ asset($template->image) }}" alt="{{ $template->name }}" class="w-full rounded-md h-40 object-cover">
+                    <img src="{{ asset($template->image) }}" alt="{{ $template->name }}"
+                        class="w-full rounded-md h-40 object-cover">
                     <p class="text-center text-gray-600 mt-2 font-semibold">{{ $template->name }}</p>
 
                     <!-- Tombol Aksi -->
@@ -131,27 +134,26 @@
                 </div>
             @endforeach
         @else
-        <p class="text-gray-600 text-center col-span-full flex flex-col items-center">
-            <img src="/images/empty-box.svg" alt="No data" class="w-32 h-32 mb-4">
-            Kamu belum membeli template apapun.
-        </p>
+            <p class="text-gray-600 text-center col-span-full flex flex-col items-center">
+                <img src="/images/empty-box.svg" alt="No data" class="w-32 h-32 mb-4">
+                Kamu belum membeli template apapun.
+            </p>
         @endif
     </section>
 
     <!-- Modal Overlay -->
-<!-- Modal Preview -->
-<div id="preview-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
-    <div class="bg-white p-4 rounded-lg shadow-lg max-w-sm w-full relative">
-        <button id="close-modal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">✕</button>
-        <img id="preview-image" class="w-full rounded-md object-contain max-h-[75vh]" src="" alt="Preview">
-    </div>
-</div>
-
-            <!-- Informasi Template -->
-            <h2 id="modalTitle" class="text-xl font-semibold mt-3"></h2>
-            <p id="modalCategory" class="text-sm text-gray-500"></p>
-            <p id="modalPrice" class="text-lg font-bold mt-2"></p>
+    <!-- Modal Preview -->
+    <div id="preview-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+        <div class="bg-white p-4 rounded-lg shadow-lg max-w-sm w-full relative">
+            <button id="close-modal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">✕</button>
+            <img id="preview-image" class="w-full rounded-md object-contain max-h-[75vh]" src="" alt="Preview">
         </div>
+    </div>
+
+    <!-- Informasi Template -->
+    <h2 id="modalTitle" class="text-xl font-semibold mt-3"></h2>
+    <p id="modalCategory" class="text-sm text-gray-500"></p>
+    </div>
     </div>
 </main>
 
