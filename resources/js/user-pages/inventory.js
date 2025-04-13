@@ -10,12 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
     async function fetchTemplates() {
         loadingOverlay.classList.add("active");
         try {
-            const response = await fetch(`${endpoint}/api/templates/get/all-templates`, {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            });
+            const response = await fetch(`${endpoint}/api/templates/inventory`,
+                {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                }
+            );
 
             if (!response.ok) throw new Error("Gagal mengambil data template");
 
@@ -50,9 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <button class="preview-btn bg-gray-700 text-white px-2 py-1 rounded text-xs" 
                             data-src="${endpoint}/${template["template-preview"]}">Preview</button>
                     <button class="edit-btn bg-blue-600 text-white px-2 py-1 rounded text-xs" 
-                            data-id="${template.id}">Gunakan</button>
+                            data-id="${template.unique_cv_id}">Gunakan</button>
                     <button class="delete-btn bg-red-600 text-white px-2 py-1 rounded text-xs" 
-                            data-id="${template.id}">Hapus</button>
+                            data-id="${template.unique_cv_id}">Hapus</button>
                 </div>
             </div>
         `;
@@ -66,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".edit-btn").forEach((btn) => {
             btn.addEventListener("click", (e) => {
                 const id = e.target.getAttribute("data-id");
-                window.location.href = `/inventory/edit/${id}`;
+                window.location.href = `/editor/${id}`;
             });
         });
 

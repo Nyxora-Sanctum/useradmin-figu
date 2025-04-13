@@ -108,7 +108,10 @@
                      class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
                     <a href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
                     <a href="{{ url('invoice') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
-                    <a href="logout.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Logout</a>
+                    <button onclick="logout()" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
+                        Logout
+                    </button>
+
                 </div>
             </div>
         </div>
@@ -214,10 +217,10 @@
     </div>
 </div>
 
-    <!-- Container untuk Template List -->
-    <section id="template-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6 mb-10">
+<!-- Container untuk Template List -->
+<section id="template-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6 mb-10">
 
-    </section>
+</section>
 
 <!-- Modal Overlay -->
 <div id="previewModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
@@ -336,43 +339,13 @@
 </footer>
 
 <script>
+    function logout() {
+        // Remove token from localStorage
+        localStorage.removeItem("access_token");
 
-document.addEventListener("DOMContentLoaded", () => {
-            const previewModal = document.getElementById("previewModal");
-            const overlayCard = document.getElementById("overlayCard");
-            const buyButton = document.getElementById("buyButton");
-
-            document.querySelectorAll(".preview-btn").forEach(button => {
-            button.addEventListener("click", (e) => {
-                const card = e.currentTarget; // gunakan currentTarget, bukan target
-
-                document.getElementById("modalImage").src = card.dataset.image;
-                document.getElementById("modalTitle").textContent = card.dataset.name;
-                document.getElementById("modalCategory").textContent = card.dataset.category;
-                document.getElementById("modalPrice").textContent = `Rp ${card.dataset.price}`;
-                document.getElementById("modalDescription").textContent = card.dataset.description;
-
-                previewModal.classList.remove("hidden");
-            });
-        });
-
-
-            document.getElementById("closeModal").addEventListener("click", () => {
-                previewModal.classList.add("hidden");
-            });
-            buyButton.addEventListener("click", () => {
-                previewModal.classList.add("hidden");
-                setTimeout(() => {
-                    document.getElementById("invoiceNumber").textContent = "INV-" + Math.floor(Math.random() * 100000);
-                    document.getElementById("paymentStatus").textContent = "Berhasil";
-                    overlayCard.classList.remove("hidden");
-                }, 1000);
-            });
-
-            document.getElementById("closeOverlayBtn").addEventListener("click", () => {
-                overlayCard.classList.add("hidden");
-            });
-        });
+        // Optionally redirect to login or home page
+        window.location.href = "/";
+    }
 
 </script>
 </body>
