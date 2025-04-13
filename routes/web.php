@@ -24,7 +24,7 @@ Route::middleware([CheckRole::class . ':admin'])->group(function () {
 
 Route::middleware([CheckRole::class . ':user'])->group(function () {
     Route::get('/index', [RoutingController::class, 'index'])->name('user-index')->middleware(CheckRole::class . ':guest');
-    Route::get('/editor/{id}', [RoutingController::class, 'editor'])->name("editor")->middleware(CheckRole::class . ':user');
+    //Route::get('/editor/{id}', [RoutingController::class, 'editor'])->name("editor")->middleware(CheckRole::class . ':user');
     Route::get('{any}', [RoutingController::class, 'root'])->name('any');
     Route::get('{first}/{second}', [RoutingController::class, 'secondLevel'])->name('second');
     Route::get('{first}/{second}/{third}', [RoutingController::class, 'thirdLevel'])->name('third');
