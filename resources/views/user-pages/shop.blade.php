@@ -65,54 +65,62 @@
 <body class="bg-gray-100">
 
     <!-- Header Navbar -->
-    <header class="bg-[#6E24FF] w-full h-12 md:h-16">
+    <header id="navbar" class="bg-[#6E24FF] w-full h-12 md:h-16">
         <div class="container mx-auto h-full flex items-center justify-between px-6">
-            <div class="h-full flex items-center">
-                <a href="{{ url('/index') }}"> <img src="images/user/logo/logoo.png" alt="Logo" class="h-6 md:h-10"></a>
+            <!-- Logo -->
+            <div id="navbar-logo" class="h-full flex items-center">
+                <a href="{{ url('/index') }}">
+                    <img src="images/user/logo/logoo.png" alt="Logo" class="h-6 md:h-10">
+                </a>
             </div>
-            <nav class="hidden md:block">
+    
+            <!-- Menu Navigation -->
+            <nav id="navbar-menu" class="hidden md:block">
                 <ul class="flex space-x-8 font-bold text-white">
-                    <li><a href="{{ url('shop') }}" class="hover:text-[#4A1AB0]">Shop</a></li>
-                    <li><a href="{{ url('inventory') }}" class="hover:text-[#4A1AB0]">Inventory</a></li>
-                    <li><a href="{{ url('editor') }}" class="hover:text-[#4A1AB0]">Editor</a></li>
+                    <li><a id="nav-shop" href="{{ url('shop') }}" class="hover:text-[#4A1AB0]">Shop</a></li>
+                    <li><a id="nav-inventory" href="{{ url('inventory') }}" class="hover:text-[#4A1AB0]">Inventory</a></li>
+                    <li><a id="nav-editor" href="{{ url('editor') }}" class="hover:text-[#4A1AB0]">Editor</a></li>
                 </ul>
             </nav>
-                   <!-- Search + Profile -->
-        <div class="flex items-center space-x-4">
-            <!-- Search -->
-            <div class="relative">
-                <input
-                    type="text"
-                    id="search"
-                    placeholder="Cari template CV..."
-                    class="pl-10 pr-4 py-1.5 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent w-48 md:w-64 text-sm"
-                />
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
-                         viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
-                    </svg>
+    
+            <!-- Search + Profile -->
+            <div id="navbar-right" class="flex items-center space-x-4">
+                <!-- Search -->
+                <div class="relative" id="navbar-search">
+                    <input
+                        type="text"
+                        id="search"
+                        placeholder="Cari template CV..."
+                        class="pl-10 pr-4 py-1.5 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent w-48 md:w-64 text-sm"
+                    />
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+                        </svg>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Profile Dropdown -->
-            <div x-data="{ open: false }" class="relative" @click.away="open = false">
-                <button @click="open = !open" class="flex items-center space-x-2 focus:outline-none">
-                    <img src="images/user/profil/icon-profil.jpg" alt="Profile"
-                         class="h-10 w-10 rounded-full border-2 border-white">
-                    <span class="text-white font-medium hidden md:inline">Hi, Nadin</span>
-                </button>
-                <!-- Dropdown -->
-                <div x-show="open"
-                     class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
-                    <a href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
-                    <a href="{{ url('invoice') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
-                    <a href="logout.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Logout</a>
+    
+                <!-- Profile Dropdown -->
+                <div id="navbar-profile" x-data="{ open: false }" class="relative" @click.away="open = false">
+                    <button @click="open = !open" class="flex items-center space-x-2 focus:outline-none">
+                        <img src="images/user/profil/icon-profil.jpg" alt="Profile"
+                            class="h-10 w-10 rounded-full border-2 border-white">
+                        <span class="text-white font-medium hidden md:inline">Hi, Nadin</span>
+                    </button>
+                    <!-- Dropdown -->
+                    <div x-show="open"
+                        class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                        <a id="nav-profile-settings" href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
+                        <a id="nav-invoice" href="{{ url('invoice') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
+                        <button id="nav-logout" onclick="logout()" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
+                            Logout
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </header>
 
 </body>
@@ -336,6 +344,13 @@
 </footer>
 
 <script>
+    function logout() {
+        // Remove token from localStorage
+        localStorage.removeItem("access_token");
+
+        // Optionally redirect to login or home page
+        window.location.href = "/";
+    }
 
 </script>
 </body>

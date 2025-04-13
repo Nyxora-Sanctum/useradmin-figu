@@ -75,25 +75,32 @@
             </div>
         </div>
     <!-- Header Navbar -->
-    <header class="bg-[#6E24FF] w-full p-3">
+    <header id="navbar" class="bg-[#6E24FF] w-full p-3">
         <div class="container mx-auto flex items-center justify-between">
-            <div>
-                <a href="{{ url('/index') }}"><img src="images/user/logo/logoo.png" alt="" width="40%" height="10-"></a>
+            <!-- Logo -->
+            <div id="navbar-logo">
+                <a href="{{ url('/index') }}">
+                    <img src="images/user/logo/logoo.png" alt="Logo" width="40%" height="10-">
+                </a>
             </div>
-            <nav>
-                <ul class="flex space-x-6 font-bold">
-                    <li><a href="{{ url('shop') }}" class="text-white hover:text-[#5A1EDB]">Shop</a></li>
-                    <li><a href="#" class="text-white hover:text-[#5A1EDB]">Inventory</a></li>
-                    <li><a href="{{ url('editor') }}" class="text-white hover:text-[#5A1EDB]">CV Editor</a></li>
-                    <li><a href="#" class="text-white hover:text-[#5A1EDB]">Invoice</a></li>
+    
+            <!-- Navigation Menu -->
+            <nav id="navbar-menu">
+                <ul class="flex space-x-8 font-bold text-white">
+                    <li><a id="nav-shop" href="{{ url('shop') }}" class="hover:text-[#4A1AB0]">Shop</a></li>
+                    <li><a id="nav-inventory" href="{{ url('inventory') }}" class="hover:text-[#4A1AB0]">Inventory</a></li>
+                    <li><a id="nav-editor" href="{{ url('editor') }}" class="hover:text-[#4A1AB0]">Editor</a></li>
                 </ul>
             </nav>
-            <button class="focus:outline-none">
+    
+            <!-- Profile Icon -->
+            <button id="navbar-profile" class="focus:outline-none">
                 <img src="images/user/profil/icon-profil.jpg" alt="Profile"
                     class="h-10 w-10 rounded-full border-2 border-white" />
             </button>
         </div>
     </header>
+    
 
     <div class="relative">
         <button onclick="history.back()"
@@ -183,5 +190,14 @@
 </body>
 
 @vite('resources/js/user-pages/profile.js')
+<script>
+    function logout() {
+        // Remove token from localStorage
+        localStorage.removeItem("access_token");
 
-</html>
+        // Optionally redirect to login or home page
+        window.location.href = "/";
+    }
+
+</script>
+</html>  
