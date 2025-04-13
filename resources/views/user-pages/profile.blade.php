@@ -183,5 +183,14 @@
 </body>
 
 @vite('resources/js/user-pages/profile.js')
+<script>
+    function logout() {
+        // Remove token from localStorage
+        localStorage.removeItem("access_token");
 
+        // Optionally redirect to login or home page
+        window.location.href = "/";
+    }
+
+</script>
 </html>

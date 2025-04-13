@@ -100,7 +100,9 @@
                      class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
                     <a href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
                     <a href="{{ url('invoice') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
-                    <a href="logout.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Logout</a>
+                    <button onclick="logout()" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
+                        Logout
+                    </button>
                 </div>
             </div>
         </div>
@@ -277,7 +279,16 @@
         }
     }
 </style>
+<script>
+    function logout() {
+        // Remove token from localStorage
+        localStorage.removeItem("access_token");
 
+        // Optionally redirect to login or home page
+        window.location.href = "/";
+    }
+
+</script>
 <!-- Loading Overlay -->
 <div id="loadingOverlay" class="loading-overlay">
     <div class="loader">
