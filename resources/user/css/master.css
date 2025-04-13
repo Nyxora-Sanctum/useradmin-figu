@@ -11121,14 +11121,14 @@ button:hover {
     justify-content: center;
     align-items: center;
     height: auto;
-    width: 100%;
-    padding: 40px 0;
+    width: 75%;
+    gap: 0;
+    padding: 856px 60px 75px 60px;
 }
 
 .cv {
     font-family: 'Roboto', Arial, sans-serif;
     width: 210mm;
-    min-height: 297mm;
     background-color: white;
     position: relative;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -11368,8 +11368,7 @@ button:hover {
     padding-left: 15px;
 }
 
-.subskill:before {
-    content: "•";
+.subskill:before { 
     position: absolute;
     left: 0;
     color: #3498db;

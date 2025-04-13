@@ -48,24 +48,6 @@
         </div>
     </header>
     <!--=====HEADER END =======-->
-    <style>
-        .cv-container {
-    width: 100%;
-    height: 100vh; /* or adjust as necessary */
-    position: relative;
-}
-
-.cv-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-    </style>
-
 
     <div class="main-container welcome2-section-area-cv"
         style="background-image: url('images/user/background/header2-bg.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
