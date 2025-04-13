@@ -138,10 +138,12 @@
             </div>
 
             <div>
-                <label class="block text-gray-700 font-semibold">Gender</label>
-                <input type="text" id="gender"
-                    class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter your gender">
+                <label class="block text-gray-700 font-semibold" for="gender">Gender</label>
+                <select id="gender" class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="" disabled selected>Select your gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
             </div>
 
             <div>

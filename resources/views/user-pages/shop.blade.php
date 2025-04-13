@@ -106,8 +106,9 @@
                 <div id="navbar-profile" x-data="{ open: false }" class="relative" @click.away="open = false">
                     <button @click="open = !open" class="flex items-center space-x-2 focus:outline-none">
                         <img src="images/user/profil/icon-profil.jpg" alt="Profile"
+                          
                             class="h-10 w-10 rounded-full border-2 border-white">
-                        <span class="text-white font-medium hidden md:inline">Hi, Nadin</span>
+                        <span class="text-white font-medium hidden md:inline"></span>
                     </button>
                     <!-- Dropdown -->
                     <div x-show="open"
