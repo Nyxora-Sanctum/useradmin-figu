@@ -89,6 +89,7 @@
                 <ul class="flex space-x-8 font-bold text-white">
                     <li><a id="nav-shop" href="{{ url('shop') }}" class="hover:text-[#4A1AB0]">Shop</a></li>
                     <li><a id="nav-inventory" href="{{ url('inventory') }}" class="hover:text-[#4A1AB0]">Inventory</a></li>
+                    <li><a id="nav-editor" href="{{ url('editor') }}" class="hover:text-[#4A1AB0]">Editor</a></li>
                 </ul>
             </nav>
     
