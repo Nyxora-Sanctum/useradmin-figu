@@ -22,7 +22,6 @@ class AppServiceProvider extends ServiceProvider
         // isi boot
         if (env('APP_ENV') === 'production') {
             \URL::forceScheme('https');
-        }
-    }
+        }    }
 }
 
