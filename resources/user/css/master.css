@@ -11189,10 +11189,10 @@ input[type="file"]:hover {
 .cv {
     font-family: 'Poppins', Arial, sans-serif;
     width: 210mm;
+    height: 438mm;
     background-color: white;
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 40px;
     box-sizing: border-box;
     margin: 20px 0;
 }

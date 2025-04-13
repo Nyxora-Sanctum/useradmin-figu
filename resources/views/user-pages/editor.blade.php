@@ -126,204 +126,80 @@
             </form>
         </div>
 
-        <!-- CV Container -->
         <div class="cv-container">
-            <<<<<<< HEAD <div class="cv">
-                <!-- Title -->
-                <div class="w-64 h-64 rounded-full relative">
-                    <input type="file" id="upload" hidden>
-                    <label for="upload" class="upload-label">
-                        <img id="image" src="https://via.placeholder.com/150" class="profile-photo">
-                        <i class="fa fa-upload upload-icon"></i>
-                    </label>
-                </div>
-                <div class="header">
-                    <span class="name" id="name">MISELLIA IKHWAN</span>
-                    <div class="header-menu">
-                        <span class="upper-header-menu">CV</span>
-                        <span class="lower-header-menu">2025</span>
-                    </div>
-                </div>
-                <!-- Personal Information -->
-                <section class="job-and-contact">
-                    <span class="job" id="job">Graphic & Web Designer</span>
-                    <div class="contact-container">
-                        <span class="contact-label">CONTACT :</span>
-                        <span class="contact" id="contact">+62 812 3456 7890</span>
-                    </div>
-                    <div class="address-container">
-                        <span class="address-label">ADDRESS :</span>
-                        <span class="address" id="address"> Jalan Diponegoro kahdawfugoafhgaofhaofaofhaf</span>
-                    </div>
-                </section>
-
-                <!-- Summary -->
-                <section class="education-summary">
-                    <h2>EDUCATION</h2>
-                    <ul>
-                        <li>
-                            <div class="education-summary-container">
-                                <span class="education-year">2007-2019</span>
-                                <span class="education-major">Teknik Komputer dan Jaringan</span>
-                                <span class="education-place">SMKN 4 Malang, Jalan Tanimbar no 22 Malang</span>
-                                <span class="education-description">Focus on game development with passion on
-                                    enhancing Cryptocurrency based transactions.</span>
-                            </div>
-                        </li>
-                        <!-- Item pendidikan lainnya -->
-                    </ul>
-                </section>
-
-                <section class="experience-summary">
-                    <h2>EXPERIENCES</h2>
-                    <ul>
-                        <li>
-                            <div class="experience-summary-container">
-                                <span class="experience-year">2022-2025</span>
-                                <span class="experience">Game Developer</span>
-                                <span class="experience-place">PT. Unimasoft</span>
-                                <span class="experience-description">Focus on game development with passion on
-                                    enhancing Cryptocurrency based transactions.</span>
-                            </div>
-                        </li>
-                        <!-- Item pengalaman lainnya -->
-                    </ul>
-                </section>
-
-                <!-- Skills -->
-                <section class="skills-summary">
-                    <h2>SKILLS</h2>
-                    <br>
-                    <ul class="skill-container-list">
-                        <li>
-                            <div class="skill-container">
-                                <span class="skill">EXPERTISE</span>
-                                <ul class="subskill-container-list">
-                                    <li>
-                                        <span class="subskill">Website Design</span>
-                                    </li>
-                                    <li>
-                                        <span class="subskill">Mobile Apps</span>
-                                    </li>
-                                    <li>
-                                        <span class="subskill">UI/UX</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill-container">
-                                <span class="skill">EXPERTISE</span>
-                                <ul class="subskill-container-list">
-                                    <li>
-                                        <span class="subskill">Website Design</span>
-                                    </li>
-                                    <li>
-                                        <span class="subskill">Mobile Apps</span>
-                                    </li>
-                                    <li>
-                                        <span class="subskill">UI/UX</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill-container">
-                                <span class="skill">EXPERTISE</span>
-                                <ul class="subskill-container-list">
-                                    <li>
-                                        <span class="subskill">Website Design</span>
-                                    </li>
-                                    <li>
-                                        <span class="subskill">Mobile Apps</span>
-                                    </li>
-                                    <li>
-                                        <span class="subskill">UI/UX</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
+            {!! $templateHtml !!}
+            <a href="path/to/your-cv.pdf" download class="btn btn-primary btn-sm mt-3 btn-small-download "
+                title="Download CV">
+                <i class="bi bi-download"></i>
+            </a>
         </div>
-        <!-- !! $templateHtml !! --->
-        <a href="path/to/your-cv.pdf" download class="btn btn-primary btn-sm mt-3 btn-small-download "
-            title="Download CV">
-            <i class="bi bi-download"></i>
-        </a>
-        {!! $templateHtml !!}
-        <a href="path/to/your-cv.pdf" download class="btn btn-primary btn-sm mt-3 btn-small-download "
-            title="Download CV">
-            <i class="bi bi-download"></i>
-        </a>
-    </div>
 
-    <!-- Bootstrap JS (Optional, for interactive components) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap JS (Optional, for interactive components) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-        document.getElementById("download-cv").addEventListener("click",
-            function() {
-                const link = document.createElement("a");
-                link.href = "cv-sample.pdf"; // Ganti dengan path CV yang benar
-                link.download = "My_CV.pdf";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            });
+        <script>
+            document.getElementById("download-cv").addEventListener("click",
+                function() {
+                    const link = document.createElement("a");
+                    link.href = "cv-sample.pdf"; // Ganti dengan path CV yang benar
+                    link.download = "My_CV.pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
 
-        // Tambah Pendidikan
-        function addEducation() {
-            const container = document.getElementById('education-section');
-            const clone = container.children[0].cloneNode(true);
-            clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
-            container.appendChild(clone);
-        }
-        // Tambah Pengalaman
-        function addExperience() {
-            const container = document.getElementById('experience-section');
-            const clone = container.children[0].cloneNode(true);
-            clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
-            container.appendChild(clone);
-        }
-
-        // Tambah Skill
-        function addSkill() {
-            const container = document.getElementById('skill-section');
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.placeholder = 'Contoh: UI/UX';
-            input.classList.add('skill-item');
-            container.appendChild(input);
-        }
-    </script>
-    <script>
-        document.getElementById('upload').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('image').src = e.target.result;
-                    document.querySelector('.upload-icon').style.display =
-                        'none';
-                }
-                reader.readAsDataURL(file);
+            // Tambah Pendidikan
+            function addEducation() {
+                const container = document.getElementById('education-section');
+                const clone = container.children[0].cloneNode(true);
+                clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
+                container.appendChild(clone);
             }
-        });
-    </script>
-    <!-- JS -->
-    @vite(['resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
-    <!-- JS -->
-    <script>
-        // window.uniqueCvId = @json($id);
-    </script>
-    </script>
-    <!-- JS -->
-    @vite(['resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
-    <!-- JS -->
-    <script>
-        window.uniqueCvId = @json($id);
-    </script>
+            // Tambah Pengalaman
+            function addExperience() {
+                const container = document.getElementById('experience-section');
+                const clone = container.children[0].cloneNode(true);
+                clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
+                container.appendChild(clone);
+            }
+
+            // Tambah Skill
+            function addSkill() {
+                const container = document.getElementById('skill-section');
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = 'Contoh: UI/UX';
+                input.classList.add('skill-item');
+                container.appendChild(input);
+            }
+        </script>
+        <script>
+            document.getElementById('upload').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('image').src = e.target.result;
+                        document.querySelector('.upload-icon').style.display =
+                            'none';
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        </script>
+        <!-- JS -->
+        @vite(['resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
+        <!-- JS -->
+        <script>
+            // window.uniqueCvId = @json($id);
+        </script>
+        </script>
+        <!-- JS -->
+        @vite(['resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
+        <!-- JS -->
+        <script>
+            window.uniqueCvId = @json($id);
+        </script>
 </body>
 
 </html>
