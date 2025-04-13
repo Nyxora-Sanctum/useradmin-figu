@@ -15,11 +15,10 @@
                 <a href="{{ url('/index') }}"><img src="images/user/logo/logoo.png" alt=""width="40%" height="10-"></a>
             </div>
             <nav>
-                <ul class="flex space-x-6 font-bold">
-                    <li><a href="{{ url('shop') }}" class="text-white hover:text-[#5A1EDB]">Shop</a></li>
-                    <li><a href="#" class="text-white hover:text-[#5A1EDB]">Inventory</a></li>
-                    <li><a href="{{ url('editor') }}" class="text-white hover:text-[#5A1EDB]">CV Editor</a></li>
-                    <li><a href="#" class="text-white hover:text-[#5A1EDB]">Invoice</a></li>
+                <ul class="flex space-x-8 font-bold text-white">
+                    <li><a href="{{ url('shop') }}" class="hover:text-[#4A1AB0]">Shop</a></li>
+                    <li><a href="{{ url('inventory') }}" class="hover:text-[#4A1AB0]">Inventory</a></li>
+                    <li><a href="{{ url('editor') }}" class="hover:text-[#4A1AB0]">Editor</a></li>
                 </ul>
             </nav>
             <button class="focus:outline-none">

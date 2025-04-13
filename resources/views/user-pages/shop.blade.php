@@ -68,7 +68,7 @@
     <header class="bg-[#6E24FF] w-full h-12 md:h-16">
         <div class="container mx-auto h-full flex items-center justify-between px-6">
             <div class="h-full flex items-center">
-                <a href="{{ url('/index') }}"> <img src="images/user/logo/logoo.png" alt="Logo" class="h-6 md:h-10"></a>
+                <a href="{{ url('/') }}"> <img src="images/user/logo/logoo.png" alt="Logo" class="h-6 md:h-10"></a>
             </div>
             <nav class="hidden md:block">
                 <ul class="flex space-x-8 font-bold text-white">
