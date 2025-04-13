@@ -351,6 +351,7 @@
 
         // Optionally redirect to login or home page
         window.location.href = "/";
+        // test
     }
 
 </script>
