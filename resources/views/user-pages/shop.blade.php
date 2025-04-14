@@ -126,6 +126,7 @@
 
 </body>
 
+ 
 <main class="container mx-auto px-6 py-4">
   <!-- Filter Harga -->
   <section class="filter-price py-4 mb-4">
@@ -254,7 +255,6 @@
 
             <!-- Deskripsi statis -->
             <p class="text-sm text-gray-600 mt-3 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
 
             <!-- Tombol Beli & Tutup -->
