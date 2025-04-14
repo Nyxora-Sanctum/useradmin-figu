@@ -9,7 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
 
     <!--=====JS=======-->
 
@@ -56,16 +58,6 @@
             <form id="frm">
                 @csrf
                 <h2>Form Pengisian CV</h2>
-
-                <!-- Upload Foto -->
-                <div class="form-grid-2col">
-                    <div class="form-group">
-                        <label for="upload">Upload Foto:</label>
-                        <input type="file" id="upload" name="upload">
-                    </div>
-                </div>
-
-                <!-- Informasi Dasar -->
                 <div class="form-grid-2col">
                     <div class="form-group">
                         <label>Nama:</label>
@@ -90,8 +82,10 @@
                 <div id="education-section">
                     <div class="edu-item">
                         <div class="grid-2col">
-                            <input type="number" placeholder="Tahun Mulai" class="edu-year-start form-control" min="1900" max="2099" step="1">
-                            <input type="number" placeholder="Tahun Selesai" class="edu-year-end form-control" min="1900" max="2099" step="1">
+                            <input type="number" placeholder="Tahun Mulai" class="edu-year-start form-control"
+                                min="1900" max="2099" step="1">
+                            <input type="number" placeholder="Tahun Selesai" class="edu-year-end form-control"
+                                min="1900" max="2099" step="1">
                         </div>
                         <input type="text" placeholder="Jurusan" class="edu-major form-control">
                         <input type="text" placeholder="Tempat" class="edu-place form-control">
@@ -104,9 +98,11 @@
                 <div id="experience-section">
                     <div class="exp-item">
                         <div class="grid-2col">
-                            <input type="number" placeholder="Tahun Mulai" class="edu-year-start form-control" min="1900" max="2099" step="1">
-                            <input type="number" placeholder="Tahun Selesai" class="edu-year-end form-control" min="1900" max="2099" step="1">
-                        </div>                        
+                            <input type="number" placeholder="Tahun Mulai" class="edu-year-start form-control"
+                                min="1900" max="2099" step="1">
+                            <input type="number" placeholder="Tahun Selesai" class="edu-year-end form-control"
+                                min="1900" max="2099" step="1">
+                        </div>
                         <input type="text" placeholder="Jabatan" class="exp-role form-control">
                         <input type="text" placeholder="Perusahaan" class="exp-place form-control">
                         <textarea placeholder="Deskripsi" class="exp-desc form-control"></textarea>
@@ -125,82 +121,92 @@
                     <input type="text" id="form-prompt" class="form-control">
                 </div>
 
-            <button type="button" id="custom-submit" class="btn-small-create">Buat CV</button>
+                <button type="button" id="custom-submit" class="btn-small-create">Buat CV</button>
 
             </form>
         </div>
 
-        <!-- CV Container -->
         <div class="cv-container">
-                {!! $templateHtml !!}
-            <a href="path/to/your-cv.pdf" download class="btn btn-primary btn-sm mt-3 btn-small-download "
+            <div class="">
+                <div class="cv-inner-container">
+                    <!-- Isi dari $templateHtml akan masuk di sini -->
+                    {!! $templateHtml !!}
+                </div>
+            </div>
+            <a href="path/to/your-cv.pdf" download class="btn btn-primary btn-sm mt-3 btn-small-download"
                 title="Download CV">
                 <i class="bi bi-download"></i>
             </a>
         </div>
     </div>
+        </div>
 
-    <!-- Bootstrap JS (Optional, for interactive components) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap JS (Optional, for interactive components) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-        document.getElementById("download-cv").addEventListener("click",
-            function() {
-                const link = document.createElement("a");
-                link.href = "cv-sample.pdf"; // Ganti dengan path CV yang benar
-                link.download = "My_CV.pdf";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            });
+        <script>
+            document.getElementById("download-cv").addEventListener("click",
+                function() {
+                    const link = document.createElement("a");
+                    link.href = "cv-sample.pdf"; // Ganti dengan path CV yang benar
+                    link.download = "My_CV.pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
 
-        // Tambah Pendidikan
-        function addEducation() {
-            const container = document.getElementById('education-section');
-            const clone = container.children[0].cloneNode(true);
-            clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
-            container.appendChild(clone);
-        }
-
-        // Tambah Pengalaman
-        function addExperience() {
-            const container = document.getElementById('experience-section');
-            const clone = container.children[0].cloneNode(true);
-            clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
-            container.appendChild(clone);
-        }
-
-        // Tambah Skill
-        function addSkill() {
-            const container = document.getElementById('skill-section');
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.placeholder = 'Contoh: UI/UX';
-            input.classList.add('skill-item');
-            container.appendChild(input);
-        }
-    </script>
-    <script>
-        document.getElementById('upload').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('image').src = e.target.result;
-                    document.querySelector('.upload-icon').style.display =
-                        'none';
-                }
-                reader.readAsDataURL(file);
+            // Tambah Pendidikan
+            function addEducation() {
+                const container = document.getElementById('education-section');
+                const clone = container.children[0].cloneNode(true);
+                clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
+                container.appendChild(clone);
             }
-        });
-    </script>
-    <!-- JS -->
-    @vite(['resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
-    <!-- JS -->
-<script>
-        window.uniqueCvId = @json($id);
-</script>
+            // Tambah Pengalaman
+            function addExperience() {
+                const container = document.getElementById('experience-section');
+                const clone = container.children[0].cloneNode(true);
+                clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
+                container.appendChild(clone);
+            }
 
+            // Tambah Skill
+            function addSkill() {
+                const container = document.getElementById('skill-section');
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = 'Contoh: UI/UX';
+                input.classList.add('skill-item');
+                container.appendChild(input);
+            }
+        </script>
+        <script>
+            document.getElementById('upload').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('image').src = e.target.result;
+                        document.querySelector('.upload-icon').style.display =
+                            'none';
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        </script>
+        <!-- JS -->
+        @vite(['resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
+        <!-- JS -->
+        <script>
+            // window.uniqueCvId = @json($id);
+        </script>
+        </script>
+        <!-- JS -->
+        @vite(['resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
+        <!-- JS -->
+        <script>
+            window.uniqueCvId = @json($id);
+        </script>
 </body>
 
 </html>
