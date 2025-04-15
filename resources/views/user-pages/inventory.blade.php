@@ -54,7 +54,7 @@
 
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 min-h-screen flex flex-col">
 
     <!-- Header Navbar -->
     <header class="bg-[#6E24FF] w-full h-12 md:h-16">
@@ -89,7 +89,7 @@
                     <button @click="open = !open" class="flex items-center space-x-2 focus:outline-none">
                         <img src="images/user/profil/icon-profil.jpg" alt="Profile"
                             class="h-10 w-10 rounded-full border-2 border-white">
-                        <span class="text-white font-medium hidden md:inline">Hi, Nadin</span>
+                        <span class="text-white font-medium hidden md:inline"></span>
                     </button>
                     <!-- Dropdown -->
                     <div x-show="open"

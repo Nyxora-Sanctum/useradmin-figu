@@ -127,11 +127,18 @@
         </div>
 
         <div class="cv-container">
-            {!! $templateHtml !!}
-            <a href="path/to/your-cv.pdf" download class="btn btn-primary btn-sm mt-3 btn-small-download "
+            <div class="">
+                <div class="cv-inner-container">
+                    <!-- Isi dari $templateHtml akan masuk di sini -->
+                    {!! $templateHtml !!}
+                </div>
+            </div>
+            <a href="path/to/your-cv.pdf" download class="btn btn-primary btn-sm mt-3 btn-small-download"
                 title="Download CV">
                 <i class="bi bi-download"></i>
             </a>
+        </div>
+    </div>
         </div>
 
         <!-- Bootstrap JS (Optional, for interactive components) -->
