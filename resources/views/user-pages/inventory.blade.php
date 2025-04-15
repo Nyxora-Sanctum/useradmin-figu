@@ -92,8 +92,8 @@
               class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
               x-transition
             >
-              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
-              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
+            <a href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
+            <a href="{{ url('invoice') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
               <button onclick="alert('Logged out')" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
                 Logout
               </button>

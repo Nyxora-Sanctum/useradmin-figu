@@ -81,8 +81,8 @@
               class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
               x-transition
             >
-              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
-              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
+              <a href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
+              <a href="{{ url('invoice') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
               <button onclick="alert('Logged out')" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
                 Logout
               </button>
@@ -100,6 +100,7 @@
          <!-- Search Bar -->
          <div class="relative w-[450px]">
         <input 
+          id="search"
           type="text" 
           placeholder="Cari template CV..." 
           class="w-full py-2 pl-4 pr-10 border border-gray-300 rounded-full focus:ring-2 focus:ring-[#6E24FF] focus:outline-none"

@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Settings</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Pastikan untuk memuat AlpineJS jika ingin menggunakan x-data -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 flex flex-col min-h-screen">
 
     <style>
         .loading-overlay {
@@ -66,64 +68,85 @@
             }
         }
     </style>
-        <!-- Loading Overlay -->
-        <div id="loadingOverlay" class="loading-overlay">
-            <div class="loader">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
+    </div>
+
     <!-- Header Navbar -->
-    <header id="navbar" class="bg-[#6E24FF] w-full p-3">
-        <div class="container mx-auto flex items-center justify-between">
+    <div class="w-full px-4">
+        <div class="max-w-[1000px] mx-auto">
+          <nav class="bg-gradient-to-br from-[#6E24FF] to-purple-300 px-6 py-3 rounded-full mt-6 flex items-center justify-between shadow-lg">
+          
+          <!-- Kiri: Logo dan Menu -->
+          <div class="flex items-center space-x-6">
             <!-- Logo -->
-            <div id="navbar-logo">
-                <a href="{{ url('/index') }}">
-                    <img src="images/user/logo/logoo.png" alt="Logo" width="40%" height="10-">
-                </a>
+            <div class="flex items-center space-x-2">
+              <img src="images/user/logo/logoo.png" alt="Logo" class="h-8 w-15" />
+              <span class="text-white font-bold text-lg tracking-wide"></span>
             </div>
-    
-            <!-- Navigation Menu -->
-            <nav id="navbar-menu">
-                <ul class="flex space-x-8 font-bold text-white">
-                    <li><a id="nav-shop" href="{{ url('shop') }}" class="hover:text-[#4A1AB0]">Shop</a></li>
-                    <li><a id="nav-inventory" href="{{ url('inventory') }}" class="hover:text-[#4A1AB0]">Inventory</a></li>
-                    <li><a id="nav-editor" href="{{ url('editor') }}" class="hover:text-[#4A1AB0]">Editor</a></li>
-                </ul>
-            </nav>
-    
-            <!-- Profile Icon -->
-            <button id="navbar-profile" class="focus:outline-none">
-                <img src="images/user/profil/icon-profil.jpg" alt="Profile"
-                    class="h-10 w-10 rounded-full border-2 border-white" />
+            
+            <!-- Menu -->
+            <div class="flex items-center space-x-6 ml-auto">
+                <a href="{{ url('shop') }}" 
+                   class="text-white font-bold hover:text-[#5a1eae] focus:outline-none no-underline active:text-[#5a1eae]">Shop</a>
+                <a href="{{ url('inventory') }}" 
+                   class="text-white font-bold hover:text-[#5a1eae] focus:outline-none no-underline active:text-[#5a1eae]">Inventory</a>
+              </div>
+          </div>
+  
+          <!-- Kanan: Profile -->
+          <div
+            x-data="{ open: false, username: 'Nadin' }"
+            class="relative flex items-center space-x-3"
+            @click.away="open = false"
+          >
+            <span class="text-white font-medium hidden md:inline">
+              Hi, <span x-text="username"></span>
+            </span>
+            <button @click="open = !open" class="focus:outline-none">
+              <img src="images/user/profil/icon-profil.jpg" alt="Profile" class="h-10 w-10 rounded-full border-2 border-white" />
             </button>
-        </div>
-    </header>
-    
+  
+            <!-- Dropdown -->
+            <div
+              x-show="open"
+              class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
+              x-transition
+            >
+            <a href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
+            <a href="{{ url('invoice') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
+              <button onclick="alert('Logged out')" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
+                Logout
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
 
     <div class="relative">
-        <button onclick="history.back()"
-            class="absolute top-2 left-2 p-2 rounded-full text-gray-600 hover:text-gray-900">
+        <button onclick="history.back()" class="absolute top-2 left-2 p-2 rounded-full text-gray-600 hover:text-gray-900">
             <!-- Icon Back (SVG) -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
         </button>
     </div>
 
     <!-- Profile Settings -->
-    <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg mt-10 p-6">
+    <div class="w-full max-w-3xl mx-auto bg-white shadow-lg rounded-lg mt-10 p-6">
         <h2 class="text-2xl font-bold text-center">Profile Settings</h2>
 
         <!-- Foto Profil -->
         <div class="flex flex-col items-center mt-6">
-            <img id="profileImg" src="images/user/profil/icon-profil.jpg" alt="Profile Picture"
-                class="w-24 h-24 rounded-full border-4 border-gray-300 shadow-md">
+            <img id="profileImg" src="images/user/profil/icon-profil.jpg" alt="Profile Picture" class="w-36 h-36 rounded-full border-4 border-gray-300 shadow-md">
             <input type="file" id="fileInput" class="hidden" accept="image/*">
-            <button onclick="document.getElementById('fileInput').click()"
-                class="mt-3 bg-blue-500 text-white px-4 py-2 text-sm rounded-lg hover:bg-blue-700">
+            <button onclick="document.getElementById('fileInput').click()" class="mt-3 bg-[#6E24FF] text-white px-4 py-2 text-sm rounded-lg hover:bg-[#5a1eae]">
                 Change Photo
             </button>
         </div>
@@ -132,9 +155,7 @@
         <form class="mt-6 space-y-4">
             <div>
                 <label class="block text-gray-700 font-semibold">Username</label>
-                <input type="text" id="username"
-                    class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter your username">
+                <input type="text" id="username" class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your username">
             </div>
 
             <div>
@@ -148,58 +169,44 @@
 
             <div>
                 <label class="block text-gray-700 font-semibold">Phone Number</label>
-                <input type="text" id="phone_number"
-                    class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter your phone number">
+                <input type="text" id="phone_number" class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your phone number">
             </div>
 
             <div>
                 <label class="block text-gray-700 font-semibold">Address</label>
-                <input type="text" id="address"
-                    class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter your address">
+                <input type="text" id="address" class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your address">
             </div>
 
             <div>
                 <label class="block text-gray-700 font-semibold">Email Address</label>
-                <input type="text" id="email"
-                    class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter your email">
+                <input type="text" id="email" class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email">
             </div>
 
             <div>
                 <label class="block text-gray-700 font-semibold">New Password</label>
-                <input type="password" id="password"
-                    class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter new password">
+                <input type="password" id="password" class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter new password">
             </div>
 
             <div>
                 <label class="block text-gray-700 font-semibold">Confirm Password</label>
-                <input type="password" id="confirmPassword"
-                    class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Confirm new password">
+                <input type="password" id="confirmPassword" class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Confirm new password">
             </div>
 
-            <button type="button" id="saveProfileButton"
-                class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-700 font-semibold">
+            <button type="button" id="saveProfileButton" class="w-full bg-[#6E24FF] text-white py-2 rounded-lg hover:bg-[#5a1eae] hover:transition-all hover:duration-300 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500">
                 Save Changes
             </button>
         </form>
     </div>
 
+    <script>
+        function logout() {
+            // Remove token from localStorage
+            localStorage.removeItem("access_token");
 
+            // Optionally redirect to login or home page
+            window.location.href = "/";
+        }
+    </script>
 </body>
 
-@vite('resources/js/user-pages/profile.js')
-<script>
-    function logout() {
-        // Remove token from localStorage
-        localStorage.removeItem("access_token");
-
-        // Optionally redirect to login or home page
-        window.location.href = "/";
-    }
-
-</script>
-</html>  
+</html>
