@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Payment Confirmation Modal
     const paymentConfirmModal = document.getElementById("paymentConfirmModal");
     const confirmModalTitle = document.getElementById("confirmModalTitle");
-    const confirmModalDesc = document.getElementById("confirmModalDesc"); // <- this was missing
+    const confirmModalDesc = document.getElementById("confirmModalDesc");
     const confirmPayBtn = document.getElementById("confirmPayBtn");
 
     // Invoice Overlay
@@ -40,6 +40,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let selectedFilter = "all";
 
     let debounceTimeout = null;
+
+    function formatRupiah(angka) {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR'
+        }).format(angka);
+    }
 
     async function fetchTemplates() {
         loadingOverlay.classList.add("active");
@@ -74,54 +81,38 @@ document.addEventListener("DOMContentLoaded", function () {
     
             return isMatchingName && isMatchingCategory;
         });
+    
 
         filteredTemplates.forEach((template) => {
-            const priceText =
-                template.price > 0 ? `Rp ${template.price}` : "Gratis";
-            const categoryText =
-                template.price > 0 ? "Premium CV Template" : "Free CV Template";
-
+            const priceText = template.price > 0 ? formatRupiah(template.price) : "Gratis";
+            const categoryText = template.price > 0 ? "Premium CV Template" : "Free CV Template";
+    
             const templateCard = `
                 <div class="max-w-[240px] bg-white rounded-lg shadow-xl overflow-hidden border border-gray-300">
                     <div class="relative aspect-[3/4]">
-                        <img class="w-full h-full object-cover" src="${endpoint}/${
-                template["template-preview"]
-            }" alt="${template.name}">
+                        <img class="w-full h-full object-cover" src="${endpoint}/${template["template-preview"]}" alt="${template.name}">
                     </div>
-                    
                     <div class="p-3">
-                        <span class="text-[#6E24FF] font-semibold text-xs">${
-                            template.name
-                        }</span>
-                        <div>${priceText}</div>
+                        <span class="text-[#6E24FF] font-semibold text-xs">${template.name}</span>
+                        <div class="text-blue-600 font-semibold text-sm">${priceText}</div>
                         <p class="text-gray-600 text-xs mt-1">${categoryText}</p>
-
                         <div class="mt-3 flex justify-between">
                             ${
                                 template.price > 0
-                                    ? ` 
-                                <button class="buy-btn px-3 py-1 bg-[#6E24FF] text-white rounded-full shadow-md hover:bg-[#4A1AB0] transition"
-                                    data-template-id="${template.unique_cv_id}">
-                                    Beli
-                                </button>
-                            ` : ""
+                                    ? `<button class="buy-btn px-3 py-1 bg-[#6E24FF] text-white rounded-full shadow-md hover:bg-[#4A1AB0] transition" data-template-id="${template.unique_cv_id}">Beli</button>`
+                                    : ""
                             }
-
-                            <button class="preview-btn px-3 py-1 bg-gray-800 text-white rounded-full shadow-md hover:bg-[#141920] transition"
-                                data-template-id="${template.unique_cv_id}">
-                                Preview
-                            </button>
+                            <button class="preview-btn px-3 py-1 bg-gray-800 text-white rounded-full shadow-md hover:bg-[#141920] transition" data-template-id="${template.unique_cv_id}">Preview</button>
                         </div>
                     </div>
                 </div>
             `;
             templateList.innerHTML += templateCard;
         });
+        
         loadingOverlay.classList.remove("active");
         addPreviewEventListeners();
     }
-
-    
 
     function addPreviewEventListeners() {
         document.querySelectorAll(".preview-btn").forEach((btn) => {
@@ -138,11 +129,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 modalImage.src = `${endpoint}/${template["template-preview"]}`;
                 modalTitle.textContent = template.name;
                 modalCategory.textContent =
+                    template.price > 0 ? "Premium CV Template" : "Free CV Template";
+
+                modalPrice.innerHTML =
                     template.price > 0
-                        ? "Premium CV Template"
-                        : "Free CV Template";
-                modalPrice.textContent =
-                    template.price > 0 ? `Rp ${template.price}` : "Gratis";
+                        ? `<i class="bi bi-cash-stack mr-1"></i> ${formatRupiah(template.price)}`
+                        : "Gratis";
 
                 if (buyButton) {
                     if (template.price > 0) {
@@ -157,7 +149,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Buy from preview modal
     if (buyButton) {
         buyButton.addEventListener("click", function () {
             if (!selectedTemplate) {
@@ -170,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
             confirmModalTitle.textContent = `Beli Template: ${selectedTemplate.name}`;
             confirmModalDesc.textContent = `Harga: ${
                 selectedTemplate.price > 0
-                    ? "Rp " + selectedTemplate.price
+                    ? formatRupiah(selectedTemplate.price)
                     : "Gratis"
             }`;
 
@@ -178,7 +169,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Buy from card
     document.addEventListener("click", function (event) {
         if (event.target.classList.contains("buy-btn")) {
             const templateId = event.target.getAttribute("data-template-id");
@@ -191,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 confirmModalTitle.textContent = `Beli Template: ${template.name}`;
                 confirmModalDesc.textContent = `Harga: ${
-                    template.price > 0 ? "Rp " + template.price : "Gratis"
+                    template.price > 0 ? formatRupiah(template.price) : "Gratis"
                 }`;
 
                 paymentConfirmModal.classList.remove("hidden");
@@ -199,7 +189,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Confirm payment
     if (confirmPayBtn) {
         confirmPayBtn.addEventListener("click", async function () {
             if (!selectedTemplate) {
@@ -208,8 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             paymentConfirmModal.classList.add("hidden");
-            console.log(selectedTemplate.unique_cv_id)
-            
+
             try {
                 const response = await fetch(`${endpoint}/api/transaction/buy/`, {
                     method: "POST",
@@ -231,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         startTransactionPolling(data.order_id);
                     }
 
-                    loadingOverlay.classList.add("active"); // show loading while waiting
+                    loadingOverlay.classList.add("active");
                 } else {
                     alert("Gagal mendapatkan link pembayaran dari server.");
                 }
@@ -258,7 +246,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Check transaction status
     async function checkTransactionStatus(orderId) {
         if (!orderId) return;
 
@@ -288,7 +275,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     "INV-" + Math.floor(Math.random() * 999999);
                 invoiceOverlay.classList.remove("hidden");
             } else {
-                // Keep loading overlay active until success
                 loadingOverlay.classList.add("active");
             }
         } catch (error) {
@@ -296,8 +282,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-
-    // Close overlays/modals
     if (closeInvoiceOverlay) {
         closeInvoiceOverlay.addEventListener("click", () =>
             invoiceOverlay.classList.add("hidden")
@@ -312,21 +296,21 @@ document.addEventListener("DOMContentLoaded", function () {
             previewModal.classList.add("hidden")
         );
 
-    // Check if elements exist before adding event listeners
     if (searchInput) searchInput.addEventListener("input", displayTemplates);
+
     const filterButtons = document.querySelectorAll(".filter-btn");
-    
     filterButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        selectedFilter = btn.getAttribute("data-filter");
-    
-        // Tambahkan efek aktif
-        filterButtons.forEach((b) => b.classList.remove("ring-2", "ring-white"));
-        btn.classList.add("ring-2", "ring-white");
-    
-        displayTemplates();
-      });
+        btn.addEventListener("click", () => {
+            selectedFilter = btn.getAttribute("data-filter");
+
+            filterButtons.forEach((b) =>
+                b.classList.remove("ring-2", "ring-white")
+            );
+            btn.classList.add("ring-2", "ring-white");
+
+            displayTemplates();
+        });
     });
-    
+
     fetchTemplates();
 });
