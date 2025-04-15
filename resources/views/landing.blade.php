@@ -20,11 +20,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @vite(['resources/user/css/plugins/bootstrap.min.css', 'resources/user/css/plugins/swiper.bundle.css', 'resources/user/css/plugins/mobile.css', 'resources/user/css/plugins/magnific-popup.css', 'resources/user/css/plugins/slick-slider.css', 'resources/user/css/plugins/owlcarousel.min.css', 'resources/user/css/plugins/aos.css', 'resources/user/css/typography.css', 'resources/user/css/master.css', 'resources/user/css/plugins/fontawesome.css'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
 </head>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -163,8 +163,7 @@
                                     </li>
                                     <li>
                                         <a data-bs-toggle="tooltip" title="Facebook" href="#"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="1em"
-                                                viewBox="0 0 448 512">
+                                                xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                                                 <path
                                                     d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
                                             </svg></a>
@@ -450,49 +449,57 @@
                                     aria-labelledby="v-pills-all-tab">
                                     <div class="tab-carousel-section owl-carousel">
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
@@ -503,49 +510,57 @@
                                     aria-labelledby="v-pills-Free-tab">
                                     <div class="tab-carousel-section owl-carousel">
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
@@ -556,49 +571,57 @@
                                     aria-labelledby="v-pills-Premium-tab">
                                     <div class="tab-carousel-section owl-carousel">
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
                                         </div>
                                         <div class="tabs-carousel-img">
-                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}" alt="">
+                                            <img src="{{ asset('images\user\all-images\template-img2.png') }}"
+                                                alt="">
                                             <div class="tabs-morebtn">
                                                 <a href="{{ url('editor') }}" class="header-btn2">Read More</a>
                                             </div>
@@ -634,8 +657,9 @@
                     <div class="footer2-last-section">
                         <div class="row">
                             <div class="col-lg-2 col-md-6 col-12">
-                                <div class="footer-auhtor-area">
-                                    <img src="images/user/logo/logo2.png" alt="">
+                                <div class="site-logo">
+                                    <a href="{{ url('/index') }}"><img src="images/user/logo/logoo.png"
+                                            alt=""width="90%" height="42"></a>
                                 </div>
                             </div>
 

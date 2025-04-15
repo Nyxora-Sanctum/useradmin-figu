@@ -57,8 +57,7 @@
                     <div class="col-lg-12">
                         <div class="header-elements">
                             <div class="site-logo">
-                                <a href="{{ url('/index') }}"><img src="images/user/logo/logoo.png"
-                                        alt=""width="90%" height="42"></a>
+                                <a href="{{ url('/index') }}"><img src="images/user/logo/logoo.png" alt=""width="90%" height="42"></a>
                             </div>
                             <div class="main-menu">                                <ul>
                                     <li><a href="about.html" class="nav-link active">Inventory</a></li>
@@ -634,7 +633,7 @@
                         <div class="row">
                             <div class="col-lg-2 col-md-6 col-12">
                                 <div class="footer-auhtor-area">
-                                    <img src="images/user/logo/logo2.png" alt="">
+                                    <img src="images/user/logo/logoo.png" alt="">
                                 </div>
                             </div>
 
