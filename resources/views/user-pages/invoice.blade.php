@@ -21,9 +21,15 @@
     @vite(['resources/user/css/plugins/bootstrap.min.css', 'resources/user/css/plugins/swiper.bundle.css', 'resources/user/css/plugins/mobile.css', 'resources/user/css/plugins/magnific-popup.css', 'resources/user/css/plugins/slick-slider.css', 'resources/user/css/plugins/owlcarousel.min.css', 'resources/user/css/plugins/aos.css', 'resources/user/css/typography.css', 'resources/user/css/master.css', 'resources/user/css/plugins/fontawesome.css'])
 
     <!--===== CSS =======-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"> </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
 
 </head>
 <script>
@@ -69,10 +75,12 @@
                             </div>
                             <div class="main-menu">
                                 <ul>
-                                    <li><a href="{{ url('inventory') }}" 
-                                        class="text-white font-bold hover:text-[#5a1eae] focus:outline-none no-underline active:text-[#5a1eae]">Inventory</a></li>
-                                    <li><a href="{{ url('shop') }}" 
-                                        class="text-white font-bold hover:text-[#5a1eae] focus:outline-none no-underline active:text-[#5a1eae]">Shop</a></li>
+                                    <li><a href="{{ url('inventory') }}"
+                                            class="text-white font-bold hover:text-[#5a1eae] focus:outline-none no-underline active:text-[#5a1eae]">Inventory</a>
+                                    </li>
+                                    <li><a href="{{ url('shop') }}"
+                                            class="text-white font-bold hover:text-[#5a1eae] focus:outline-none no-underline active:text-[#5a1eae]">Shop</a>
+                                    </li>
                                 </ul>
                                 <a href="{{ url('profile') }}"class="header-btn3">Profile Settings</a>
                             </div>
@@ -216,13 +224,73 @@
                 <p>If you have any questions, please contact us at company@example.com</p>
             </div>
         </div>
+    </div>
+    <div class="footer2-section-area"
+        style="background-image: url('images/user/background/bg1.png'); background-repeat: no-repeat; background-size: cover; background-position: center;">
 
-        <!-- Bootstrap JS (Optional) -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer2-last-section">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-6 col-12">
+                                <div class="site-logo">
+                                    <a href="{{ url('/index') }}"><img src="images/user/logo/logoo.png"
+                                            alt=""width="90%" height="42"></a>
+                                </div>
+                            </div>
 
-        <!--=====JS=======-->
+                            <div class="col-lg-7 col-md-6 col-12">
+                                <div class="footer-auhtor-area">
+                                    <p>Figurer is an innovative platform designed to help users create professional CVs
+                                        quickly and easily with the assistance of artificial intelligence (AI). With
+                                        Figurer, you don't have to worry about formatting or choosing the right
+                                        words our AI will optimize every part of your CV to meet industry standards and
+                                        attract recruiters' attention.</p>
+                                </div>
+                            </div>
 
-        @vite(['resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
+                            <div class="col-lg col-md-6 col-12">
+                                <div class="footer-auhtor-area">
+                                    <div>
+                                        <ul>
+                                            <h6>Ikuti Kami</h6>
+                                        </ul>
+                                    </div>
+                                    <ul class="social-links">
+                                        <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
+                                        <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="copyright-social-area">
+                                    <ul>
+                                        <li class="copy">
+                                            <p>Copyright @2025 Figurer. All Right Reserved</p>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li><a>Your Privacy</a></li>
+                                        <li class="terms"><a>Terms</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!--=====JS=======-->
+
+    @vite(['resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/slick-slider.js', 'resources/user/js/plugins/bootstrap.min.js', 'resources/user/js/plugins/mobilemenu.js', 'resources/user/js/plugins/owlcarousel.min.js', 'resources/user/js/plugins/counter.js', 'resources/user/js/plugins/waypoints.js', 'resources/user/js/plugins/magnific-popup.js', 'resources/user/js/main.js'])
 
 </body>
