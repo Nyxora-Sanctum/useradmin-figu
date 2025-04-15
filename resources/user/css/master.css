@@ -7006,7 +7006,7 @@ a.header-btn9 i {
 }
 
 .footer2-section-area .footer2-last-section {
-    background: var(--white-100, #FFF);
+    background: #000;
     border-radius: var(--4, 4px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     -webkit-backdrop-filter: blur(57.0340957642px);
@@ -10911,14 +10911,12 @@ a.header-btn9 i {
 
 /*============= CV EDITOR CSS AREA STARTS ===============*/
 
-/* Main Container Layout */
 .main-container {
     display: flex;
     height: 100vh;
     overflow: hidden;
 }
 
-/* Editor Section */
 .editor {
     width: 50%;
     background-color: #f8f9fa;
@@ -10929,7 +10927,6 @@ a.header-btn9 i {
     align-items: flex-start;
 }
 
-/* Form Styling */
 form#frm {
     width: 100%;
     max-width: 800px;
@@ -10940,7 +10937,6 @@ form#frm {
     margin: 0 auto;
 }
 
-/* Form Headings */
 form#frm h2 {
     color: #2c3e50;
     margin-bottom: 30px;
@@ -11204,18 +11200,14 @@ input[type="file"]:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     margin: 20px 0;
-    overflow: hidden;
-    /* Hindari overflow keluar A4 */
+    overflow: hidden;/* Hindari overflow keluar A4 */
     display: flex;
     flex-direction: column;
 }
 
 .cv-inner-container {
-    padding: 20mm;
-    /* Margin dalam A4 */
     box-sizing: border-box;
     flex: 1;
-    overflow-y: auto;
 }
 
 .profile-photo {
@@ -11261,7 +11253,7 @@ input[type="file"]:hover {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    border-bottom: 2px solid #f0f0f0;
+    border-bottom: 1px solid white;
     padding-bottom: 20px;
 }
 

@@ -69,13 +69,12 @@
                             </div>
                             <div class="main-menu">
                                 <ul>
-                                    <li><a href="about.html" class="nav-link active">Inventory</a></li>
-                                    <li><a href="{{ url('editor') }}"class="nav-link active">CV Editor</a></li>
-                                    <li><a href="features.html" class="nav-link active">Shop</a></li>
-                                    <li><a href="{{ url('invoice') }}" class="nav-link active">Invoice</a></li>
+                                    <li><a href="{{ url('inventory') }}" 
+                                        class="text-white font-bold hover:text-[#5a1eae] focus:outline-none no-underline active:text-[#5a1eae]">Inventory</a></li>
+                                    <li><a href="{{ url('shop') }}" 
+                                        class="text-white font-bold hover:text-[#5a1eae] focus:outline-none no-underline active:text-[#5a1eae]">Shop</a></li>
                                 </ul>
-                                <a href="{{ url('login') }}" class="header-btn2">Login</a>
-                                <a href="signup.html" class="header-btn3">Profile</a>
+                                <a href="{{ url('profile') }}"class="header-btn3">Profile Settings</a>
                             </div>
                         </div>
                     </div>
