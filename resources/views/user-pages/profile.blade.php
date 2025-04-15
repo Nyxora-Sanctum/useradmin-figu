@@ -192,8 +192,9 @@
                 <input type="password" id="confirmPassword" class="w-full mt-1 p-2 border rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Confirm new password">
             </div>
 
-            <button type="button" id="saveProfileButton" class="w-full bg-[#6E24FF] text-white py-2 rounded-lg hover:bg-[#5a1eae] hover:transition-all hover:duration-300 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500">
-                Save Changes
+            <button type="button" id="saveProfileButton"
+            class="w-full bg-gradient-to-br from-[#6E24FF] to-purple-300 text-white py-2 rounded-lg font-semibold transition duration-300 hover:from-purple-700 hover:to-purple-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            Save Changes
             </button>
         </form>
     </div>

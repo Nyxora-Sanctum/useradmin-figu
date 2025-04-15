@@ -37,6 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let templatesData = [];
     let selectedTemplate = null;
+    let selectedFilter = "all";
+
+    let debounceTimeout = null;
 
     async function fetchTemplates() {
         loadingOverlay.classList.add("active");
@@ -61,17 +64,14 @@ document.addEventListener("DOMContentLoaded", function () {
     function displayTemplates() {
         templateList.innerHTML = "";
         const searchText = searchInput ? searchInput.value.toLowerCase() : "";
-        const selectedFilter = filterSelect ? filterSelect.value : "all";
-
+    
         const filteredTemplates = templatesData.filter((template) => {
-            const isMatchingName = template.name
-                .toLowerCase()
-                .includes(searchText);
+            const isMatchingName = template.name.toLowerCase().includes(searchText);
             const isMatchingCategory =
                 selectedFilter === "all" ||
                 (selectedFilter === "free" && template.price == 0) ||
                 (selectedFilter === "premium" && template.price > 0);
-
+    
             return isMatchingName && isMatchingCategory;
         });
 
@@ -120,6 +120,8 @@ document.addEventListener("DOMContentLoaded", function () {
         loadingOverlay.classList.remove("active");
         addPreviewEventListeners();
     }
+
+    
 
     function addPreviewEventListeners() {
         document.querySelectorAll(".preview-btn").forEach((btn) => {
@@ -312,7 +314,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Check if elements exist before adding event listeners
     if (searchInput) searchInput.addEventListener("input", displayTemplates);
-    if (filterSelect) filterSelect.addEventListener("change", displayTemplates);
-
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        selectedFilter = btn.getAttribute("data-filter");
+    
+        // Tambahkan efek aktif
+        filterButtons.forEach((b) => b.classList.remove("ring-2", "ring-white"));
+        btn.classList.add("ring-2", "ring-white");
+    
+        displayTemplates();
+      });
+    });
+    
     fetchTemplates();
 });

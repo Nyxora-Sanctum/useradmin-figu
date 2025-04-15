@@ -115,21 +115,17 @@
       </div>
   
       <!-- Filter Kategori (mepet kanan) -->
-      <div class="flex items-center space-x-4">
-        <button 
-          class="px-4 py-2 rounded-full bg-gradient-to-br from-[#6E24FF] to-purple-300 text-white font-medium hover:opacity-90 transition">
+      <div class="flex items-center space-x-4" id="filter-buttons">
+        <button data-filter="all" class="filter-btn px-4 py-2 rounded-full bg-gradient-to-br from-[#6E24FF] to-purple-300 text-white font-medium transition duration-300 hover:from-purple-700 hover:to-purple-400">
           Semua
         </button>
-        <button 
-          class="px-4 py-2 rounded-full bg-gradient-to-br from-[#6E24FF] to-purple-300 text-white font-medium hover:opacity-90 transition">
+        <button data-filter="free" class="filter-btn px-4 py-2 rounded-full bg-gradient-to-br from-[#6E24FF] to-purple-300 text-white font-medium transition duration-300 hover:from-purple-700 hover:to-purple-400">
           Free
         </button>
-        <button 
-          class="px-4 py-2 rounded-full bg-gradient-to-br from-[#6E24FF] to-purple-300 text-white font-medium hover:opacity-90 transition">
+        <button data-filter="premium" class="filter-btn px-4 py-2 rounded-full bg-gradient-to-br from-[#6E24FF] to-purple-300 text-white font-medium transition duration-300 hover:from-purple-700 hover:to-purple-400">
           Premium
         </button>
       </div>
-  
     </div>
   </div>
 <style>
