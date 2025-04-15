@@ -63,11 +63,12 @@
           </div>
   
           <!-- Kanan: Profile -->
-          <div
-            x-data="{ open: false, username: 'Nadin' }"
+            <div
+            x-data="userDropdown()"
+            x-init="fetchUser()"
             class="relative flex items-center space-x-3"
             @click.away="open = false"
-          >
+            >
             <span class="text-white font-medium hidden md:inline">
               Hi, <span x-text="username"></span>
             </span>
@@ -83,7 +84,7 @@
             >
               <a href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
               <a href="{{ url('invoice') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
-              <button onclick="alert('Logged out')" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
+              <button onclick="logout()" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
                 Logout
               </button>
             </div>
@@ -318,6 +319,7 @@
 </footer>
 
 <script>
+    const endpoint = "";
     function logout() {
         // Remove token from localStorage
         localStorage.removeItem("access_token");
@@ -326,6 +328,31 @@
         window.location.href = "/";
     }
 
+    function userDropdown() {
+        return {
+            open: false,
+            username: '',
+            async fetchUser() {
+                const token = localStorage.getItem('access_token');
+
+                try {
+                    const response = await fetch("https://figu.azurewebsites.net/api/user/profile", {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (!response.ok) throw new Error('Failed to fetch user');
+
+                    const data = await response.json();
+                    this.username = data.username;
+                } catch (error) {
+                    console.error('Error fetching user:', error);
+                }
+            }
+        }
+    }
 </script>
 </body>
 

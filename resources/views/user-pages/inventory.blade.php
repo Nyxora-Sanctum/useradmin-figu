@@ -74,11 +74,8 @@
           </div>
   
           <!-- Kanan: Profile -->
-          <div
-            x-data="{ open: false, username: 'Nadin' }"
-            class="relative flex items-center space-x-3"
-            @click.away="open = false"
-          >
+            <div x-data="userDropdown()" x-init="fetchUser()" class="relative flex items-center space-x-3"
+                @click.away="open = false">
             <span class="text-white font-medium hidden md:inline">
               Hi, <span x-text="username"></span>
             </span>
@@ -277,7 +274,31 @@
         // Optionally redirect to login or home page
         window.location.href = "/";
     }
+    function userDropdown() {
+        return {
+            open: false,
+            username: '',
+            async fetchUser() {
+                const token = localStorage.getItem('access_token');
 
+                try {
+                    const response = await fetch("https://figu.azurewebsites.net/api/user/profile", {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (!response.ok) throw new Error('Failed to fetch user');
+
+                    const data = await response.json();
+                    this.username = data.username;
+                } catch (error) {
+                    console.error('Error fetching user:', error);
+                }
+            }
+        }
+    }
 </script>
 <!-- Loading Overlay -->
 <div id="loadingOverlay" class="loading-overlay">

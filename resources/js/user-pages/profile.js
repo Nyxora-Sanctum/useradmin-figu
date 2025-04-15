@@ -1,19 +1,29 @@
 const endpoint = import.meta.env.VITE_DATABASE_ENDPOINT;
 const loadingOverlay = document.getElementById("loadingOverlay");
+
+function showLoading(show) {
+    if (show) {
+        loadingOverlay.classList.add("flex");
+        loadingOverlay.classList.remove("hidden");
+    } else {
+        loadingOverlay.classList.remove("flex");
+        loadingOverlay.classList.add("hidden");
+    }
+}
+
 // Fetch user profile data
 function getProfile() {
-    loadingOverlay.classList.add("active");
+    showLoading(true);
     fetch(`${endpoint}/api/user/profile`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("access_token"), // Assuming you're using a token-based auth
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
     })
         .then((response) => response.json())
         .then((data) => {
-            // Populate the form with the fetched data
-            loadingOverlay.classList.remove("active");
+            showLoading(false);
             document.getElementById("username").value = data.username || "";
             document.getElementById("email").value = data.email || "";
             document.getElementById("gender").value = data.gender || "";
@@ -21,12 +31,15 @@ function getProfile() {
                 data.phone_number || "";
             document.getElementById("address").value = data.address || "";
         })
-        .catch((error) => loadingOverlay.classList.remove("active"));
+        .catch((error) => {
+            console.error("Failed to load profile:", error);
+            showLoading(false);
+        });
 }
 
 // Save profile updates
 function saveProfile() {
-    loadingOverlay.classList.add("active");
+    showLoading(true);
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const gender = document.getElementById("gender").value;
@@ -37,48 +50,50 @@ function saveProfile() {
 
     if (!username || !email) {
         alert("Username and Email must be filled!");
+        showLoading(false);
         return;
     }
 
     if (password && password !== confirmPassword) {
         alert("Passwords do not match!");
+        showLoading(false);
         return;
     }
 
     const updatedProfile = {
-        username: username,
-        email: email,
+        username,
+        email,
         gender: gender || null,
         phone_number: phone_number || null,
         address: address || null,
+        ...(password ? { password } : {}),
     };
 
-    // Send updated profile data
     fetch(`${endpoint}/api/user/profile`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("access_token"), // Assuming you're using a token-based auth
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
         body: JSON.stringify(updatedProfile),
     })
-        .then((response) => response.json())
-        .then((data) => {
-            loadingOverlay.classList.remove("active");
+        .then((response) => {
+            if (!response.ok) throw new Error("Failed to update profile.");
+            return response.json();
+        })
+        .then(() => {
+            showLoading(false);
             alert("Profile updated successfully!");
         })
         .catch((error) => {
-            loadingOverlay.classList.remove("active");
+            showLoading(false);
             console.error("Error updating profile:", error);
             alert("Failed to update profile.");
         });
 }
 
-// Set up event listener for save profile button
 window.onload = function () {
     getProfile();
-
-    // Add event listener for Save button
     const saveButton = document.getElementById("saveProfileButton");
     if (saveButton) {
         saveButton.addEventListener("click", saveProfile);

@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Pastikan untuk memuat AlpineJS jika ingin menggunakan x-data -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    @vite("resources/js/user-pages/profile.js")
 </head>
 
 <body class="bg-gray-100 flex flex-col min-h-screen">
@@ -100,11 +101,8 @@
           </div>
   
           <!-- Kanan: Profile -->
-          <div
-            x-data="{ open: false, username: 'Nadin' }"
-            class="relative flex items-center space-x-3"
-            @click.away="open = false"
-          >
+            <div x-data="userDropdown()" x-init="fetchUser()" class="relative flex items-center space-x-3"
+                @click.away="open = false">
             <span class="text-white font-medium hidden md:inline">
               Hi, <span x-text="username"></span>
             </span>
@@ -207,6 +205,32 @@
             // Optionally redirect to login or home page
             window.location.href = "/";
         }
+        
+            function userDropdown() {
+                return {
+                    open: false,
+                    username: '',
+                    async fetchUser() {
+                        const token = localStorage.getItem('access_token');
+
+                        try {
+                            const response = await fetch("https://figu.azurewebsites.net/api/user/profile", {
+                                headers: {
+                                    'Authorization': `Bearer ${token}`,
+                                    'Content-Type': 'application/json'
+                                }
+                            });
+
+                            if (!response.ok) throw new Error('Failed to fetch user');
+
+                            const data = await response.json();
+                            this.username = data.username;
+                        } catch (error) {
+                            console.error('Error fetching user:', error);
+                        }
+                    }
+                }
+            }
     </script>
 </body>
 
