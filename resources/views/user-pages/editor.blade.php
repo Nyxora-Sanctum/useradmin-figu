@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>CV Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -22,37 +24,63 @@
     @vite(['resources/user/css/plugins/bootstrap.min.css', 'resources/user/css/plugins/swiper.bundle.css', 'resources/user/css/plugins/mobile.css', 'resources/user/css/plugins/magnific-popup.css', 'resources/user/css/plugins/slick-slider.css', 'resources/user/css/plugins/owlcarousel.min.css', 'resources/user/css/plugins/aos.css', 'resources/user/css/typography.css', 'resources/user/css/master.css', 'resources/user/css/plugins/fontawesome.css'])
 </head>
 
-<body>
-    <!--=====HEADER START=======-->
-    <header>
-        <div class="header-area homepage2 header header-sticky d-none d-lg-block" id="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="header-elements">
-                            <div class="site-logo">
-                                <a href="{{ url('/index') }}"><img src="images/user/logo/logoo.png"
-                                        alt=""width="90%" height="42"></a>
-                            </div>
-                            <div class="main-menu">
-                                <ul>
-                                    <li><a href="{{ url('inventory') }}" class="nav-link active">Inventory</a></li>
-                                    <li><a href="{{ url('editor') }}"class="nav-link active">CV Editor</a></li>
-                                    <li><a href="{{ url('shop') }}" class="nav-link active">Shop</a></li>
-                                    <li><a href="{{ url('invoice') }}" class="nav-link active">Invoice</a></li>
-                                </ul>
-                                <a href="signup.html" class="header-btn3">Profile</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<body class="bg-gray-100 flex flex-col min-h-screen ">
+
+    <!-- Header Navbar -->
+    <div class="w-full px-4">
+        <div class="max-w-[1000px] mx-auto">
+          <nav class="bg-gradient-to-br from-[#6E24FF] to-purple-300 px-6 py-3 rounded-full mt-6 flex items-center justify-between shadow-lg">
+          
+          <!-- Kiri: Logo dan Menu -->
+          <div class="flex items-center space-x-6">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2">
+                <img src="{{ asset('images/user/logo/logoo.png') }}" alt="Logo" class="h-8 w-15" />
+              <span class="text-white font-bold text-lg tracking-wide"></span>
             </div>
-        </div>
-    </header>
+            
+            <!-- Menu -->
+            <div class="flex items-center space-x-6 ml-auto">
+                <a href="{{ url('shop') }}" 
+                   class="text-white font-bold hover:text-[#5a1eae] focus:outline-none no-underline active:text-[#5a1eae]">Shop</a>
+                <a href="{{ url('inventory') }}" 
+                   class="text-white font-bold hover:text-[#5a1eae] focus:outline-none no-underline active:text-[#5a1eae]">Inventory</a>
+              </div>
+          </div>
+  
+          <!-- Kanan: Profile -->
+          <div
+            x-data="{ open: false, username: 'Nadin' }"
+            class="relative flex items-center space-x-3"
+            @click.away="open = false"
+          >
+            <span class="text-white font-medium hidden md:inline">
+              Hi, <span x-text="username"></span>
+            </span>
+            <button @click="open = !open" class="focus:outline-none">
+              <img src="{{ asset('images/user/profil/icon-profil.jpg') }}"  alt="Profile" class="h-10 w-10 rounded-full border-2 border-white" />
+            </button>
+  
+            <!-- Dropdown -->
+            <div
+              x-show="open"
+              class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
+              x-transition
+            >
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
+              <button onclick="alert('Logged out')" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
+                Logout
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
     <!--=====HEADER END =======-->
 
     <div class="main-container welcome2-section-area-cv"
-        style="background-image: url('images/user/background/header2-bg.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+        style="background-image: url('{{ asset('images/user/background/header2_bg.png') }}'); background-position: center; background-repeat: no-repeat; background-size: cover;">
         <!-- Editor Section -->
         <div class="editor">
             <form id="frm">

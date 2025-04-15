@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function displayTemplates() {
         templateList.innerHTML = "";
-        const searchText = searchInput.value.toLowerCase();
-        const selectedFilter = filterSelect.value;
+        const searchText = searchInput ? searchInput.value.toLowerCase() : "";
+        const selectedFilter = filterSelect ? filterSelect.value : "all";
 
         const filteredTemplates = templatesData.filter((template) => {
             const isMatchingName = template.name
@@ -104,8 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     data-template-id="${template.unique_cv_id}">
                                     Beli
                                 </button>
-                            `
-                                    : ""
+                            ` : ""
                             }
 
                             <button class="preview-btn px-3 py-1 bg-gray-800 text-white rounded-full shadow-md hover:bg-[#141920] transition"
@@ -311,6 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
             previewModal.classList.add("hidden")
         );
 
+    // Check if elements exist before adding event listeners
     if (searchInput) searchInput.addEventListener("input", displayTemplates);
     if (filterSelect) filterSelect.addEventListener("change", displayTemplates);
 

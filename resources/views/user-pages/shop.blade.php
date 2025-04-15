@@ -10,7 +10,6 @@
     <link rel="shortcut icon" href="assets/images/logo/icon-logo.png" />
 
     <!-- ===== FONT & ICONS ===== -->
-    <link rel="shortcut icon" href="assets/images/logo/icon-logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,28 +18,6 @@
     
     <!-- Custom CSS tambahan jika diperlukan -->
     <style>
-        .navbar {
-            font-family: "Poppins", sans-serif;
-            font-weight: 700;
-        }
-
-        .btn-filter {
-            background-color: #6E24FF;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-
-        .btn-filter:hover {
-            background-color: #5A1EDB;
-        }
-
-        .btn-filter.active {
-            background-color: #5A1EDB;
-            box-shadow: 0 0 0 2px rgba(106, 48, 255, 0.5);
-        }
-
         .cardContainer {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -59,99 +36,101 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
     </style>
-
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 flex flex-col min-h-screen ">
 
     <!-- Header Navbar -->
-    <header id="navbar" class="bg-[#6E24FF] w-full h-12 md:h-16">
-        <div class="container mx-auto h-full flex items-center justify-between px-6">
-            <!-- Logo -->
-            <div id="navbar-logo" class="h-full flex items-center">
-                <a href="{{ url('/index') }}">
-                    <img src="images/user/logo/logoo.png" alt="Logo" class="h-6 md:h-10">
-                </a>
-            </div>
-    
-            <!-- Menu Navigation -->
-            <nav id="navbar-menu" class="hidden md:block">
-                <ul class="flex space-x-8 font-bold text-white">
-                    <li><a id="nav-shop" href="{{ url('shop') }}" class="hover:text-[#4A1AB0]">Shop</a></li>
-                    <li><a id="nav-inventory" href="{{ url('inventory') }}" class="hover:text-[#4A1AB0]">Inventory</a></li>
-                    <li><a id="nav-editor" href="{{ url('editor') }}" class="hover:text-[#4A1AB0]">Editor</a></li>
-                </ul>
-            </nav>
-    
-            <!-- Search + Profile -->
-            <div id="navbar-right" class="flex items-center space-x-4">
-                <!-- Search -->
-                <div class="relative" id="navbar-search">
-                    <input
-                        type="text"
-                        id="search"
-                        placeholder="Cari template CV..."
-                        class="pl-10 pr-4 py-1.5 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent w-48 md:w-64 text-sm"
-                    />
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
-                        </svg>
-                    </div>
-                </div>
-    
-                <!-- Profile Dropdown -->
-                <div id="navbar-profile" x-data="{ open: false }" class="relative" @click.away="open = false">
-                    <button @click="open = !open" class="flex items-center space-x-2 focus:outline-none">
-                        <img src="images/user/profil/icon-profil.jpg" alt="Profile"
-                          
-                            class="h-10 w-10 rounded-full border-2 border-white">
-                        <span class="text-white font-medium hidden md:inline"></span>
-                    </button>
-                    <!-- Dropdown -->
-                    <div x-show="open"
-                        class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
-                        <a id="nav-profile-settings" href="{{ url('profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
-                        <a id="nav-invoice" href="{{ url('invoice') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
-                        <button id="nav-logout" onclick="logout()" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
-                            Logout
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-</body>
-
- 
-<main class="container mx-auto px-6 py-4">
-  <!-- Filter Harga -->
-  <section class="filter-price py-4 mb-4">
-    <div class="flex items-center justify-between">
-      <!-- Bagian Kiri: SHOP dan Filter Kategori -->
-      <div class="flex items-center space-x-4">
-        <span class="text-gray-700 text-2xl font-bold">SHOP</span>
-        <div class="relative">
-            <select id="filter"
-              class="appearance-none pl-4 pr-10 py-1 border border-gray-300 rounded-lg bg-white shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent cursor-pointer transition duration-200">
-              <option value="all">Semua</option>
-              <option value="free">Gratis</option>
-              <option value="premium">Premium</option>
-            </select>
+    <div class="w-full px-4 mb-4">
+        <div class="max-w-[1000px] mx-auto">
+          <nav class="bg-gradient-to-br from-[#6E24FF] to-purple-300 px-6 py-3 rounded-full mt-6 flex items-center justify-between shadow-lg">
           
-            <!-- Icon panah dropdown, sekarang agak menjauh dari edge -->
-            <div class="pointer-events-none absolute inset-y-0 right-2 flex items-center pr-1">
-              <svg class="w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.584l3.71-4.354a.75.75 0 111.14.976l-4.25 5a.75.75 0 01-1.14 0l-4.25-5a.75.75 0 01.02-1.06z"
-                  clip-rule="evenodd" />
-              </svg>
+          <!-- Kiri: Logo dan Menu -->
+          <div class="flex items-center space-x-6">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2">
+              <img src="images/user/logo/logoo.png" alt="Logo" class="h-8 w-15" />
+              <span class="text-white font-bold text-lg tracking-wide"></span>
+            </div>
+            
+            <!-- Menu -->
+            <div class="flex items-center space-x-6 ml-auto">
+                <a href="{{ url('shop') }}" 
+                   class="text-white font-bold hover:text-[#5a1eae] focus:outline-none no-underline active:text-[#5a1eae]">Shop</a>
+                <a href="{{ url('inventory') }}" 
+                   class="text-white font-bold hover:text-[#5a1eae] focus:outline-none no-underline active:text-[#5a1eae]">Inventory</a>
+              </div>
+          </div>
+  
+          <!-- Kanan: Profile -->
+          <div
+            x-data="{ open: false, username: 'Nadin' }"
+            class="relative flex items-center space-x-3"
+            @click.away="open = false"
+          >
+            <span class="text-white font-medium hidden md:inline">
+              Hi, <span x-text="username"></span>
+            </span>
+            <button @click="open = !open" class="focus:outline-none">
+              <img src="images/user/profil/icon-profil.jpg" alt="Profile" class="h-10 w-10 rounded-full border-2 border-white" />
+            </button>
+  
+            <!-- Dropdown -->
+            <div
+              x-show="open"
+              class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
+              x-transition
+            >
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile Settings</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Invoice</a>
+              <button onclick="alert('Logged out')" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
+                Logout
+              </button>
             </div>
           </div>
-  </section>
+        </nav>
+      </div>
+    </div>
+
+<!-- Search & Filter -->
+<div class="container mx-auto px-6 mt-6">
+    <!-- Flex wrapper dengan justify-between -->
+    <div class="flex items-center justify-between">
+      
+         <!-- Search Bar -->
+         <div class="relative w-[450px]">
+        <input 
+          type="text" 
+          placeholder="Cari template CV..." 
+          class="w-full py-2 pl-4 pr-10 border border-gray-300 rounded-full focus:ring-2 focus:ring-[#6E24FF] focus:outline-none"
+        />
+        <svg 
+          class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" 
+          fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+        </svg>
+      </div>
+  
+      <!-- Filter Kategori (mepet kanan) -->
+      <div class="flex items-center space-x-4">
+        <button 
+          class="px-4 py-2 rounded-full bg-gradient-to-br from-[#6E24FF] to-purple-300 text-white font-medium hover:opacity-90 transition">
+          Semua
+        </button>
+        <button 
+          class="px-4 py-2 rounded-full bg-gradient-to-br from-[#6E24FF] to-purple-300 text-white font-medium hover:opacity-90 transition">
+          Free
+        </button>
+        <button 
+          class="px-4 py-2 rounded-full bg-gradient-to-br from-[#6E24FF] to-purple-300 text-white font-medium hover:opacity-90 transition">
+          Premium
+        </button>
+      </div>
+  
+    </div>
+  </div>
 <style>
     /* Loading overlay */
     .loading-overlay {
@@ -224,8 +203,9 @@
     </div>
 </div>
 
+<main class="flex-grow container mx-auto px-6 py-4"  >
 <!-- Container untuk Template List -->
-<section id="template-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6 mb-10">
+<section id="template-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-2 mb-10">
 
 </section>
 
