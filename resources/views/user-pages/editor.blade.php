@@ -2,29 +2,65 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>CV Editor</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <!--=====JS=======-->
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+        }
 
-    @vite(['resources/user/js/plugins/jquery-3-6-0.min.js', 'resources/user/js/plugins/swiper.bundle.js', 'resources/user/js/plugins/ScrollTrigger.min.js', 'resources/user/js/plugins/aos.js', 'resources/js/user-pages/editor.js'])
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: #f3f4f6; /* bg-gray-100 */
+        }
 
+        .main-container {
+            flex-grow: 1;
+            padding: 2rem;
+        }
 
-    <!--===== CSS =======-->
-    @vite(['resources/user/css/plugins/bootstrap.min.css', 'resources/user/css/plugins/swiper.bundle.css', 'resources/user/css/plugins/mobile.css', 'resources/user/css/plugins/magnific-popup.css', 'resources/user/css/plugins/slick-slider.css', 'resources/user/css/plugins/owlcarousel.min.css', 'resources/user/css/plugins/aos.css', 'resources/user/css/typography.css', 'resources/user/css/master.css', 'resources/user/css/plugins/fontawesome.css'])
+        .editor {
+            margin-bottom: 2rem;
+        }
+    </style>
+
+    @vite([
+        'resources/user/js/plugins/jquery-3-6-0.min.js',
+        'resources/user/js/plugins/swiper.bundle.js',
+        'resources/user/js/plugins/ScrollTrigger.min.js',
+        'resources/user/js/plugins/aos.js',
+        'resources/js/user-pages/editor.js'
+    ])
+    
+    @vite([
+        'resources/user/css/plugins/bootstrap.min.css',
+        'resources/user/css/plugins/swiper.bundle.css',
+        'resources/user/css/plugins/mobile.css',
+        'resources/user/css/plugins/magnific-popup.css',
+        'resources/user/css/plugins/slick-slider.css',
+        'resources/user/css/plugins/owlcarousel.min.css',
+        'resources/user/css/plugins/aos.css',
+        'resources/user/css/typography.css',
+        'resources/user/css/master.css',
+        'resources/user/css/plugins/fontawesome.css'
+    ])
 </head>
 
-<body class="bg-gray-100 flex flex-col min-h-screen ">
+<body class="bg-gray-100">
 
     <!-- Header Navbar -->
     <div class="w-full px-4">
@@ -79,8 +115,7 @@
     </div>
     <!--=====HEADER END =======-->
 
-    <div class="main-container welcome2-section-area-cv"
-        style="background-image: url('{{ asset('images/user/background/header2_bg.png') }}'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <div class="main-container welcome2-section-area-cv" style="background-image: url('{{ asset('images/user/background/header2_bg.png') }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">    
         <!-- Editor Section -->
         <div class="editor">
             <form id="frm">
