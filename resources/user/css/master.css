@@ -11206,7 +11206,6 @@ input[type="file"]:hover {
 }
 
 .cv-inner-container {
-    padding: 20mm;
     box-sizing: border-box;
     flex: 1;
 }
