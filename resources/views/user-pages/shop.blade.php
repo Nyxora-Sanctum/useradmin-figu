@@ -230,10 +230,6 @@
             <!-- Kategori -->
             <p id="modalCategory" class="text-sm text-purple-600 italic"></p>
 
-            <!-- Deskripsi statis -->
-            <p class="text-sm text-gray-600 mt-3 leading-relaxed">
-            </p>
-
             <!-- Tombol Beli & Tutup -->
             <div class="mt-4 flex justify-end">
                 <button id="buyButton"
