@@ -35,7 +35,7 @@ class RoutingController extends Controller
 
         // Fetch template metadata from the backend with Bearer token for authentication
         try {
-            $templateMetaResponse = $client->get(env('VITE_DATABASE_ENDPOINT') . "/api/templates/inventory/get/{$id}", [
+            $templateMetaResponse = $client->get(env('VITE_DATABASE_ENDPOINT') . "/api/templates/get/{$id}", [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $token, // Include the Bearer token in the request header
                 ]
